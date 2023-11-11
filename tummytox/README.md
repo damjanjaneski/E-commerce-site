@@ -1,3 +1,9 @@
+This is my first semi-real project, based on next.js and node.js, build from scratch. Using data from non-relational mongodb, I tried to make real e-commerce web-site, using HTML, CSS and components from Material UI 
+to optimze to visuality of the site, and JavaScript logic for its functionality  through next.js. Feel free to check the code, and the accurate URL will be shared as soon as the web-site is done. 
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
