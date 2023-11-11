@@ -29,3 +29,10 @@
 .link {
   background-color: inherit;
 }
+
+.btn {
+  background-color: inherit;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}

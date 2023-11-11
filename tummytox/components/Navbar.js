@@ -1,7 +1,15 @@
 import navbarStyle from "./Navbar.module.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-export default function Navbar() {
+export default function Navbar({ loggedIn, setLoggedIn }) {
+  const router = useRouter();
+
+  const logOut = function () {
+    setLoggedIn(false);
+    router.push("/authentication/Login");
+  };
+
   return (
     <>
       <div className={navbarStyle.nav}>
@@ -12,14 +20,22 @@ export default function Navbar() {
         <div>
           <img src="https://aptekibruno.mk/wp-content/uploads/2023/08/0x0-1.png" />
         </div>
-        <div className={navbarStyle.subDiv}>
-          <Link href="/authentication/Login" className={navbarStyle.link}>
-            <span>Log In</span>
-          </Link>
-          <Link href="/authentication/Register" className={navbarStyle.link}>
-            <span>Register</span>
-          </Link>
-        </div>
+        {loggedIn ? (
+          <div className={navbarStyle.subDiv}>
+            <button onClick={logOut} className={navbarStyle.btn}>
+              <span>Log Out</span>
+            </button>
+          </div>
+        ) : (
+          <div className={navbarStyle.subDiv}>
+            <Link href="/authentication/Login" className={navbarStyle.link}>
+              <span>Log In</span>
+            </Link>
+            <Link href="/authentication/Register" className={navbarStyle.link}>
+              <span>Register</span>
+            </Link>
+          </div>
+        )}
       </div>
     </>
   );

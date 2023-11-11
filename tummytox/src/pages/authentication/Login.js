@@ -3,8 +3,9 @@ import styles from "./Login.module.css";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function Login() {
+export default function Login({ setLoggedIn }) {
   const router = useRouter();
+
   const [user, setUser] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState({
     username: false,
@@ -47,6 +48,7 @@ export default function Login() {
           setErrors({ username: false, password: false, message: true });
         } else if (loggedIn !== undefined) {
           setErrors({ username: false, password: false, message: false });
+          setLoggedIn(true);
           router.push("/");
           console.log("SUCCESSFUL LOG IN");
         }

@@ -8,7 +8,7 @@ export default function Home() {
       <Head>
         <title>Tummy Tox | Home Page</title>
       </Head>
-      <h1>Landing Page</h1>
+      <h1 className={styles.testTitle}>Coming soon!</h1>
     </>
   );
 }
