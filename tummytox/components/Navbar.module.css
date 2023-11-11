@@ -1,0 +1,31 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  height: 110px;
+  background-color: rgba(239, 166, 147, 255);
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+}
+
+.nav img {
+  margin-top: 7px;
+  border: none;
+}
+
+.nav span {
+  background-color: inherit;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.subDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  background-color: inherit;
+}
+
+.link {
+  background-color: inherit;
+}

@@ -1,0 +1,47 @@
+.oldPrice {
+  text-decoration: line-through;
+  color: grey;
+  font-size: medium;
+  background-color: white;
+}
+
+.addToCart {
+  width: 318px;
+  outline: none;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  background-color: rgba(239, 166, 147, 255);
+  margin-left: -16px;
+  margin-right: -10px;
+  border-radius: inherit;
+}
+
+.addToCart:hover {
+  background-color: rgba(168, 113, 99, 255);
+}
+
+.modal {
+  position: fixed;
+  width: 750px;
+  left: 10%;
+  top: 150px;
+  height: 70%;
+  z-index: 99;
+  background-color: blanchedalmond;
+}
+
+.delete {
+  position: absolute;
+  top: 5px;
+  right: 100px;
+  overflow: visible;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: rgb(139, 16, 16);
+  border: none;
+}

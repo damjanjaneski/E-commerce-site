@@ -1,0 +1,97 @@
+import { TextField, FormControl } from "@mui/material";
+import styles from "./Login.module.css";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export default function Login() {
+  const router = useRouter();
+  const [user, setUser] = useState({ username: "", password: "" });
+  const [errors, setErrors] = useState({
+    username: false,
+    password: false,
+    message: false,
+  });
+
+  const handleChange = function (e) {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const validate = function () {
+    const newErrors = {};
+
+    if (user.username === "") {
+      newErrors.username = true;
+    }
+    if (user.password === "") {
+      newErrors.password = true;
+    }
+
+    setErrors(newErrors);
+  };
+
+  const login = function () {
+    validate();
+
+    fetch("http://localhost:3000/api/users")
+      .then((res) => res.json())
+      .then((data) => {
+        const loggedIn = data.find(
+          (u) => u.username === user.username && u.password === user.password
+        );
+
+        if (
+          loggedIn === undefined &&
+          (user.username !== "") & (user.password !== "")
+        ) {
+          setErrors({ username: false, password: false, message: true });
+        } else if (loggedIn !== undefined) {
+          setErrors({ username: false, password: false, message: false });
+          router.push("/");
+          console.log("SUCCESSFUL LOG IN");
+        }
+      });
+  };
+
+  return (
+    <div className={styles.form}>
+      <h1 className={styles.title}>Please log in</h1>
+      <input
+        className={styles.input}
+        label="Username"
+        value={user.username}
+        name="username"
+        onChange={handleChange}
+        placeholder="Enter username"
+      />
+      {errors.username ? (
+        <p className={styles.warning}>USERNAME IS REQUIRED</p>
+      ) : (
+        ""
+      )}
+      <input
+        className={styles.input}
+        type="password"
+        placeholder="Enter password"
+        label="Password"
+        value={user.password}
+        name="password"
+        onChange={handleChange}
+      />
+      {errors.password ? (
+        <p className={styles.warning}> PASSWORD IS REQUIRED </p>
+      ) : (
+        ""
+      )}
+      {errors.message ? (
+        <p className={styles.warning}>CREDENTIALS INVALID! PLEASE TRY AGAIN!</p>
+      ) : (
+        ""
+      )}
+
+      <button className={styles.btn} onClick={login}>
+        Log in
+      </button>
+    </div>
+  );
+}
