@@ -14,7 +14,7 @@ export default function Accessories() {
       .then((data) => {
         setAccessories(data);
       });
-  }, [accessories]);
+  }, []);
 
   // const deleteCard = function (id) {
   //   fetch("http://localhost:3000/api/delete-api?collection=accessories", {

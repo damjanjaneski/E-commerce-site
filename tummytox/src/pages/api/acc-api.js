@@ -42,6 +42,5 @@ export default async function handler(req, res) {
 
   // db.collection("accessories").insertMany(acc);
   const products = await db.collection("accessories").find({}).toArray();
-
-  return res.json(products);
+  return res.status(200).json(products);
 }
