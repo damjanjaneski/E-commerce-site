@@ -1,6 +1,5 @@
-import { TextField, FormControl } from "@mui/material";
 import styles from "./Login.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Login({ setLoggedIn }) {
@@ -49,6 +48,7 @@ export default function Login({ setLoggedIn }) {
         } else if (loggedIn !== undefined) {
           setErrors({ username: false, password: false, message: false });
           setLoggedIn(true);
+          localStorage.setItem("loggedIn", JSON.stringify(true));
           router.push("/");
           console.log("SUCCESSFUL LOG IN");
         }

@@ -1,15 +1,28 @@
-"use client";
-
 import "@/styles/globals.css";
 import Navbar from "../../components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }) {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [likedProducts, setLikedProducts] = useState(false);
+  const [loggedIn, setLoggedIn] = useState([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const liked = JSON.parse(localStorage.getItem("likedProducts"));
+      setLikedProducts(liked || []);
+    }
+  }, []);
+
   return (
     <>
       <Navbar setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
-      <Component setLoggedIn={setLoggedIn} {...pageProps} />
+      <Component
+        likedProducts={likedProducts}
+        setLikedProducts={setLikedProducts}
+        setLoggedIn={setLoggedIn}
+        loggedIn={loggedIn}
+        {...pageProps}
+      />
     </>
   );
 }

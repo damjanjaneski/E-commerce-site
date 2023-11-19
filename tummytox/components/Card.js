@@ -7,9 +7,16 @@ import Typography from "@mui/joy/Typography";
 import styles from "./Card.module.css";
 import { useState, useEffect } from "react";
 
-export default function ProductCard({ product }) {
-  const [isLiked, setIsLiked] = useState(false);
+export default function ProductCard({
+  product,
+  likedProducts,
+  setLikedProducts,
+}) {
   const [modal, setModal] = useState("none");
+
+  useEffect(() => {
+    localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
+  }, [likedProducts]);
 
   const showModal = function () {
     setModal("block");
@@ -35,28 +42,42 @@ export default function ProductCard({ product }) {
   };
 
   const addToWishList = function (id) {
-    setIsLiked(!isLiked);
+    const isLiked = likedProducts.some((p) => p === id);
 
-    if (!isLiked) {
+    if (isLiked) {
+      const updatedLikedProducts = likedProducts.filter((p) => p !== id);
+      setLikedProducts(updatedLikedProducts);
+    } else {
+      const updatedLikedProducts = [...likedProducts, id];
+      setLikedProducts(updatedLikedProducts);
+    }
+
+    if (isLiked) {
+      fetch(`http://localhost:3000/api/wishlist-api?id=${id}&request=delete`, {
+        method: "DELETE",
+      });
+    } else {
       fetch(`http://localhost:3000/api/wishlist-api?id=${id}&request=post`, {
         method: "POST",
         body: JSON.stringify({
+          _id: id,
           name: product.name,
-          category: product.accessories,
+          category: product.category,
           price: product.price,
           actionPrice: product.actionPrice,
-          description: product.descriptpion,
+          description: product.description,
           img: product.img,
         }),
-      });
-    } else {
-      fetch(`http://localhost:3000/api/wishlist-api?id=${id}&request=delete`, {
-        post: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
     }
   };
 
   const addToBag = function (id) {};
+
+  const isLiked = likedProducts.some((p) => p === product._id);
 
   return (
     <div sx={{ width: " 425px", position: "relative" }}>

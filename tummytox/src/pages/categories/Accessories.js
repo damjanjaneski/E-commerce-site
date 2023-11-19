@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import { useRouter } from "next/navigation";
 
-export default function Accessories() {
+export default function Accessories({ likedProducts, setLikedProducts }) {
   const router = useRouter();
   const [accessories, setAccessories] = useState([]);
 
@@ -59,7 +59,12 @@ export default function Accessories() {
               >
                 X
               </button> */}
-              <ProductCard key={x} product={accessory} />
+              <ProductCard
+                setLikedProducts={setLikedProducts}
+                likedProducts={likedProducts}
+                key={x}
+                product={accessory}
+              />
             </div>
           </Grid>
         ))}
