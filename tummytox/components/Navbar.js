@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 
-export default function Navbar({ loggedIn, setLoggedIn }) {
+export default function Navbar({ loggedIn, setLoggedIn, activeCategory }) {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -13,6 +13,8 @@ export default function Navbar({ loggedIn, setLoggedIn }) {
     localStorage.setItem("loggedIn", JSON.stringify(false));
     router.push("/authentication/Login");
   };
+
+  useEffect(() => {}, [activeCategory]);
 
   const paragraphs = [
     "100% premium quiality",
@@ -66,6 +68,30 @@ export default function Navbar({ loggedIn, setLoggedIn }) {
             </Link>
           </div>
         )}
+      </div>
+      <div className={styles.directions}>
+        <Link href="/categories/Health-and-detox">
+          <span>Health and detox</span>
+        </Link>
+        <Link href="/categories/Weightloss">
+          <span>Weight loss</span>
+        </Link>
+        <Link href="/categories/Sport">
+          <span>Sport</span>
+        </Link>
+        <Link href="/categories/Beauty">
+          <span>Beauty</span>
+        </Link>
+        <Link href="/categories/Accessories">
+          <span
+            style={{
+              backgroundColor:
+                activeCategory === "Accessories" ? "rgb(44, 95, 189)" : "",
+            }}
+          >
+            Accessories
+          </span>
+        </Link>
       </div>
     </>
   );

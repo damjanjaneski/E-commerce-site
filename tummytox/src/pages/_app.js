@@ -23,7 +23,11 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <Navbar setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
+      <Navbar
+        activeCategory={activeCategory}
+        setLoggedIn={setLoggedIn}
+        loggedIn={loggedIn}
+      />
       <Component
         likedProducts={likedProducts}
         setLikedProducts={setLikedProducts}
