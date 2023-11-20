@@ -71,7 +71,14 @@ export default function Navbar({ loggedIn, setLoggedIn, activeCategory }) {
       </div>
       <div className={styles.directions}>
         <Link href="/categories/Health-and-detox">
-          <span>Health and detox</span>
+          <span
+            style={{
+              backgroundColor:
+                activeCategory === "HealthAndDetox" ? "rgb(44, 95, 189)" : "",
+            }}
+          >
+            Health and detox
+          </span>
         </Link>
         <Link href="/categories/Weightloss">
           <span>Weight loss</span>
