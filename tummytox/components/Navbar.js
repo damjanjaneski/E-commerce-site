@@ -1,10 +1,12 @@
 import navbarStyle from "./Navbar.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import styles from "./Navbar.module.css";
 
 export default function Navbar({ loggedIn, setLoggedIn }) {
   const router = useRouter();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const logOut = function () {
     setLoggedIn(false);
@@ -12,8 +14,34 @@ export default function Navbar({ loggedIn, setLoggedIn }) {
     router.push("/authentication/Login");
   };
 
+  const paragraphs = [
+    "100% premium quiality",
+    "Free delivery for orders over €100",
+    "Delivery 1-3 business days",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % paragraphs.length);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
+      <div className={styles.slide}>
+        {paragraphs.map((paragraph, index) => (
+          <p
+            key={index}
+            style={{
+              display: index === currentIndex ? "block" : "none",
+            }}
+          >
+            {paragraph}
+          </p>
+        ))}
+      </div>
       <div className={navbarStyle.nav}>
         <div className={navbarStyle.subDiv}>
           <span>Experiences</span>

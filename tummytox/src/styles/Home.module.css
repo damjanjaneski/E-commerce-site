@@ -1,5 +1,28 @@
 .testTitle {
   margin-left: 36%;
   font-size: 100px;
-  margin-top: 170px;
+  margin-top: 200px;
+}
+
+.directions {
+  height: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+
+.directions span {
+  background-color: white;
+  color: gray;
+  font-size: 25px;
+  border: 1px solid rgb(44, 95, 189);
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
 }

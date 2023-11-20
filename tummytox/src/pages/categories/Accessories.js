@@ -4,9 +4,16 @@ import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import { useRouter } from "next/navigation";
 
-export default function Accessories({ likedProducts, setLikedProducts }) {
+export default function Accessories({
+  likedProducts,
+  setLikedProducts,
+  activeCategory,
+  setActiveCategory,
+}) {
   const router = useRouter();
   const [accessories, setAccessories] = useState([]);
+
+  setActiveCategory("Accessories");
 
   useEffect(() => {
     fetch("http://localhost:3000/api/acc-api")

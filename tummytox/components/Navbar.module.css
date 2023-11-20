@@ -36,3 +36,21 @@
   border: none;
   cursor: pointer;
 }
+
+.slide {
+  background-color: rgb(44, 95, 189);
+  height: 35px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.slide p {
+  background-color: inherit;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 20px;
+}

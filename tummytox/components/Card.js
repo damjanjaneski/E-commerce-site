@@ -16,6 +16,7 @@ export default function ProductCard({
 
   useEffect(() => {
     localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
+    console.log(likedProducts);
   }, [likedProducts]);
 
   const showModal = function () {
