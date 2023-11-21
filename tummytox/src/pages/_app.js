@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }) {
   const [likedProducts, setLikedProducts] = useState([]);
+  const [cartProducts, setCartProducts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [activeCategory, setActiveCategory] = useState("");
 
@@ -21,6 +22,13 @@ export default function App({ Component, pageProps }) {
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const cart = JSON.parse(localStorage.getItem("cartProducts")) || [];
+      setCartProducts(cart);
+    }
+  }, []);
+
   return (
     <>
       <Navbar
@@ -35,6 +43,8 @@ export default function App({ Component, pageProps }) {
         loggedIn={loggedIn}
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
+        cartProducts={cartProducts}
+        setCartProducts={setCartProducts}
         {...pageProps}
       />
     </>

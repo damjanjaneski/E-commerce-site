@@ -9,6 +9,8 @@ export default function Accessories({
   setLikedProducts,
   activeCategory,
   setActiveCategory,
+  cartProducts,
+  setCartProducts,
 }) {
   const router = useRouter();
   const [accessories, setAccessories] = useState([]);
@@ -49,6 +51,8 @@ export default function Accessories({
               </button>
 
               <ProductCard
+                cartProducts={cartProducts}
+                setCartProducts={setCartProducts}
                 setLikedProducts={setLikedProducts}
                 likedProducts={likedProducts}
                 key={x}

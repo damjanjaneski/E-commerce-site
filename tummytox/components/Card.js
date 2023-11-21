@@ -11,12 +11,18 @@ export default function ProductCard({
   product,
   likedProducts,
   setLikedProducts,
+  cartProducts,
+  setCartProducts,
 }) {
   const [modal, setModal] = useState("none");
 
   useEffect(() => {
     localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
   }, [likedProducts]);
+
+  useEffect(() => {
+    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+  }, [cartProducts]);
 
   const showModal = function () {
     setModal("block");
@@ -76,11 +82,11 @@ export default function ProductCard({
   };
 
   const addToBag = function (id) {
-    
+    console.log(123);
     const added = cartProducts.some((p) => p === id);
 
     if (added) {
-      const updatedcartProducts = cartProducts.filter((p) => p !== id);
+      const updatedCartProducts = cartProducts.filter((p) => p !== id);
       setCartProducts(updatedCartProducts);
     } else {
       const updatedCartProducts = [...cartProducts, id];
@@ -109,8 +115,8 @@ export default function ProductCard({
       });
     }
   };
-  };
 
+  const isLiked = likedProducts.some((p) => p === product._id);
   const added = cartProducts.some((p) => p === product._id);
 
   return (
@@ -165,6 +171,7 @@ export default function ProductCard({
           </button>
           <button onClick={() => addToBag(product._id)}>
             <svg
+              className={added ? styles.liked : ""}
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
               viewBox="0 0 576 512"
