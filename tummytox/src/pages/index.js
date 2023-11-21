@@ -1,10 +1,8 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import BestsellerCard from "../../components/Best-seller";
+import Bestsellers from "../../components/Bestsellers";
 
-import Link from "next/link";
-
-export default function Home() {
+export default function Home({ section }) {
   return (
     <>
       <Head>
@@ -12,8 +10,12 @@ export default function Home() {
       </Head>
 
       <h1>Best sellers</h1>
-      <BestsellerCard />
-      <div className={styles.imgContainer}></div>
+      <div className={styles.bestsellerContainer}>
+        <Bestsellers />
+        <div className={styles.imgContainer}></div>
+      </div>
+
+      <div ref={section}>aaaaaaaaaa</div>
 
       {/* <img src="/images/3in1.jpg" /> */}
     </>

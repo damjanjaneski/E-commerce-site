@@ -4,7 +4,12 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 
-export default function Navbar({ loggedIn, setLoggedIn, activeCategory }) {
+export default function Navbar({
+  loggedIn,
+  setLoggedIn,
+  activeCategory,
+  scrollToSection,
+}) {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -62,7 +67,9 @@ export default function Navbar({ loggedIn, setLoggedIn, activeCategory }) {
       </div>
       <div className={navbarStyle.nav}>
         <div className={navbarStyle.subDiv}>
-          <span>Experiences</span>
+          <Link href="#" onClick={scrollToSection}>
+            <span>Experiences</span>
+          </Link>
           <span>Blog</span>
         </div>
         <div>
