@@ -35,7 +35,7 @@
 .delete {
   position: absolute;
   top: 5px;
-  right: 100px;
+  right: 60px;
   overflow: visible;
   z-index: 1;
   width: 30px;

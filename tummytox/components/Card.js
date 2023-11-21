@@ -16,7 +16,6 @@ export default function ProductCard({
 
   useEffect(() => {
     localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
-    console.log(likedProducts);
   }, [likedProducts]);
 
   const showModal = function () {
@@ -76,9 +75,43 @@ export default function ProductCard({
     }
   };
 
-  const addToBag = function (id) {};
+  const addToBag = function (id) {
+    
+    const added = cartProducts.some((p) => p === id);
 
-  const isLiked = likedProducts.some((p) => p === product._id);
+    if (added) {
+      const updatedcartProducts = cartProducts.filter((p) => p !== id);
+      setCartProducts(updatedCartProducts);
+    } else {
+      const updatedCartProducts = [...cartProducts, id];
+      setCartProducts(updatedCartProducts);
+    }
+
+    if (added) {
+      fetch(`http://localhost:3000/api/cart-api?id=${id}&request=delete`, {
+        method: "DELETE",
+      });
+    } else {
+      fetch(`http://localhost:3000/api/cart-api?id=${id}&request=post`, {
+        method: "POST",
+        body: JSON.stringify({
+          _id: id,
+          name: product.name,
+          category: product.category,
+          price: product.price,
+          actionPrice: product.actionPrice,
+          description: product.description,
+          img: product.img,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+  };
+  };
+
+  const added = cartProducts.some((p) => p === product._id);
 
   return (
     <div sx={{ width: " 425px", position: "relative" }}>

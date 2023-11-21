@@ -23,19 +23,6 @@ export default function Accessories({
       });
   }, []);
 
-  // const deleteCard = function (id) {
-  //   fetch("http://localhost:3000/api/delete-api?collection=accessories", {
-  //     method: "DELETE",
-  //     body: JSON.stringify({
-  //       id: id,
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   setModal("none");
-  // };
-
   const editCard = function (id) {
     router.push(`/admin/${id}`);
   };
@@ -52,7 +39,7 @@ export default function Accessories({
           Add new
         </button>
         {accessories.map((accessory, x) => (
-          <Grid item sm={6} md={3} lg={3}>
+          <Grid key={x} item sm={6} md={3} lg={3}>
             <div className={styles.card}>
               <button
                 onClick={() => editCard(accessory._id)}
@@ -60,12 +47,7 @@ export default function Accessories({
               >
                 Edit
               </button>
-              {/* <button
-                onClick={() => closeModal(accessory._id)}
-                className={styles.delete}
-              >
-                X
-              </button> */}
+
               <ProductCard
                 setLikedProducts={setLikedProducts}
                 likedProducts={likedProducts}

@@ -3,9 +3,12 @@
   flex-direction: row;
   height: 110px;
   background-color: rgba(239, 166, 147, 255);
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
   overflow: hidden;
+  width: 100%;
 }
 
 .nav img {
@@ -37,6 +40,16 @@
   cursor: pointer;
 }
 
+.btn span {
+  font-size: 20px;
+}
+
+.btn span:hover {
+  font-size: 20px;
+  color: rgb(44, 95, 189);
+  transition: 0.4s;
+}
+
 .slide {
   background-color: rgb(44, 95, 189);
   height: 35px;
@@ -56,25 +69,68 @@
 }
 
 .directions {
-  height: 30px;
+  height: 40px;
   background-color: white;
   display: flex;
   justify-content: center;
-  align-items: center;
   outline: none;
 }
 
-.directions span {
+.directions div {
   background-color: white;
   color: gray;
   font-size: 25px;
-  border: 1px solid rgb(44, 95, 189);
+  border: none;
   padding-right: 50px;
   padding-left: 50px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid rgb(44, 95, 189);
 }
 
-.directions span:hover {
+.directions div:hover {
   background-color: rgb(44, 95, 189);
   color: white;
   transition: 0.35s;
+}
+
+.active {
+  background-color: rgb(44, 95, 189) !important;
+  color: white !important;
+}
+
+.fbInsta {
+  position: absolute;
+  background-color: inherit;
+  display: flex;
+  right: 50px;
+  width: 80px;
+  justify-content: space-around;
+}
+
+.fbInsta img {
+  border-radius: 19px;
+  border: 0.5px solid rgb(182, 178, 170);
+}
+
+.subDiv svg {
+  font-size: 30px;
+  background-color: inherit;
+  cursor: pointer;
+  fill: white;
+}
+
+.likeAndBuy {
+  background-color: inherit;
+  display: flex;
+  justify-content: space-between;
+  width: 95px;
+}
+
+.likeAndBuy svg:hover {
+  scale: 1.2;
+  fill: black;
+  transition: 0.2s;
+  fill: rgb(44, 95, 189);
 }

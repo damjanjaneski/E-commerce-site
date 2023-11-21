@@ -1,3 +1,4 @@
-export default function HealthAndDetox() {
+export default function Sport({ setActiveCategory }) {
+  setActiveCategory("Sport");
   return;
 }
