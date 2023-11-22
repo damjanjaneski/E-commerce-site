@@ -1,7 +1,8 @@
 import "@/styles/globals.css";
 import Navbar from "../../components/Navbar";
 import { useEffect, useState } from "react";
-
+import Footer from "../../components/Footer";
+import Newsletter from "../../components/Newsletter";
 
 export default function App({ Component, pageProps }) {
   const [likedProducts, setLikedProducts] = useState([]);
@@ -48,6 +49,8 @@ export default function App({ Component, pageProps }) {
         setCartProducts={setCartProducts}
         {...pageProps}
       />
+      <Newsletter />
+      <Footer />
     </>
   );
 }
