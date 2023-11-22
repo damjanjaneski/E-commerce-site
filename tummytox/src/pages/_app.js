@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import Navbar from "../../components/Navbar";
 import { useEffect, useState } from "react";
-import { useRef } from "react";
+
 
 export default function App({ Component, pageProps }) {
   const [likedProducts, setLikedProducts] = useState([]);

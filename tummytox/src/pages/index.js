@@ -1,23 +1,24 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import Bestsellers from "../../components/Bestsellers";
+import Slider from "../../components/Slider";
 
-export default function Home({ section }) {
+export default function Home({ setActiveCategory }) {
+  setActiveCategory("");
   return (
     <>
       <Head>
         <title>Tummy Tox | Home Page</title>
       </Head>
 
-      <h1>Best sellers</h1>
       <div className={styles.bestsellerContainer}>
-        <Bestsellers />
-        <div className={styles.imgContainer}></div>
+        <Slider />
       </div>
 
-      <div ref={section}>aaaaaaaaaa</div>
+      <h1 className={styles.title}>Check out our bestsellers for this year!</h1>
 
-      {/* <img src="/images/3in1.jpg" /> */}
+      <div className={styles.imgContainer}></div>
+
+      <img src="/images/3in1.jpg" />
     </>
   );
 }

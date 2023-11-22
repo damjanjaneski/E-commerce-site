@@ -1,16 +1,26 @@
 import React from "react";
-import styles from "./Best-seller.module.css";
+import styles from "./Slider.module.css";
 import { useState } from "react";
 
-export default function BestsellerCard() {
+export default function Slider() {
   const [index, setIndex] = useState(1);
+  console.log(index);
 
   const clickNext = function () {
-    setIndex((prev) => (prev + 1) % 5);
-    console.log(index);
+    if (index === 4) {
+      setIndex(1);
+    } else {
+      setIndex((prev) => prev + 1);
+    }
   };
 
-  const clickPrev = function () {};
+  const clickPrev = function () {
+    if (index === 1) {
+      setIndex(4);
+    } else {
+      setIndex((prev) => prev - 1);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -20,22 +30,22 @@ export default function BestsellerCard() {
       </div>
       <div className={styles.wraper}>
         {index === 1 ? (
-          <img className={styles.img} src="/images/img-1.png" />
-        ) : (
-          ""
-        )}
-        {index === 2 ? (
           <img className={styles.img} src="/images/img-2.png" />
         ) : (
           ""
         )}
-        {index === 3 ? (
+        {index === 2 ? (
           <img className={styles.img} src="/images/img-3.png" />
         ) : (
           ""
         )}
+        {index === 3 ? (
+          <img className={styles.img} src="/images/img-4.jpg" />
+        ) : (
+          ""
+        )}
         {index === 4 ? (
-          <img className={styles.img} src="/images/img-4.png" />
+          <img className={styles.img} src="/images/img-1.png" />
         ) : (
           ""
         )}
