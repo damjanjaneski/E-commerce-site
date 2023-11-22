@@ -12,3 +12,19 @@
 .bestsellerContainer {
   width: 100%;
 }
+
+.bsContainer {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  column-gap: 5%;
+  row-gap: 65px;
+  margin-top: 90px;
+  margin-bottom: 90px;
+}
+
+.bsContainer:only-child {
+}
+
+.gridItem:hover {
+}

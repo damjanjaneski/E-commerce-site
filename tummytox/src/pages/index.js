@@ -23,8 +23,9 @@ export default function Home({
       </div>
 
       <h1 className={styles.title}>Check out our bestsellers for this year!</h1>
-      <div>
+      <div className={styles.bsContainer}>
         <Bestsellers
+          className={styles.gridItem}
           likedProducts={likedProducts}
           setLikedProducts={setLikedProducts}
           cartProducts={cartProducts}
