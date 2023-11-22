@@ -8,6 +8,7 @@ import styles from "./Card.module.css";
 import { useState, useEffect } from "react";
 
 export default function ProductCard({
+  type,
   product,
   likedProducts,
   setLikedProducts,
@@ -121,9 +122,16 @@ export default function ProductCard({
 
   return (
     <div sx={{ width: " 425px", position: "relative" }}>
-      <button onClick={() => showModal(product._id)} className={styles.delete}>
-        X
-      </button>
+      {type === "bs" ? (
+        ""
+      ) : (
+        <button
+          onClick={() => showModal(product._id)}
+          className={styles.delete}
+        >
+          X
+        </button>
+      )}
       <Card
         sx={{
           width: 320,

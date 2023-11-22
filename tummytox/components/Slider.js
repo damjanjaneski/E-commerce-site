@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export default function Slider() {
   const [index, setIndex] = useState(1);
-  console.log(index);
 
   const clickNext = function () {
     if (index === 4) {
