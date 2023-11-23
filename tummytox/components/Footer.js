@@ -1,4 +1,5 @@
 import styles from "./Footer.module.css";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -10,9 +11,15 @@ export default function Footer() {
           </h2>
         </div>
         <div className={styles.footerItem}>
-          <p>About Us</p>
-          <p>Delivery & Shipping</p>
-          <p>Contact Us</p>
+          <Link style={{ backgroundColor: "inherit" }} href="/">
+            <p>About Us</p>
+          </Link>
+          <Link style={{ backgroundColor: "inherit" }} href="/">
+            <p>Delivery & Shipping</p>
+          </Link>
+          <Link style={{ backgroundColor: "inherit" }} href="/">
+            <p>Contact Us</p>
+          </Link>
         </div>
         <div className={styles.footerItem}>
           <h3>PAYMENT METHODS</h3>
