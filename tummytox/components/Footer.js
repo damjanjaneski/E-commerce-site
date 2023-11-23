@@ -11,13 +11,16 @@ export default function Footer() {
           </h2>
         </div>
         <div className={styles.footerItem}>
-          <Link style={{ backgroundColor: "inherit" }} href="/">
+          <Link style={{ backgroundColor: "inherit" }} href="/other/about-us">
             <p>About Us</p>
           </Link>
-          <Link style={{ backgroundColor: "inherit" }} href="/">
-            <p>Delivery & Shipping</p>
+          <Link
+            style={{ backgroundColor: "inherit" }}
+            href="/other/payment-and-delivery"
+          >
+            <p>Payment and delivery</p>
           </Link>
-          <Link style={{ backgroundColor: "inherit" }} href="/">
+          <Link style={{ backgroundColor: "inherit" }} href="/other/contact-us">
             <p>Contact Us</p>
           </Link>
         </div>

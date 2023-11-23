@@ -1,0 +1,24 @@
+.title {
+  color: #333;
+  font-size: 35px;
+  font-weight: 700;
+  padding-bottom: 40px;
+  padding-top: 65px;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+}
+
+.wraper {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 75px;
+  margin-bottom: 75px;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+}
+
+.wraper li,
+.wraper p {
+  color: #333;
+  font-size: 22px;
+  margin-bottom: 25px;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+}

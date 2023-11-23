@@ -83,3 +83,11 @@
   margin-bottom: 20px;
   font-weight: 600;
 }
+
+.success {
+  font-size: 20px;
+  background-color: inherit;
+  margin-top: 20px;
+  color: rgb(0, 180, 0);
+  font-weight: 700;
+}
