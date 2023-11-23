@@ -1,6 +1,48 @@
 import styles from "./Newsletter.module.css";
+import { useState } from "react";
 
 export default function Newsletter() {
+  const [subscriber, setSubscriber] = useState({ name: "", email: "" });
+  const [errors, setErrors] = useState({ name: false, email: false });
+
+  const formFilling = function (e) {
+    const { name, value } = e.target;
+
+    setSubscriber({ ...subscriber, [name]: value });
+  };
+
+  const validate = function () {
+    const fieldsErrors = {};
+
+    if (subscriber.name === "" || subscriber.name.length < 4) {
+      fieldsErrors.name = true;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(subscriber.email)) {
+      fieldsErrors.email = true;
+    }
+
+    setErrors(fieldsErrors);
+    return Object.values(fieldsErrors).length === 0;
+  };
+
+  const subscribe = function () {
+    if (validate()) {
+      fetch("http://localhost:3000/api/subscribe-api", {
+        method: "POST",
+        body: JSON.stringify({
+          name: subscriber.name,
+          email: subscriber.email,
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((r) => console.log(r))
+        .catch((e) => console.log(e));
+    }
+  };
+
   return (
     <div className={styles.newsletter}>
       <h1>Hey, Gorgeous! </h1>
@@ -9,10 +51,32 @@ export default function Newsletter() {
         offers straight to your inbox!
       </h3>
       <div className={styles.subscribtion}>
-        <input placeholder="NAME" type="text" />
-        <input placeholder="E-MAIL" type="email" />
+        <input
+          onChange={formFilling}
+          placeholder="NAME"
+          name="name"
+          value={subscriber.name}
+          type="text"
+        />
+        <input
+          onChange={formFilling}
+          placeholder="E-MAIL"
+          name="email"
+          value={subscriber.email}
+          type="email"
+        />
       </div>
-      <button>
+      {errors.name ? (
+        <p className={styles.error}>Name must have at least 4 characters!</p>
+      ) : (
+        ""
+      )}
+      {errors.email ? (
+        <p className={styles.error}>Invalid email format!</p>
+      ) : (
+        ""
+      )}
+      <button onClick={subscribe}>
         SUBSCRIBE{" "}
         <svg
           xmlns="http://www.w3.org/2000/svg"
