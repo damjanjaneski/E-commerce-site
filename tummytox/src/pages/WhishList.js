@@ -2,21 +2,21 @@ import styles from "../styles/WhishList.module.css";
 import { useState, useEffect } from "react";
 import LikedProduct from "../../components/LikedProduct";
 
-export default function WhishList() {
+export default function WhishList({ setLikedProducts }) {
   const [wishlistProducts, setWishlistProducts] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/WL-products")
       .then((res) => res.json())
       .then((data) => setWishlistProducts(data));
-  }, []);
+  }, [wishlistProducts]);
 
   return (
     <div className={styles.mainDiv}>
       <h1 className={styles.title}>Your wishlsit</h1>
       <div>
         {wishlistProducts.map((product) => (
-          <LikedProduct item={product} />
+          <LikedProduct setLikedProducts={setLikedProducts} item={product} />
         ))}
       </div>
     </div>

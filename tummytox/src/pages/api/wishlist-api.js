@@ -5,7 +5,6 @@ export default async (req, res) => {
   const db = client.db("tummytox");
 
   if (req.query.request === "post") {
-    console.log("post");
     db.collection("wishlist")
       .insertOne(req.body)
       .then((response) => res.status(200).json(response))
