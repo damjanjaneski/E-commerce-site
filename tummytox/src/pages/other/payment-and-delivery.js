@@ -1,4 +1,4 @@
-import styles from "./payment-and-delivery.module.css";
+import styles from "../../styles/payment-and-delivery.module.css";
 
 export default function DeliveryAndShipping() {
   return (
