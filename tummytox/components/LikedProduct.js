@@ -1,11 +1,6 @@
-import { useEffect } from "react";
 import styles from "../components/styles/LikedProduct.module.css";
 
-export default function LikedProduct({
-  setLikedProducts,
-  item,
-  LikedProducts,
-}) {
+export default function LikedProduct({ setLikedProducts, item }) {
   const removeFromWishlist = function (id) {
     fetch(`http://localhost:3000/api/wishlist-api?id=${id}&request=delete`, {
       method: "DELETE",
@@ -14,14 +9,15 @@ export default function LikedProduct({
       }),
     });
 
+    console.log(id);
     const updatedLikedProducts = JSON.parse(
       localStorage.getItem("likedProducts")
     ).filter((product) => product !== id);
 
+    localStorage.setItem("likedProducts", JSON.stringify(updatedLikedProducts));
+
     setLikedProducts(updatedLikedProducts);
   };
-
-  useEffect(() => {}, [LikedProducts]);
 
   return (
     <div className={styles.wraper}>

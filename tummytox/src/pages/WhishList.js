@@ -2,7 +2,7 @@ import styles from "../styles/WhishList.module.css";
 import { useState, useEffect } from "react";
 import LikedProduct from "../../components/LikedProduct";
 
-export default function WhishList({ setLikedProducts }) {
+export default function WhishList({ setLikedProducts, likedProducts }) {
   const [wishlistProducts, setWishlistProducts] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,11 @@ export default function WhishList({ setLikedProducts }) {
       <h1 className={styles.title}>Your wishlsit</h1>
       <div>
         {wishlistProducts.map((product) => (
-          <LikedProduct setLikedProducts={setLikedProducts} item={product} />
+          <LikedProduct
+            setLikedProducts={setLikedProducts}
+            likedProducts={likedProducts}
+            item={product}
+          />
         ))}
       </div>
     </div>
