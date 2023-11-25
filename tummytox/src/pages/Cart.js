@@ -9,7 +9,7 @@ export default function Cart() {
     fetch("http://localhost:3000/api/cart-products")
       .then((res) => res.json())
       .then((data) => setCarProducts(data));
-  }, []);
+  }, [cartProducts]);
 
   return (
     <div className={styles.mainDiv}>

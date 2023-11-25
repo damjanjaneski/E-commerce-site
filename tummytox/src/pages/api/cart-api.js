@@ -11,7 +11,7 @@ export default async function (req, res) {
       .catch((err) => res.status(500).json(err));
   } else if (req.query.request === "delete") {
     db.collection("cartProducts")
-      .deleteOne({ _id: req.query.id })
+      .deleteOne({ _id: req.body.id })
       .then((response) => res.status(200).JSON(response))
       .catch((err) => res.status(500).json(err));
   }

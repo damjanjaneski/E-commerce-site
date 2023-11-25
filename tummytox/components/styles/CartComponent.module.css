@@ -7,12 +7,15 @@
   border-radius: 20px;
   margin-bottom: 50px;
   position: relative;
+  border: 1px solid grey;
+  box-shadow: 0px 0px 5px rgb(92, 28, 47), 8px 5px 10px rgb(92, 28, 28),
+    7px 4px 11px rgb(92, 28, 28);
 }
 
 .wraper img {
   border-radius: 20px;
   background-color: inherit;
-  padding: 5px;
+  padding: 10px;
 }
 
 .changeQty {
@@ -20,7 +23,7 @@
   margin: 0 auto;
   background-color: inherit;
   margin-left: 0px;
-  margin-top: 15px;
+  margin-top: 5px;
   font-size: 25px;
   width: 155px;
   justify-content: space-between;
@@ -38,11 +41,12 @@
 }
 
 .title {
-  font-size: 25px;
+  font-size: 20px;
   background-color: inherit;
   color: grey;
   font-family: "neueHass", Arial, Helvetica, Verdana, serif;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .changeQty button {
@@ -70,7 +74,7 @@
   background-color: rgb(5, 100, 5);
 }
 .down {
-  background-color: rgb(206, 1, 1);
+  background-color: rgb(240, 0, 0);
 }
 
 .price {
@@ -78,4 +82,20 @@
   bottom: 20px;
   right: 20px;
   background-color: inherit;
+  font-size: 22px;
+  color: black;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  font-weight: 700;
+}
+
+.remove {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  background-color: brown;
 }
