@@ -5,12 +5,26 @@ import { useState, useEffect } from "react";
 export default function Cart() {
   const [cartProducts, setCarProducts] = useState([]);
 
-  fetch("http://localhost:3000/api/");
+  useEffect(() => {
+    fetch("http://localhost:3000/api/cart-products")
+      .then((res) => res.json())
+      .then((data) => setCarProducts(data));
+  }, []);
 
   return (
     <div className={styles.mainDiv}>
       <h1 className={styles.title}>Your cart</h1>
-      <div>{}</div>
+      <div>
+        {cartProducts.length !== 0 ? (
+          cartProducts.map((product, x) => (
+            <CartComponent key={x} item={product} />
+          ))
+        ) : (
+          <p className={styles.empty}>
+            You have no products added to you cart yet!
+          </p>
+        )}
+      </div>
     </div>
   );
 }

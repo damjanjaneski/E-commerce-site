@@ -1,0 +1,81 @@
+.wraper {
+  display: flex;
+  width: 750px;
+  justify-content: left;
+  height: 150px;
+  background-color: blanchedalmond;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.wraper img {
+  border-radius: 20px;
+  background-color: inherit;
+  padding: 5px;
+}
+
+.changeQty {
+  display: flex;
+  margin: 0 auto;
+  background-color: inherit;
+  margin-left: 0px;
+  margin-top: 15px;
+  font-size: 25px;
+  width: 155px;
+  justify-content: space-between;
+}
+
+.rightDiv div,
+.rightDiv h3 {
+  background-color: inherit;
+  color: grey;
+}
+
+.rightDiv {
+  margin-left: 50px;
+  background-color: inherit;
+}
+
+.title {
+  font-size: 25px;
+  background-color: inherit;
+  color: grey;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  margin-top: 20px;
+}
+
+.changeQty button {
+  width: 50px;
+  height: 40px;
+  border-radius: 7.5px;
+  cursor: pointer;
+  border: none;
+  font-size: 30px;
+}
+
+.changeQty div {
+  width: 45px;
+  text-align: center;
+  background-color: white;
+  border-radius: 7.5px;
+  height: 40px;
+  border: 0.5px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.up {
+  background-color: rgb(5, 100, 5);
+}
+.down {
+  background-color: rgb(206, 1, 1);
+}
+
+.price {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: inherit;
+}
