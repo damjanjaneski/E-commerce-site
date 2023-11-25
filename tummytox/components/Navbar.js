@@ -1,8 +1,8 @@
-import navbarStyle from "./Navbar.module.css";
+import navbarStyle from "./styles/Navbar.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import styles from "./Navbar.module.css";
+import styles from "./styles/Navbar.module.css";
 
 export default function Navbar({ loggedIn, setLoggedIn, activeCategory }) {
   const router = useRouter();

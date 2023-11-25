@@ -1,4 +1,4 @@
-import styles from "./Accessories.module.css";
+import styles from "../../styles/Accessories.module.css";
 import ProductCard from "../../../components/Card";
 import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";

@@ -11,3 +11,11 @@
   font-size: 70px;
   font-family: "neueHass", Arial, Helvetica, Verdana, serif;
 }
+
+.empty {
+  margin-top: 50px;
+  font-size: 30px;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  margin-bottom: 50px;
+  color: grey;
+}

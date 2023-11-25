@@ -4,7 +4,7 @@ import CardContent from "@mui/joy/CardContent";
 import CardOverflow from "@mui/joy/CardOverflow";
 import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
-import styles from "./Card.module.css";
+import styles from "./styles/Card.module.css";
 import { useState, useEffect } from "react";
 
 export default function ProductCard({
@@ -83,7 +83,6 @@ export default function ProductCard({
   };
 
   const addToBag = function (id) {
-    console.log(123);
     const added = cartProducts.some((p) => p === id);
 
     if (added) {

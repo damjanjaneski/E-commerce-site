@@ -1,11 +1,10 @@
-import styles from "./Newsletter.module.css";
+import styles from "./styles/Newsletter.module.css";
 import { useState } from "react";
 
 export default function Newsletter() {
   const [subscriber, setSubscriber] = useState({ name: "", email: "" });
   const [errors, setErrors] = useState({ name: false, email: false });
   const [successful, setSuccessful] = useState(false);
-
   const formFilling = function (e) {
     const { name, value } = e.target;
 

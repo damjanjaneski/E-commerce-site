@@ -15,13 +15,19 @@ export default function WhishList({ setLikedProducts, likedProducts }) {
     <div className={styles.mainDiv}>
       <h1 className={styles.title}>Your wishlsit</h1>
       <div>
-        {wishlistProducts.map((product) => (
-          <LikedProduct
-            setLikedProducts={setLikedProducts}
-            likedProducts={likedProducts}
-            item={product}
-          />
-        ))}
+        {wishlistProducts.length !== 0 ? (
+          wishlistProducts.map((product) => (
+            <LikedProduct
+              setLikedProducts={setLikedProducts}
+              likedProducts={likedProducts}
+              item={product}
+            />
+          ))
+        ) : (
+          <div className={styles.empty}>
+            You have no products added to your wishlist yet!
+          </div>
+        )}
       </div>
     </div>
   );

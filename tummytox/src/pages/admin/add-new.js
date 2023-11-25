@@ -1,7 +1,6 @@
-import styles from "./add-new.module.css";
+import styles from "../../styles/add-new.module.css";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 
 export default function AddNew() {
   const router = useRouter();
