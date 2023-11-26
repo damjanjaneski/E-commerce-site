@@ -94,8 +94,11 @@ export default function ProductCard({
     }
 
     if (added) {
-      fetch(`http://localhost:3000/api/cart-api?id=${id}&request=delete`, {
+      fetch(`http://localhost:3000/api/cart-api?&request=delete`, {
         method: "DELETE",
+        body: JSON.stringify({
+          id: id,
+        }),
       });
     } else {
       fetch(`http://localhost:3000/api/cart-api?id=${id}&request=post`, {
