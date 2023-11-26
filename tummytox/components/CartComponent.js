@@ -1,7 +1,7 @@
 import styles from "./styles/CartComponent.module.css";
 import { useState } from "react";
 
-export default function CartComponent({ item }) {
+export default function CartComponent({ item, setCartProducts }) {
   const [qty, setQty] = useState(1);
 
   const increase = function () {
@@ -13,13 +13,21 @@ export default function CartComponent({ item }) {
   };
 
   const remove = function (id) {
+    console.log(id);
     fetch(`http://localhost:3000/api/cart-api?request=delete`, {
       method: "DELETE",
-      body: JSON.stringify({ id: id }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      body: JSON.stringify({
+        id: id,
+      }),
     });
+
+    const updatedCartProducts = JSON.parse(
+      localStorage.getItem("cartProducts")
+    ).filter((p) => p !== id);
+
+    localStorage.setItem("cartProducts", JSON.stringify(updatedCartProducts));
+
+    setCartProducts(updatedCartProducts);
   };
 
   return (

@@ -1,6 +1,6 @@
 import clientPromise from "../../../lib/mongodb";
 
-export default async function (req, res) {
+export default async (req, res) => {
   const client = await clientPromise;
   const db = client.db("tummytox");
 
@@ -11,8 +11,8 @@ export default async function (req, res) {
       .catch((err) => res.status(500).json(err));
   } else if (req.query.request === "delete") {
     db.collection("cartProducts")
-      .deleteOne({ _id: req.body.id })
-      .then((response) => res.status(200).JSON(response))
-      .catch((err) => res.status(500).json(err));
+      .deleteOne({ _id: JSON.parse(req.body).id })
+      .then((response) => res.status(200).json(response))
+      .catch((error) => res.status(500).json(error));
   }
-}
+};

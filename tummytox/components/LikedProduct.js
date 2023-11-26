@@ -9,7 +9,6 @@ export default function LikedProduct({ setLikedProducts, item }) {
       }),
     });
 
-    console.log(id);
     const updatedLikedProducts = JSON.parse(
       localStorage.getItem("likedProducts")
     ).filter((product) => product !== id);

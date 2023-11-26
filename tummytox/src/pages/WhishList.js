@@ -9,7 +9,7 @@ export default function WhishList({ setLikedProducts, likedProducts }) {
     fetch("http://localhost:3000/api/WL-products")
       .then((res) => res.json())
       .then((data) => setWishlistProducts(data));
-  }, [wishlistProducts]);
+  }, [likedProducts]);
 
   return (
     <div className={styles.mainDiv}>
