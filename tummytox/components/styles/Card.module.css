@@ -46,6 +46,20 @@
   border: none;
 }
 
+.edit {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  overflow: visible;
+  z-index: 1;
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: rgb(44, 95, 189);
+  border: none;
+}
+
 .likeAndBuy {
   background-color: white;
   display: flex;

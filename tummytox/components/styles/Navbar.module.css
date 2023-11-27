@@ -24,7 +24,7 @@
 
 .subDiv {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 300px;
   background-color: inherit;
   align-items: center;

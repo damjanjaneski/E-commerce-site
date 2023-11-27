@@ -28,31 +28,34 @@ export default function Login({ setLoggedIn }) {
     }
 
     setErrors(newErrors);
+
+    return Object.values(newErrors).length === 0;
   };
 
   const login = function () {
-    validate();
+    if (validate()) {
+      fetch("http://localhost:3000/api/users")
+        .then((res) => res.json())
+        .then((data) => {
+          const loggedIn = data.find(
+            (u) => u.username === user.username && u.password === user.password
+          );
 
-    fetch("http://localhost:3000/api/users")
-      .then((res) => res.json())
-      .then((data) => {
-        const loggedIn = data.find(
-          (u) => u.username === user.username && u.password === user.password
-        );
-
-        if (
-          loggedIn === undefined &&
-          (user.username !== "") & (user.password !== "")
-        ) {
-          setErrors({ username: false, password: false, message: true });
-        } else if (loggedIn !== undefined) {
-          setErrors({ username: false, password: false, message: false });
-          setLoggedIn(true);
-          localStorage.setItem("loggedIn", JSON.stringify(true));
-          router.push("/");
-          console.log("SUCCESSFUL LOG IN");
-        }
-      });
+          if (
+            loggedIn === undefined &&
+            (user.username !== "") & (user.password !== "")
+          ) {
+            setErrors({ username: false, password: false, message: true });
+          } else if (loggedIn !== undefined) {
+            setErrors({ username: false, password: false, message: false });
+            setLoggedIn(true);
+            localStorage.setItem("loggedIn", JSON.stringify(true));
+            localStorage.setItem("userType", JSON.stringify(loggedIn.type));
+            router.push("/");
+            console.log("SUCCESSFUL LOG IN");
+          }
+        });
+    }
   };
 
   return (

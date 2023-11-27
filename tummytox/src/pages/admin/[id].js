@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function EdicCard({ product }) {
-  const [edited, setEdited] = useState(product);
+  const [edited, setEdited] = useState({ ...product });
   const router = useRouter();
 
   const handleChange = function (e) {

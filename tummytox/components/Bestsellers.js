@@ -19,7 +19,6 @@ export default function Bestsellers({
     <>
       {bestsellers.map((product, x) => (
         <ProductCard
-          type={"bs"}
           product={product}
           cartProducts={cartProducts}
           setCartProducts={setCartProducts}

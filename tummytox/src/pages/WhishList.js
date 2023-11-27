@@ -16,8 +16,9 @@ export default function WhishList({ setLikedProducts, likedProducts }) {
       <h1 className={styles.title}>Your wishlsit</h1>
       <div>
         {wishlistProducts.length !== 0 ? (
-          wishlistProducts.map((product) => (
+          wishlistProducts.map((product, x) => (
             <LikedProduct
+              key={x}
               setLikedProducts={setLikedProducts}
               likedProducts={likedProducts}
               item={product}

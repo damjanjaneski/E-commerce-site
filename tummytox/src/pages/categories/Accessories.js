@@ -7,13 +7,13 @@ import { useRouter } from "next/navigation";
 export default function Accessories({
   likedProducts,
   setLikedProducts,
-  activeCategory,
   setActiveCategory,
   cartProducts,
   setCartProducts,
 }) {
   const router = useRouter();
   const [accessories, setAccessories] = useState([]);
+  const [trigger, setTrigger] = useState(false);
 
   setActiveCategory("Accessories");
 
@@ -23,11 +23,11 @@ export default function Accessories({
       .then((data) => {
         setAccessories(data);
       });
-  }, []);
+  }, [trigger]);
 
-  const editCard = function (id) {
-    router.push(`/admin/${id}`);
-  };
+  // const editCard = function (id) {
+  //   router.push(`/admin/${id}`);
+  // };
 
   return (
     <Grid container>
@@ -43,14 +43,16 @@ export default function Accessories({
         {accessories.map((accessory, x) => (
           <Grid key={x} item sm={6} md={3} lg={3}>
             <div className={styles.card}>
-              <button
+              {/* <button
                 onClick={() => editCard(accessory._id)}
                 className={styles.edit}
               >
                 Edit
-              </button>
+              </button> */}
 
               <ProductCard
+                trigger={trigger}
+                setTrigger={setTrigger}
                 cartProducts={cartProducts}
                 setCartProducts={setCartProducts}
                 setLikedProducts={setLikedProducts}

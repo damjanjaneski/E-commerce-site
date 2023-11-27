@@ -6,9 +6,11 @@ import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import styles from "./styles/Card.module.css";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ProductCard({
-  type,
+  trigger,
+  setTrigger,
   product,
   likedProducts,
   setLikedProducts,
@@ -16,6 +18,7 @@ export default function ProductCard({
   setCartProducts,
 }) {
   const [modal, setModal] = useState("none");
+  const router = useRouter();
 
   useEffect(() => {
     localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
@@ -46,6 +49,11 @@ export default function ProductCard({
       },
     });
     setModal("none");
+    setTrigger(!trigger);
+  };
+
+  const editCard = function (id) {
+    router.push(`/admin/${id}`);
   };
 
   const addToWishList = function (id) {
@@ -119,21 +127,33 @@ export default function ProductCard({
     }
   };
 
+  const userType = JSON.parse(localStorage.getItem("userType"));
+  console.log(userType);
+
   const isLiked = likedProducts.some((p) => p === product._id);
   const added = cartProducts.some((p) => p === product._id);
 
   return (
-    <div sx={{ width: " 425px", position: "relative" }}>
-      {type === "bs" ? (
-        ""
+    <div style={{ width: " 375px", position: "relative" }}>
+      {userType === "admin" ? (
+        <button onClick={() => editCard(product._id)} className={styles.edit}>
+          Edit
+        </button>
       ) : (
+        ""
+      )}
+
+      {userType === "admin" ? (
         <button
           onClick={() => showModal(product._id)}
           className={styles.delete}
         >
           X
         </button>
+      ) : (
+        ""
       )}
+
       <Card
         sx={{
           width: 320,

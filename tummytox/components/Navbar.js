@@ -11,6 +11,7 @@ export default function Navbar({ loggedIn, setLoggedIn, activeCategory }) {
   const logOut = function () {
     setLoggedIn(false);
     localStorage.setItem("loggedIn", JSON.stringify(false));
+    localStorage.setItem("userType", JSON.stringify(""));
     router.push("/authentication/Login");
   };
 
