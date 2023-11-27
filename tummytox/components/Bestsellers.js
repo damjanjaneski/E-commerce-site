@@ -2,6 +2,8 @@ import ProductCard from "./Card";
 import { useEffect, useState } from "react";
 
 export default function Bestsellers({
+  trigger,
+  setTrigger,
   likedProducts,
   setLikedProducts,
   cartProducts,
@@ -13,12 +15,14 @@ export default function Bestsellers({
     fetch("http://localhost:3000/api/bestsellers")
       .then((res) => res.json())
       .then((data) => setBestSellers(data));
-  }, []);
+  }, [trigger]);
 
   return (
     <>
       {bestsellers.map((product, x) => (
         <ProductCard
+          trigger={trigger}
+          setTrigger={setTrigger}
           product={product}
           cartProducts={cartProducts}
           setCartProducts={setCartProducts}

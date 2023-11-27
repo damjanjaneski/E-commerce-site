@@ -9,6 +9,7 @@ export default function App({ Component, pageProps }) {
   const [cartProducts, setCartProducts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [activeCategory, setActiveCategory] = useState("");
+  const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -39,6 +40,8 @@ export default function App({ Component, pageProps }) {
         loggedIn={loggedIn}
       />
       <Component
+        trigger={trigger}
+        setTrigger={setTrigger}
         likedProducts={likedProducts}
         setLikedProducts={setLikedProducts}
         setLoggedIn={setLoggedIn}

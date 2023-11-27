@@ -2,8 +2,11 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import Slider from "../../components/Slider";
 import Bestsellers from "../../components/Bestsellers";
+import Adventages from "../../components/Adventages";
 
 export default function Home({
+  trigger,
+  setTrigger,
   setActiveCategory,
   likedProducts,
   setLikedProducts,
@@ -25,6 +28,8 @@ export default function Home({
       <h1 className={styles.title}>Check out our bestsellers for this year!</h1>
       <div className={styles.bsContainer}>
         <Bestsellers
+          trigger={trigger}
+          setTrigger={setTrigger}
           className={styles.gridItem}
           likedProducts={likedProducts}
           setLikedProducts={setLikedProducts}
@@ -35,6 +40,7 @@ export default function Home({
       <div className={styles.imgContainer}></div>
 
       <img src="/images/3in1.jpg" />
+      <Adventages />
     </>
   );
 }

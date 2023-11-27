@@ -5,6 +5,8 @@ import { Grid } from "@mui/material";
 import { useRouter } from "next/navigation";
 
 export default function Accessories({
+  trigger,
+  setTrigger,
   likedProducts,
   setLikedProducts,
   setActiveCategory,
@@ -13,7 +15,6 @@ export default function Accessories({
 }) {
   const router = useRouter();
   const [accessories, setAccessories] = useState([]);
-  const [trigger, setTrigger] = useState(false);
 
   setActiveCategory("Accessories");
 

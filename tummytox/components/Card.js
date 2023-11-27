@@ -39,15 +39,19 @@ export default function ProductCard({
   useEffect(() => {}, [modal]);
 
   const deleteCard = function (id) {
-    fetch("http://localhost:3000/api/delete-api?collection=accessories", {
-      method: "DELETE",
-      body: JSON.stringify({
-        id: id,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    fetch(
+      `http://localhost:3000/api/delete-api?collection=${product.category.toLowerCase()}&request=delete`,
+      {
+        method: "DELETE",
+        body: JSON.stringify({
+          id: id,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
     setModal("none");
     setTrigger(!trigger);
   };
@@ -128,7 +132,6 @@ export default function ProductCard({
   };
 
   const userType = JSON.parse(localStorage.getItem("userType"));
-  console.log(userType);
 
   const isLiked = likedProducts.some((p) => p === product._id);
   const added = cartProducts.some((p) => p === product._id);
