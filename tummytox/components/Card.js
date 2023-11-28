@@ -57,7 +57,7 @@ export default function ProductCard({
   };
 
   const editCard = function (id) {
-    router.push(`/admin/${id}`);
+    router.push(`/admin/${id}?category=${product.category}`);
   };
 
   const addToWishList = function (id) {

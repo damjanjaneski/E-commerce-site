@@ -2,8 +2,8 @@ import styles from "./[id].module.css";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function EdicCard({ product }) {
-  const [edited, setEdited] = useState({ ...product });
+export default function EditCard({ product }) {
+  const [edited, setEdited] = useState(product);
   const router = useRouter();
 
   const handleChange = function (e) {
@@ -21,18 +21,27 @@ export default function EdicCard({ product }) {
       edited.description !== "" &&
       edited.img !== ""
     ) {
-      fetch(`http://localhost:3000/api/edit-api?id=${product._id}`, {
-        method: "PUT",
-        body: JSON.stringify(edited),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      fetch(
+        `http://localhost:3000/api/edit-api?id=${
+          product._id
+        }&collection=${product.category.toLowerCase()}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(edited),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then(() => console.log("successful"))
         .catch((e) => console.log(e));
     }
 
-    router.push("/categories/Accessories");
+    router.push(
+      product.category.toLowerCase() === "bestsellers"
+        ? "/"
+        : `/categories/${product.category.toLowerCase()}`
+    );
   };
 
   return (
@@ -88,12 +97,17 @@ export default function EdicCard({ product }) {
 }
 
 export async function getStaticPaths() {
-  const products = await fetch("http://localhost:3000/api/acc-api")
+  const productsAcc = await fetch(`http://localhost:3000/api/acc-api`)
     .then((res) => res.json())
     .then((res) => res)
     .catch((err) => console.log(err));
 
-  const paths = products.map((product) => {
+  const productsBS = await fetch(`http://localhost:3000/api/bestsellers`)
+    .then((res) => res.json())
+    .then((res) => res)
+    .catch((err) => console.log(err));
+
+  const paths = [...productsAcc, ...productsBS].map((product) => {
     return {
       params: {
         id: product._id,

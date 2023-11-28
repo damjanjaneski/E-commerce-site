@@ -5,7 +5,7 @@ export default async (req, res) => {
   const client = await clientPromise;
   const db = client.db("tummytox");
 
-  db.collection("accessories")
+  db.collection(req.query.collection)
     .updateOne(
       { _id: BSON.ObjectId(req.query.id) },
       {

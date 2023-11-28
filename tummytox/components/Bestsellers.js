@@ -21,6 +21,7 @@ export default function Bestsellers({
     <>
       {bestsellers.map((product, x) => (
         <ProductCard
+          collection={"bestsellers"}
           trigger={trigger}
           setTrigger={setTrigger}
           product={product}

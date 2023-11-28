@@ -26,10 +26,6 @@ export default function Accessories({
       });
   }, [trigger]);
 
-  // const editCard = function (id) {
-  //   router.push(`/admin/${id}`);
-  // };
-
   return (
     <Grid container>
       <div className={styles.container}>
@@ -44,14 +40,8 @@ export default function Accessories({
         {accessories.map((accessory, x) => (
           <Grid key={x} item sm={6} md={3} lg={3}>
             <div className={styles.card}>
-              {/* <button
-                onClick={() => editCard(accessory._id)}
-                className={styles.edit}
-              >
-                Edit
-              </button> */}
-
               <ProductCard
+                collection={"accessories"}
                 trigger={trigger}
                 setTrigger={setTrigger}
                 cartProducts={cartProducts}
