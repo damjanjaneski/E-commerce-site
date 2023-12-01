@@ -1,6 +1,6 @@
 export const healthDetoxProducts = [
   {
-    category: "Accessories",
+    category: "Health And Detox",
     price: 1299,
     actionPrice: 599,
     description: `Double-wall insulation to keep your drinks hot and cold for hours
@@ -8,10 +8,10 @@ export const healthDetoxProducts = [
           100% leakproof
           500ml capacity`,
     img: "https://tummytox.mk/wp-content/uploads/2021/06/140055_tummytox_bottle-700_3.png",
-    name: "TummyTox Челично Шише",
+    name: "Daily Kick & Sleep Tight Tea",
   },
   {
-    category: "Accessories",
+    category: "Health And Detox",
 
     price: 599,
     actionPrice: 299,
@@ -21,14 +21,14 @@ export const healthDetoxProducts = [
           100% leak-proof. Made from top-quality BPA-free plastic – durable and safe for long-term use
           Doubles as a reusable water bottle`,
     img: "https://tummytox.mk/wp-content/uploads/2021/06/140098_tummytox_shaker-white-700_3.png",
-    name: "TummyTox White Shaker",
+    name: "Pure Me Tea",
   },
   {
-    category: "Accessories",
+    category: "Health And Detox",
     price: 999,
     actionPrice: 799,
     description: "Top produkt",
     img: "https://tummytox.mk/wp-content/uploads/2021/06/140055_tummytox_bottle-700_3.png",
-    name: "Booty band",
+    name: "Shape & Detox",
   },
 ];
