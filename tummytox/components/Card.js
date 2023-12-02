@@ -160,6 +160,7 @@ export default function ProductCard({
       <Card
         sx={{
           width: 320,
+          height: 511,
           maxWidth: "100%",
           boxShadow: "lg",
           border: "2px solid white",
@@ -167,6 +168,7 @@ export default function ProductCard({
       >
         <CardOverflow>
           <img
+            className={styles.img}
             src={product.img}
             srcSet="https://images.unsplash.com/photo-1593121925328-369cc8459c08?auto=format&fit=crop&w=286&dpr=2 2x"
             loading="lazy"
