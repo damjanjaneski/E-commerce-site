@@ -8,7 +8,7 @@ export const accProducts = [
         100% leakproof
         500ml capacity`,
     img: "https://tummytox.mk/wp-content/uploads/2021/06/140055_tummytox_bottle-700_3.png",
-    name: "TummyTox Челично Шише",
+    name: "TummyTox bottle",
   },
   {
     category: "Accessories",
@@ -28,7 +28,7 @@ export const accProducts = [
     price: 999,
     actionPrice: 799,
     description: "Top produkt",
-    img: "https://tummytox.mk/wp-content/uploads/2021/06/140055_tummytox_bottle-700_3.png",
+    img: "https://tummytox.mk/wp-content/uploads/2021/06/140097_tummytox_elastic-band-700_3.png",
     name: "Booty band",
   },
   {
@@ -37,7 +37,7 @@ export const accProducts = [
     actionPrice: 599,
     description:
       "Lovely stainless-steel mug to keep drinks hot or cold for longer!",
-    img: "https://tummytox.mk/wp-content/uploads/2021/06/140055_tummytox_bottle-700_3.png",
+    img: "https://www.sensi2live.com/media/catalog/product/cache/eec48ab0b6fb28750d7cc7bb3f0d50b1/1/4/140148_tt_tummytox_mug-700_1.webp",
     name: "TummyTox Tea Mug",
   },
   {
@@ -46,7 +46,7 @@ export const accProducts = [
     actionPrice: 1099,
     description:
       "Beautiful stainless-steel bottle for keeping drinks hot or cool for hours!  ",
-    img: "https://tummytox.mk/wp-content/uploads/2021/06/140055_tummytox_bottle-700_3.png",
+    img: "https://www.sensi2live.com/media/catalog/product/cache/eec48ab0b6fb28750d7cc7bb3f0d50b1/1/4/140224_tummytox_bottle_beige_1x_-700_1.png",
     name: "Beige TummyTox Bottle",
   },
   {
@@ -55,7 +55,7 @@ export const accProducts = [
     actionPrice: 899,
     description:
       "Easy-to use, cordless blackhead vacuum that reduces impurities, enlarged pores and fine lines!",
-    img: "https://tummytox.mk/wp-content/uploads/2021/06/140055_tummytox_bottle-700_3.png",
+    img: "https://www.sensi2live.com/media/catalog/product/cache/5c82f07296e102476ab8c67f96f42fcf/1/4/140137_tummytox_vacuum-pore-cleaner-700.png",
     name: "Vacuum Pore Cleaner",
   },
 ];
