@@ -5,13 +5,14 @@ import clientPromise from "../../../lib/mongodb";
 // import { beautyProducts } from "../../../public/data/beauty";
 // import { weightLossProducts } from "../../../public/data/weightloss";
 // import { sportProducts } from "../../../public/data/sport";
+// import { healthDetoxProducts } from "../../../public/data/healthAndDetox";
 
 export default async function handler(req, res) {
   const client = await clientPromise;
   const db = client.db("tummytox");
   const collection = req.query.collection;
 
-  // db.collection("sport").insertMany(sportProducts);
+  // db.collection("healthAndDetox").insertMany(healthDetoxProducts);
   const products = await db.collection(collection).find({}).toArray();
 
   return res.status(200).json(products);
