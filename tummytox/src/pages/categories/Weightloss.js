@@ -26,17 +26,23 @@ export default function Weightloss({
       });
   }, [trigger]);
 
+  const userType = JSON.parse(localStorage.getItem("userType"));
+
   return (
     <Grid container>
       <div className={styles.container}>
-        <button
-          onClick={() => {
-            router.push("/admin/add-new");
-          }}
-          className={styles.addNew}
-        >
-          Add new
-        </button>
+        {userType === "admin" ? (
+          <button
+            onClick={() => {
+              router.push("/admin/add-new");
+            }}
+            className={styles.addNew}
+          >
+            Add new
+          </button>
+        ) : (
+          ""
+        )}
         {weightLoss.map((item, x) => (
           <Grid key={x} item sm={6} md={3} lg={3}>
             <div className={styles.card}>
