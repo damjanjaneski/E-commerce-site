@@ -32,7 +32,7 @@ export default function CartComponent({ item, setCartProducts }) {
 
   return (
     <div className={styles.wraper}>
-      <img src="https://1.bp.blogspot.com/-iCnFX7eWVjs/XR9NQutHXcI/AAAAAAAAJ9k/ISWH3UXgJF8QJdsV6P9wh3agzOwOF_aYgCLcBGAs/s1600/cat-1285634_1920.png" />
+      <img src={item.img} />
       <div className={styles.rightDiv}>
         <h2 className={styles.title}>{item.name}</h2>
         <div>
@@ -49,7 +49,7 @@ export default function CartComponent({ item, setCartProducts }) {
           </div>
         </div>
       </div>
-      <p className={styles.price}>100.00 MKD</p>
+      <p className={styles.price}>{item.actionPrice}.00 MKD</p>
       <button className={styles.remove} onClick={() => remove(item._id)}>
         {" "}
         X{" "}

@@ -2,7 +2,11 @@ import styles from "../../styles/Login.module.css";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export default function Login({ setLoggedIn }) {
+export default function Login({
+  setLoggedIn,
+  setLikedProducts,
+  setCartProducts,
+}) {
   const router = useRouter();
 
   const [user, setUser] = useState({ username: "", password: "" });
@@ -48,8 +52,18 @@ export default function Login({ setLoggedIn }) {
             setErrors({ username: false, password: false, message: true });
           } else if (loggedIn !== undefined) {
             setErrors({ username: false, password: false, message: false });
-            setLoggedIn(true);
-            localStorage.setItem("loggedIn", JSON.stringify(true));
+            setLoggedIn(loggedIn._id);
+            setLikedProducts(loggedIn.wishlist.map((item) => item._id));
+            setCartProducts(loggedIn.cart.map((item) => item._id));
+            localStorage.setItem(
+              "likedProducts",
+              JSON.stringify(loggedIn.wishlist.map((item) => item._id))
+            );
+            localStorage.setItem(
+              "cartProducts",
+              JSON.stringify(loggedIn.cart.map((item) => item._id))
+            );
+            localStorage.setItem("loggedIn", JSON.stringify(loggedIn._id));
             localStorage.setItem("userType", JSON.stringify(loggedIn.type));
             router.push("/");
             console.log("SUCCESSFUL LOG IN");

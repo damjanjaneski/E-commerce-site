@@ -35,6 +35,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Navbar
+        setLikedProducts={setLikedProducts}
         activeCategory={activeCategory}
         setLoggedIn={setLoggedIn}
         loggedIn={loggedIn}

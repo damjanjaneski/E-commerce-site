@@ -4,7 +4,12 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import styles from "./styles/Navbar.module.css";
 
-export default function Navbar({ loggedIn, setLoggedIn, activeCategory }) {
+export default function Navbar({
+  loggedIn,
+  setLoggedIn,
+  activeCategory,
+  setLikedProducts,
+}) {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -12,6 +17,10 @@ export default function Navbar({ loggedIn, setLoggedIn, activeCategory }) {
     setLoggedIn(false);
     localStorage.setItem("loggedIn", JSON.stringify(false));
     localStorage.setItem("userType", JSON.stringify(""));
+    setLikedProducts([]);
+    setCartProducts([]);
+    localStorage.setItem("likedProducts", JSON.stringify([]));
+    localStorage.setItem("cartProducts", JSON.stringify([]));
     router.push("/authentication/Login");
   };
 

@@ -2,14 +2,17 @@ import styles from "../styles/Cart.module.css";
 import CartComponent from "../../components/CartComponent";
 import { useState, useEffect } from "react";
 
-export default function Cart({ cartProducts, setCartProducts }) {
-  const [cProducts, setCarProducts] = useState([]);
+export default function Cart({ cartProducts, setCartProducts, loggedIn }) {
+  const [cProducts, setCProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/cart-products")
+    fetch(`http://localhost:3000/api/cart-api?userId=${loggedIn}`)
       .then((res) => res.json())
-      .then((data) => setCarProducts(data));
-  }, [cartProducts]);
+      .then((data) => {
+        setCProducts(data);
+        setCartProducts(data.map((item) => item._id));
+      });
+  }, []);
 
   return (
     <div className={styles.mainDiv}>

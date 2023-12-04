@@ -2,14 +2,21 @@ import styles from "../styles/WhishList.module.css";
 import { useState, useEffect } from "react";
 import LikedProduct from "../../components/LikedProduct";
 
-export default function WhishList({ setLikedProducts, likedProducts }) {
+export default function WhishList({
+  setLikedProducts,
+  likedProducts,
+  loggedIn,
+}) {
   const [wishlistProducts, setWishlistProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/WL-products")
+    fetch(`http://localhost:3000/api/wishlist-api?userId=${loggedIn}`)
       .then((res) => res.json())
-      .then((data) => setWishlistProducts(data));
-  }, [likedProducts]);
+      .then((data) => {
+        setWishlistProducts(data);
+        setLikedProducts(data.map((item) => item._id));
+      });
+  }, []);
 
   return (
     <div className={styles.mainDiv}>
