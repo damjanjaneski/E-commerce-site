@@ -93,3 +93,8 @@
 .liked {
   fill: red !important;
 }
+
+.errorMessage {
+  padding: 5px;
+  border-radius: 7.5px;
+}

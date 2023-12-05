@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css";
 import Slider from "../../components/Slider";
 import Bestsellers from "../../components/Bestsellers";
 import Adventages from "../../components/Adventages";
+import ReviewsSection from "../../components/ReviewsSection";
 
 export default function Home({
   trigger,
@@ -40,6 +41,7 @@ export default function Home({
       <div className={styles.imgContainer}></div>
 
       <img src="/images/3in1.jpg" />
+      <ReviewsSection />
       <Adventages />
     </>
   );

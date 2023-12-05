@@ -1,0 +1,19 @@
+.container {
+  height: 700px;
+  text-align: center;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+}
+
+.container h1 {
+  margin-top: 50px;
+  font-size: 55px;
+}
+
+.wraper {
+  display: flex;
+  margin-top: 55px;
+}
+
+.review {
+  width: 300px;
+}

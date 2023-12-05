@@ -255,7 +255,10 @@ export default function ProductCard({
                 </svg>
               </button>
             </div>
-            <div style={{ display: userMessage }}>
+            <div
+              className={styles.errorMessage}
+              style={{ display: userMessage }}
+            >
               You must be logged in to buy products or add them to your
               wishlist!
             </div>
