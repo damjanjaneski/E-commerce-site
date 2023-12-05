@@ -9,6 +9,7 @@ export default function Navbar({
   setLoggedIn,
   activeCategory,
   setLikedProducts,
+  setCartProducts,
 }) {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
