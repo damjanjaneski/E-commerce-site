@@ -24,7 +24,7 @@ export default function Accessories({
       .then((data) => {
         setAccessories(data);
       });
-  }, [trigger]);
+  }, [likedProducts]);
 
   const userType = JSON.parse(localStorage.getItem("userType"));
 

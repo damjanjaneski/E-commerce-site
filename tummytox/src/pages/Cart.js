@@ -2,7 +2,13 @@ import styles from "../styles/Cart.module.css";
 import CartComponent from "../../components/CartComponent";
 import { useState, useEffect } from "react";
 
-export default function Cart({ cartProducts, setCartProducts, loggedIn }) {
+export default function Cart({
+  cartProducts,
+  setCartProducts,
+  loggedIn,
+  setTrigger,
+  trigger,
+}) {
   const [cProducts, setCProducts] = useState([]);
 
   useEffect(() => {
@@ -12,7 +18,7 @@ export default function Cart({ cartProducts, setCartProducts, loggedIn }) {
         setCProducts(data);
         setCartProducts(data.map((item) => item._id));
       });
-  }, []);
+  }, [trigger, loggedIn]);
 
   return (
     <div className={styles.mainDiv}>
@@ -21,6 +27,8 @@ export default function Cart({ cartProducts, setCartProducts, loggedIn }) {
         {cProducts.length !== 0 ? (
           cProducts.map((product, x) => (
             <CartComponent
+              setTrigger={setTrigger}
+              loggedIn={loggedIn}
               key={x}
               item={product}
               cartProducts={cartProducts}

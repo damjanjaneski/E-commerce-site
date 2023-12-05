@@ -5,7 +5,7 @@ export default async (req, res) => {
   const client = await clientPromise;
   const db = client.db("tummytox");
 
-  const user = db
+  const user = await db
     .collection("users")
     .findOne({ _id: BSON.ObjectId(req.query.userId) });
 

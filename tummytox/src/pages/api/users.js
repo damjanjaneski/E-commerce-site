@@ -7,6 +7,7 @@ export default async (req, res) => {
 
   if (req.query.target === "wishlist") {
     if (req.query.request === "delete") {
+      console.log("aa");
       db.collection("users").updateOne(
         { _id: BSON.ObjectId(req.query.userId) },
         {
@@ -21,7 +22,6 @@ export default async (req, res) => {
     }
   } else if (req.query.target === "cart") {
     if (req.query.request === "delete") {
-      console.log("delete");
       db.collection("users").updateOne(
         { _id: BSON.ObjectId(req.query.userId) },
         { $pull: { cart: { _id: JSON.parse(req.body).id } } }

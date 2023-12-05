@@ -1,13 +1,18 @@
 import styles from "../components/styles/LikedProduct.module.css";
 
-export default function LikedProduct({ setLikedProducts, item }) {
+export default function LikedProduct({
+  setLikedProducts,
+  item,
+  loggedIn,
+  setTrigger,
+}) {
   const removeFromWishlist = function (id) {
-    fetch(`http://localhost:3000/api/wishlist-api?id=${id}&request=delete`, {
-      method: "DELETE",
-      body: JSON.stringify({
-        id: id,
-      }),
-    });
+    fetch(
+      `http://localhost:3000/api/users?userId=${loggedIn}&id=${id}&request=delete&target=wishlist`,
+      {
+        method: "PUT",
+      }
+    );
 
     const updatedLikedProducts = JSON.parse(
       localStorage.getItem("likedProducts")
@@ -16,6 +21,7 @@ export default function LikedProduct({ setLikedProducts, item }) {
     localStorage.setItem("likedProducts", JSON.stringify(updatedLikedProducts));
 
     setLikedProducts(updatedLikedProducts);
+    setTrigger((trigger) => !trigger);
   };
 
   return (

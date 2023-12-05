@@ -6,6 +6,8 @@ export default function WhishList({
   setLikedProducts,
   likedProducts,
   loggedIn,
+  trigger,
+  setTrigger,
 }) {
   const [wishlistProducts, setWishlistProducts] = useState([]);
 
@@ -16,7 +18,7 @@ export default function WhishList({
         setWishlistProducts(data);
         setLikedProducts(data.map((item) => item._id));
       });
-  }, []);
+  }, [trigger, loggedIn]);
 
   return (
     <div className={styles.mainDiv}>
@@ -25,6 +27,9 @@ export default function WhishList({
         {wishlistProducts.length !== 0 ? (
           wishlistProducts.map((product, x) => (
             <LikedProduct
+              setTrigger={setTrigger}
+              trigger={trigger}
+              loggedIn={loggedIn}
               key={x}
               setLikedProducts={setLikedProducts}
               likedProducts={likedProducts}
