@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function ReviewsSection() {
   const [allReviews, setAllReviews] = useState([]);
+  const [slideIndex, setSlideIndex] = useState(1);
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/reviews-api`)
@@ -11,13 +12,24 @@ export default function ReviewsSection() {
       .then((data) => setAllReviews(data));
   }, []);
 
-  const previous = function () {};
+  const previous = function () {
+    if (slideIndex !== 1) {
+      setSlideIndex((slideIndex) => slideIndex - 1);
+    }
+  };
 
-  const next = function () {};
+  const next = function () {
+    if (slideIndex !== allReviews.length) {
+      setSlideIndex((slideIndex) => slideIndex + 1);
+    }
+  };
   return (
     <div className={styles.container}>
       <h1>Comments And Reviews</h1>
-      <div className={styles.wraper}>
+      <div
+        className={styles.wraper}
+        style={{ marginRight: `${-(slideIndex * -157)}%` }} //coef: 67px to reduce/raise on each click
+      >
         {allReviews.map((review, x) => (
           <Review
             key={x}

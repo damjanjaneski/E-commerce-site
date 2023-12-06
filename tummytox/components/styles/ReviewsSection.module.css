@@ -18,7 +18,7 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
-  margin-right: -104%;
+  /* margin-right: -104%; */
 }
 
 .slide {
