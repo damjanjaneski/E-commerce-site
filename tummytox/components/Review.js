@@ -2,12 +2,12 @@ import styles from "./styles/Review.module.css";
 
 export default function Review({ name, imgSrc, product, rating, text }) {
   return (
-    <div>
-      <div>
+    <div className={styles.review}>
+      <div className={styles.customer}>
         <img className={styles.img} src={imgSrc} />
         <h2>{name}</h2>
       </div>
-      <div>
+      <div className={styles.product}>
         <h4>{product}</h4>
         <div>
           <svg
@@ -56,7 +56,7 @@ export default function Review({ name, imgSrc, product, rating, text }) {
           </svg>
         </div>
       </div>
-      <p>{text}</p>
+      <p className={styles.text}>{text}</p>
     </div>
   );
 }
