@@ -34,3 +34,24 @@
   font-size: 20px;
   text-overflow: ellipsis;
 }
+
+.one,
+.two,
+.three,
+.four,
+.five {
+  fill: blanchedalmond;
+}
+
+.active {
+  cursor: pointer;
+  fill: black !important;
+}
+
+.one:hover {
+  fill: black !important;
+}
+
+.two:hover ~ .one {
+  fill: black !important;
+}
