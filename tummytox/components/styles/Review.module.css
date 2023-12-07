@@ -43,11 +43,6 @@
   fill: blanchedalmond;
 }
 
-.active {
-  cursor: pointer;
-  fill: black !important;
-}
-
 .one:hover {
   fill: black !important;
 }
