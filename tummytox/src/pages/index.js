@@ -4,6 +4,7 @@ import Slider from "../../components/Slider";
 import Bestsellers from "../../components/Bestsellers";
 import Adventages from "../../components/Adventages";
 import ReviewsSection from "../../components/ReviewsSection";
+import WriteReview from "../../components/WriteReview";
 
 export default function Home({
   trigger,
@@ -42,6 +43,7 @@ export default function Home({
 
       <img src="/images/3in1.jpg" />
       <ReviewsSection />
+      <WriteReview />
       <Adventages />
     </>
   );
