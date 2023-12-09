@@ -2,15 +2,14 @@ import Review from "./Review";
 import styles from "./styles/ReviewsSection.module.css";
 import { useState, useEffect } from "react";
 
-export default function ReviewsSection() {
-  const [allReviews, setAllReviews] = useState([]);
+export default function ReviewsSection({ allReviews, setAllReviews, trigger }) {
   const [slideIndex, setSlideIndex] = useState(0);
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/reviews-api`)
       .then((res) => res.json())
       .then((data) => setAllReviews(data));
-  }, []);
+  }, [trigger]);
 
   const previous = function () {
     if (slideIndex !== 0) {

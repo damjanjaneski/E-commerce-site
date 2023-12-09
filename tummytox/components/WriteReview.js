@@ -1,16 +1,36 @@
 import styles from "./styles/WriteReview.module.css";
 import { useState } from "react";
 
-export default function WriteReview() {
+export default function WriteReview({ setTrigger, allReviews, setAllReviews }) {
   const [review, setReview] = useState({ product: "", text: "", rating: "1" });
+  const [error, setError] = useState(false);
 
   const handleChange = function (e) {
     const { name, value } = e.target;
     setReview({ ...review, [name]: value });
   };
 
+  const validate = function () {
+    if (review.product === "" || review.text === "") {
+      setError(true);
+      return false;
+    } else {
+      return true;
+    }
+  };
   const share = function () {
-    console.log(review);
+    if (validate()) {
+      fetch(
+        `http://localhost:3000/api/reviews-api?product=${review.product}&text=${review.text}&rating=${review.rating}`,
+        {
+          method: "POST",
+        }
+      )
+        .then(() => {
+          setAllReviews([...allReviews, review]);
+        })
+        .then(() => setTrigger((trigger) => !trigger));
+    }
   };
 
   return (
@@ -50,6 +70,12 @@ export default function WriteReview() {
           </select>
         </div>
       </div>
+      <p
+        className={styles.errorMessage}
+        style={error ? { visibility: "visible" } : { visibility: "hidden" }}
+      >
+        All fields are required!
+      </p>
       <button onClick={share}>Share Review</button>
     </div>
   );

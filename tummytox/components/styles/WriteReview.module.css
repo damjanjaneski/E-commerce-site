@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: 300px;
+  height: 365px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +9,8 @@
   border-top: 1px solid white;
   background-color: blanchedalmond;
   color: #333;
+  padding-bottom: 30px;
+  padding-top: 20px;
 }
 
 .container div,
@@ -20,11 +22,13 @@
 }
 
 .container select {
-  width: 35px;
+  width: 40px;
   height: 30px;
   border-radius: 10px;
+  font-size: 20px;
   cursor: pointer;
   outline: none;
+  border: none;
 }
 
 .container option {
@@ -37,6 +41,7 @@
   justify-content: space-between;
   align-items: center;
   margin-right: 235px;
+  margin-top: 25px;
 }
 
 .container label {
@@ -93,5 +98,9 @@
   background-color: rgba(239, 166, 147, 255);
 }
 
-.container button:hover {
+.errorMessage {
+  background-color: inherit;
+  color: red;
+  font-size: 17.5px;
+  font-weight: 700;
 }
