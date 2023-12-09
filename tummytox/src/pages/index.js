@@ -15,6 +15,7 @@ export default function Home({
   setLikedProducts,
   cartProducts,
   setCartProducts,
+  loggedIn,
 }) {
   setActiveCategory("");
 
@@ -50,11 +51,14 @@ export default function Home({
         setAllReviews={setAllReviews}
         trigger={trigger}
       />
-      <WriteReview
-        allReviews={allReviews}
-        setAllReviews={setAllReviews}
-        setTrigger={setTrigger}
-      />
+      {loggedIn ? (
+        <WriteReview
+          loggedIn={loggedIn}
+          allReviews={allReviews}
+          setAllReviews={setAllReviews}
+          setTrigger={setTrigger}
+        />
+      ) : null}
       <Adventages />
     </>
   );

@@ -1,4 +1,5 @@
 import clientPromise from "../../../lib/mongodb";
+import { BSON } from "mongodb/lib/core";
 
 export default async (req, res) => {
   const client = await clientPromise;
@@ -7,8 +8,12 @@ export default async (req, res) => {
   const reviews = await db.collection("reviews").find({}).toArray();
 
   if (req.query.product) {
+    const user = await db
+      .collection("users")
+      .findOne({ _id: BSON.ObjectId(req.query.userId) });
+
     db.collection("reviews").insertOne({
-      name: "Cico Mico",
+      name: user.fullName,
       product: req.query.product,
       text: req.query.text,
       rating: req.query.rating,

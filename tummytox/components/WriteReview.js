@@ -1,7 +1,12 @@
 import styles from "./styles/WriteReview.module.css";
 import { useState } from "react";
 
-export default function WriteReview({ setTrigger, allReviews, setAllReviews }) {
+export default function WriteReview({
+  loggedIn,
+  setTrigger,
+  allReviews,
+  setAllReviews,
+}) {
   const [review, setReview] = useState({ product: "", text: "", rating: "1" });
   const [error, setError] = useState(false);
 
@@ -21,7 +26,7 @@ export default function WriteReview({ setTrigger, allReviews, setAllReviews }) {
   const share = function () {
     if (validate()) {
       fetch(
-        `http://localhost:3000/api/reviews-api?product=${review.product}&text=${review.text}&rating=${review.rating}`,
+        `http://localhost:3000/api/reviews-api?product=${review.product}&text=${review.text}&rating=${review.rating}&userId=${loggedIn}`,
         {
           method: "POST",
         }
