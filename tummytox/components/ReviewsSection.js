@@ -24,15 +24,15 @@ export default function ReviewsSection({ allReviews, setAllReviews, trigger }) {
   };
 
   return (
-    <div className={styles.container}>
+    <div id="scrollDiv" className={styles.container}>
       <h1>Comments And Reviews</h1>
       <div
         className={styles.wraper}
         style={{
-          width: `${allReviews.length * 33}%`,
-          marginRight: `${-136.5 + slideIndex * 67}%`,
+          width: `${allReviews.length * 620}px`,
+
           transition: "0.3s",
-        }} //coef: 67px to reduce/raise on each click
+        }}
       >
         {allReviews.map((review, x) => (
           <Review

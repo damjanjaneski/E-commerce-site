@@ -1,5 +1,5 @@
 import styles from "./styles/CartComponent.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function CartComponent({
   item,
@@ -11,10 +11,12 @@ export default function CartComponent({
 
   const increase = function () {
     setQty((prev) => prev + 1);
+    setTrigger((trigger) => !trigger);
   };
 
   const decrease = function () {
     qty > 1 ? setQty((prev) => prev - 1) : "";
+    setTrigger((trigger) => !trigger);
   };
 
   const remove = function (id) {
@@ -39,29 +41,31 @@ export default function CartComponent({
   };
 
   return (
-    <div className={styles.wraper}>
-      <img src={item.img} />
-      <div className={styles.rightDiv}>
-        <h2 className={styles.title}>{item.name}</h2>
-        <div>
-          <h3>Qty:</h3>
-          <div className={styles.changeQty}>
-            <button className={styles.down} onClick={decrease}>
-              {" "}
-              -
-            </button>
-            <div>{qty}</div>
-            <button className={styles.up} onClick={increase}>
-              +
-            </button>
+    <>
+      <div className={styles.wraper}>
+        <img src={item.img} />
+        <div className={styles.rightDiv}>
+          <h2 className={styles.title}>{item.name}</h2>
+          <div>
+            <h3>Qty:</h3>
+            <div className={styles.changeQty}>
+              <button className={styles.down} onClick={decrease}>
+                {" "}
+                -
+              </button>
+              <div>{qty}</div>
+              <button className={styles.up} onClick={increase}>
+                +
+              </button>
+            </div>
           </div>
         </div>
+        <p className={styles.price}>MKD {Number(qty) * item.actionPrice}.00 </p>
+        <button className={styles.remove} onClick={() => remove(item._id)}>
+          {" "}
+          X{" "}
+        </button>
       </div>
-      <p className={styles.price}>{item.actionPrice}.00 MKD</p>
-      <button className={styles.remove} onClick={() => remove(item._id)}>
-        {" "}
-        X{" "}
-      </button>
-    </div>
+    </>
   );
 }

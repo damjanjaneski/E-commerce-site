@@ -10,6 +10,7 @@
   border: 1px solid grey;
   box-shadow: 0px 0px 5px rgb(92, 28, 47), 8px 5px 10px rgb(92, 28, 28),
     7px 4px 11px rgb(92, 28, 28);
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
 }
 
 .wraper img {

@@ -25,21 +25,31 @@ export default function Cart({
       <h1 className={styles.title}>Your cart</h1>
       <div>
         {cProducts.length !== 0 ? (
-          cProducts.map((product, x) => (
-            <CartComponent
-              setTrigger={setTrigger}
-              loggedIn={loggedIn}
-              key={x}
-              item={product}
-              cartProducts={cartProducts}
-              setCartProducts={setCartProducts}
-            />
-          ))
+          cProducts.map((product, x) => {
+            return (
+              <CartComponent
+                setTrigger={setTrigger}
+                loggedIn={loggedIn}
+                key={x}
+                item={product}
+                cartProducts={cartProducts}
+                setCartProducts={setCartProducts}
+              />
+            );
+          })
         ) : (
           <p className={styles.empty}>
             You have no products added to you cart yet!
           </p>
         )}
+      </div>
+      <div className={styles.amountWraper}>
+        <div className={styles.payAmount}>
+          <p>TOTAL:</p>
+
+          <p>MKD .00</p>
+        </div>
+        <button>Pay Now</button>
       </div>
     </div>
   );
