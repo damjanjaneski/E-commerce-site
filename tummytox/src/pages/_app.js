@@ -10,6 +10,7 @@ export default function App({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [activeCategory, setActiveCategory] = useState("");
   const [trigger, setTrigger] = useState(false);
+  const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -32,6 +33,10 @@ export default function App({ Component, pageProps }) {
     }
   }, []);
 
+  function formatNumber(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
     <>
       <Navbar
@@ -42,6 +47,9 @@ export default function App({ Component, pageProps }) {
         loggedIn={loggedIn}
       />
       <Component
+        totalAmount={totalAmount}
+        setTotalAmount={setTotalAmount}
+        formatNumber={formatNumber}
         trigger={trigger}
         setTrigger={setTrigger}
         likedProducts={likedProducts}

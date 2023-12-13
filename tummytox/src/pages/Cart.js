@@ -1,6 +1,7 @@
 import styles from "../styles/Cart.module.css";
 import CartComponent from "../../components/CartComponent";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Cart({
   cartProducts,
@@ -8,8 +9,13 @@ export default function Cart({
   loggedIn,
   setTrigger,
   trigger,
+  formatNumber,
+  totalAmount,
+  setTotalAmount,
 }) {
   const [cProducts, setCProducts] = useState([]);
+
+  const router = useRouter("/CheckOut");
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/cart-api?userId=${loggedIn}`)
@@ -17,8 +23,26 @@ export default function Cart({
       .then((data) => {
         setCProducts(data);
         setCartProducts(data.map((item) => item._id));
+        if (totalAmount === 0) {
+          setTotalAmount(calculateInitialPrice(data));
+        }
       });
   }, [trigger, loggedIn]);
+
+  const calculateInitialPrice = (products) => {
+    return products.reduce(
+      (acc, product) => acc + Number(product.actionPrice),
+      0
+    );
+  };
+
+  const updateTotalAmount = function (price) {
+    setTotalAmount((totalAmount) => totalAmount + Number(price));
+  };
+
+  const checkOut = function () {
+    router.push("/CheckOut");
+  };
 
   return (
     <div className={styles.mainDiv}>
@@ -28,6 +52,8 @@ export default function Cart({
           cProducts.map((product, x) => {
             return (
               <CartComponent
+                formatNumber={formatNumber}
+                updateTotalAmount={updateTotalAmount}
                 setTrigger={setTrigger}
                 loggedIn={loggedIn}
                 key={x}
@@ -47,9 +73,9 @@ export default function Cart({
         <div className={styles.payAmount}>
           <p>TOTAL:</p>
 
-          <p>MKD .00</p>
+          <p>MKD {formatNumber(totalAmount)}.00</p>
         </div>
-        <button>Pay Now</button>
+        <button onClick={checkOut}>Check out</button>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ export default async (req, res) => {
   const db = client.db("tummytox");
 
   db.collection("users")
-    .insertOne(req.body)
+    .insertOne({ ...req.body, wishlist: [], cart: [] })
     .then((response) => res.status(200).json(response))
     .catch((err) => res.status(500).json(err));
 };

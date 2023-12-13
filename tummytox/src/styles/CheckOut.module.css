@@ -1,0 +1,124 @@
+.container {
+  height: 900px;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container h2 {
+  margin-bottom: 35px;
+  color: #333;
+  width: 60%;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+.form {
+  height: 680px;
+  padding-top: 20px;
+  width: 80%;
+  border: 1px solid white;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 20px;
+  align-items: center;
+}
+.wraper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  height: 90%;
+}
+
+.form button {
+  width: 150px;
+  height: 50px;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  background-color: rgba(239, 166, 147, 255);
+  font-size: 17.5px;
+  cursor: pointer;
+}
+
+.column {
+  width: 33%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.format {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 85%;
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+.container input {
+  height: 50px;
+  width: 55%;
+  border: 1px solid white;
+  background-color: inherit;
+  outline: none;
+  border-radius: 15px;
+  padding-left: 15px;
+  font-size: 20px;
+}
+
+.pair {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 30px;
+  font-size: 20px;
+}
+
+.container label {
+  text-decoration: 1px underline #333;
+}
+
+.container input::placeholder {
+  color: rgb(170, 170, 170);
+  font-size: 17.5px;
+}
+
+.select {
+  width: 55%;
+  height: 50px;
+  outline: none;
+  border-radius: 15px;
+  border: 1px solid white;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.total {
+  width: 99.75%;
+  height: 50px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 0px 55px 0px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.disabled input {
+  border: 1px solid grey !important;
+}
+
+.disabled label {
+  color: grey !important;
+}

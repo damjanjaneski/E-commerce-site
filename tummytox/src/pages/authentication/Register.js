@@ -1,5 +1,5 @@
 import styles from "../../styles/Register.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Register() {
@@ -11,7 +11,7 @@ export default function Register() {
     repeatPassword: "",
   });
 
-  const [error, setError] = useState({ fields: false, passwords: false });
+  const [error, setError] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,25 +29,20 @@ export default function Register() {
     ) {
       newErrors.fields = true;
     }
+    if (!/\S+@\S+\.\S+/.test(user.email)) {
+      newErrors.email = true;
+    }
     if (user.password !== user.repeatPassword) {
       newErrors.passwords = true;
     }
 
     setError(newErrors);
 
-    return error.fields && error.passwords;
+    return Object.values(newErrors).length === 0;
   };
 
   const register = () => {
-    validateFields();
-
-    if (
-      (user.username !== "" ||
-        user.email !== "" ||
-        user.password !== "" ||
-        user.repeatPassword !== "") &&
-      user.password === user.repeatPassword
-    ) {
+    if (validateFields() && user.password === user.repeatPassword) {
       fetch("http://localhost:3000/api/register-api", {
         method: "POST",
         body: JSON.stringify({
@@ -102,6 +97,11 @@ export default function Register() {
 
       {error.fields ? (
         <p className={styles.warning}>ALL FIELDS ARE REQUIRED</p>
+      ) : (
+        ""
+      )}
+      {error.email ? (
+        <p className={styles.warning}>Wrong e-mail format!</p>
       ) : (
         ""
       )}

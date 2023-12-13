@@ -1,21 +1,25 @@
 import styles from "./styles/CartComponent.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function CartComponent({
   item,
   setCartProducts,
   loggedIn,
   setTrigger,
+  updateTotalAmount,
+  formatNumber,
 }) {
   const [qty, setQty] = useState(1);
 
   const increase = function () {
     setQty((prev) => prev + 1);
+    updateTotalAmount(item.actionPrice);
     setTrigger((trigger) => !trigger);
   };
 
   const decrease = function () {
     qty > 1 ? setQty((prev) => prev - 1) : "";
+    qty > 1 ? updateTotalAmount(0 - item.actionPrice) : "";
     setTrigger((trigger) => !trigger);
   };
 
@@ -33,9 +37,7 @@ export default function CartComponent({
     const updatedCartProducts = JSON.parse(
       localStorage.getItem("cartProducts")
     ).filter((p) => p !== id);
-
     localStorage.setItem("cartProducts", JSON.stringify(updatedCartProducts));
-
     setCartProducts(updatedCartProducts);
     setTrigger((trigger) => !trigger);
   };
@@ -60,7 +62,9 @@ export default function CartComponent({
             </div>
           </div>
         </div>
-        <p className={styles.price}>MKD {Number(qty) * item.actionPrice}.00 </p>
+        <p className={styles.price}>
+          MKD {formatNumber(Number(qty) * item.actionPrice)}.00{" "}
+        </p>
         <button className={styles.remove} onClick={() => remove(item._id)}>
           {" "}
           X{" "}

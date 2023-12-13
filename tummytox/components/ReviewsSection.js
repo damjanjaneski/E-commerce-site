@@ -18,7 +18,7 @@ export default function ReviewsSection({ allReviews, setAllReviews, trigger }) {
   };
 
   const next = function () {
-    if (slideIndex !== allReviews.length - 2) {
+    if (slideIndex !== (allReviews.length - 2) * 2) {
       setSlideIndex((slideIndex) => slideIndex + 1);
     }
   };
@@ -30,7 +30,7 @@ export default function ReviewsSection({ allReviews, setAllReviews, trigger }) {
         className={styles.wraper}
         style={{
           width: `${allReviews.length * 620}px`,
-
+          marginRight: `${-2570 + slideIndex * 605}px`,
           transition: "0.3s",
         }}
       >
