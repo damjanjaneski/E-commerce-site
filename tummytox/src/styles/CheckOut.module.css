@@ -1,5 +1,5 @@
 .container {
-  height: 900px;
+  height: 800px;
   font-family: "neueHass", Arial, Helvetica, Verdana, serif;
   display: flex;
   align-items: center;
@@ -42,6 +42,7 @@
   background-color: rgba(239, 166, 147, 255);
   font-size: 17.5px;
   cursor: pointer;
+  margin-bottom: -15px;
 }
 
 .column {
@@ -121,4 +122,17 @@
 
 .disabled label {
   color: grey !important;
+}
+
+.error {
+  color: red;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.success {
+  color: rgb(0, 172, 0);
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: 700;
 }

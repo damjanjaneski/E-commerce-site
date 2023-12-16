@@ -1,5 +1,5 @@
 import clientPromise from "../../../lib/mongodb";
-import { BSON } from "mongodb/lib/core";
+import { ObjectId } from "mongodb";
 
 export default async (req, res) => {
   const client = await clientPromise;
@@ -7,7 +7,9 @@ export default async (req, res) => {
 
   const user = await db
     .collection("users")
-    .findOne({ _id: BSON.ObjectId(req.query.userId) });
+    .findOne({ _id: ObjectId(req.query.userId) });
+
+  console.log("a");
 
   return res.json(user.cart);
 };
