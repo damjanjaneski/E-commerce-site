@@ -1,11 +1,16 @@
 import styles from "../styles/CheckOut.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function CheckOut({ totalAmount, formatNumber }) {
+export default function CheckOut({
+  totalAmount,
+  formatNumber,
+  setTotalAmount,
+}) {
   const [paymentInfo, setPaymentInfo] = useState({
     firstName: "",
     lastName: "",
     email: "",
+    number: "",
     fullName: "",
     address: "",
     city: "",
@@ -17,11 +22,25 @@ export default function CheckOut({ totalAmount, formatNumber }) {
     expYear: "",
     ccv: "",
   });
-
   const [errors, setErrors] = useState({});
+  const [successful, setSuccessful] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeReload = function (e) {
+      const message =
+        "Are you sure you want to reload this page? You will lose your data!";
+    };
+  }, []);
 
   const handleChange = function (e) {
     const { name, value } = e.target;
+    if (value === "Paying at delivery") {
+      paymentInfo.expMonth = "";
+      paymentInfo.expYear = "";
+      paymentInfo.ccv = "";
+      paymentInfo.cardHolder = "";
+      paymentInfo.cardNumber = "";
+    }
     setPaymentInfo({ ...paymentInfo, [name]: value });
   };
 
@@ -35,17 +54,19 @@ export default function CheckOut({ totalAmount, formatNumber }) {
     if (!/\S+@\S+\.\S+/.test(paymentInfo.email)) {
       newErrors.email = true;
     }
-    if (paymentInfo.cardNumber.length !== 16) {
-      newErrors.cardNumber = true;
-    }
-    if (paymentInfo.expMonth.length !== 2) {
-      newErrors.expMonth = true;
-    }
-    if (paymentInfo.expYear.length !== 4) {
-      newErrors.expYear = true;
-    }
-    if (paymentInfo.ccv.length !== 3) {
-      newErrors.expYear = true;
+    if (paymentInfo.method === "With card") {
+      if (paymentInfo.cardNumber.length !== 16) {
+        newErrors.cardNumber = true;
+      }
+      if (paymentInfo.expMonth.length !== 2 || isNaN(paymentInfo.expMonth)) {
+        newErrors.expMonth = true;
+      }
+      if (paymentInfo.expYear.length !== 4) {
+        newErrors.expYear = true;
+      }
+      if (paymentInfo.ccv.length !== 3 || isNaN(paymentInfo.ccv)) {
+        newErrors.ccv = true;
+      }
     }
 
     setErrors(newErrors);
@@ -55,7 +76,24 @@ export default function CheckOut({ totalAmount, formatNumber }) {
 
   const placeOrder = function () {
     if (!validateFields()) {
-      console.log("Order palaced successfuly");
+      setPaymentInfo({
+        firstName: "",
+        lastName: "",
+        email: "",
+        number: "",
+        fullName: "",
+        address: "",
+        city: "",
+        postalCode: "",
+        method: "With card",
+        cardHolder: "",
+        cardNumber: "",
+        expMonth: "",
+        expYear: "",
+        ccv: "",
+      });
+      setSuccessful(true);
+      setTotalAmount(0);
     }
   };
 
@@ -92,6 +130,16 @@ export default function CheckOut({ totalAmount, formatNumber }) {
                     name="email"
                     value={paymentInfo.email}
                     placeholder="email@example.com"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className={styles.pair}>
+                  <label>TEL. NUMBER:</label>
+                  <input
+                    type="text"
+                    name="number"
+                    value={paymentInfo.number}
+                    placeholder="XXX-XXX-XXX"
                     onChange={handleChange}
                   />
                 </div>
@@ -250,12 +298,45 @@ export default function CheckOut({ totalAmount, formatNumber }) {
           <button onClick={placeOrder}>Place Order</button>
         </div>
       </div>
-      {errors.fields ? <p>All fields are required!</p> : ""}
-      {errors.email ? <p>Wrong e-mail format!</p> : ""}
-      {errors.cardNumber ? <p>Card Number must contain 16 digits!</p> : ""}
-      {errors.expMonth ? <p>Expiry Month must contain 2 digits!</p> : ""}
-      {errors.expYear ? <p>Expiry Year must contain 4 digits!</p> : ""}
-      {errors.ccv ? <p>CCV must contain 3 digits!</p> : ""}
+      <div style={{ textAlign: "center", marginBottom: "75px" }}>
+        {errors.fields ? (
+          <p className={styles.error}>All fields are required!</p>
+        ) : (
+          ""
+        )}
+        {errors.email ? (
+          <p className={styles.error}>Wrong e-mail format!</p>
+        ) : (
+          ""
+        )}
+        {errors.cardNumber ? (
+          <p className={styles.error}>Card Number must contain 16 digits!</p>
+        ) : (
+          ""
+        )}
+        {errors.expMonth ? (
+          <p className={styles.error}>Expiry Month must contain 2 digits!</p>
+        ) : (
+          ""
+        )}
+        {errors.expYear ? (
+          <p className={styles.error}>Expiry Year must contain 4 digits!</p>
+        ) : (
+          ""
+        )}
+        {errors.ccv ? (
+          <p className={styles.error}>CCV must contain 3 digits!</p>
+        ) : (
+          ""
+        )}
+        {successful ? (
+          <p className={styles.success}>
+            Purchase successful! Thank you for your order!
+          </p>
+        ) : (
+          ""
+        )}
+      </div>
     </>
   );
 }
