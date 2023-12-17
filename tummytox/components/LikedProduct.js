@@ -17,9 +17,7 @@ export default function LikedProduct({
     const updatedLikedProducts = JSON.parse(
       localStorage.getItem("likedProducts")
     ).filter((product) => product !== id);
-
     localStorage.setItem("likedProducts", JSON.stringify(updatedLikedProducts));
-
     setLikedProducts(updatedLikedProducts);
     setTrigger((trigger) => !trigger);
   };

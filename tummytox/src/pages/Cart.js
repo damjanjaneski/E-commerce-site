@@ -23,9 +23,9 @@ export default function Cart({
       .then((data) => {
         setCProducts(data);
         setCartProducts(data.map((item) => item._id));
-        if (totalAmount === 0) {
-          setTotalAmount(calculateInitialPrice(data));
-        }
+        // if (totalAmount === 0) {
+        setTotalAmount(calculateInitialPrice(data));
+        // }
       });
   }, [trigger, loggedIn]);
 

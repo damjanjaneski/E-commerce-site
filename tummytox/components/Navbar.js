@@ -126,6 +126,13 @@ export default function Navbar({
         )}
       </div>
       <div className={styles.directions}>
+        <Link href="/categories/AllProducts">
+          <div
+            className={activeCategory === "All Products" ? styles.active : ""}
+          >
+            All Products
+          </div>
+        </Link>
         <Link href="/categories/Health-and-detox">
           <div
             className={activeCategory === "HealthAndDetox" ? styles.active : ""}

@@ -27,8 +27,16 @@ export default function CheckOut({
 
   useEffect(() => {
     const handleBeforeReload = function (e) {
-      const message =
-        "Are you sure you want to reload this page? You will lose your data!";
+      const message = true;
+      e.returnValue = message;
+      console.log(e);
+      return message;
+    };
+
+    window.addEventListener("beforeunload", handleBeforeReload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeReload);
     };
   }, []);
 
