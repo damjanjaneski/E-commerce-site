@@ -16,6 +16,7 @@ export default function AllProducts({
   formatNumber,
 }) {
   const [allProducts, setAllProducts] = useState([]);
+  const [activePage, setActivePage] = useState(1);
 
   setActiveCategory("All Products");
 
@@ -24,6 +25,23 @@ export default function AllProducts({
       .then((res) => res.json())
       .then((data) => setAllProducts(data));
   }, []);
+
+  const onPageChange = (num) => {
+    setActivePage(num);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  let newArray = [
+    allProducts.slice(0, 6),
+    allProducts.slice(6, 12),
+    allProducts.slice(12, 18),
+    allProducts.slice(18, 24),
+    allProducts.slice(24, 30),
+    allProducts.slice(30, allProducts.length),
+  ];
+
+  console.log(newArray);
+  console.log(allProducts.length);
 
   return (
     <div style={{ textAlign: "center" }}>
@@ -42,7 +60,7 @@ export default function AllProducts({
           ) : (
             ""
           )}
-          {allProducts.map((product, x) => (
+          {newArray[activePage - 1].map((product, x) => (
             <ProductCard
               formatNumber={formatNumber}
               collection={product.category}
@@ -58,7 +76,15 @@ export default function AllProducts({
           ))}
         </div>
       </Grid>
-      <Pagination />
+      <Pagination activePage={activePage} onPageChange={onPageChange} />
+      <div className={styles.productsShown}>
+        {activePage === 1 ? <p>1-6 of 31 products</p> : undefined}
+        {activePage === 2 ? <p>7-12 of 31 products</p> : undefined}
+        {activePage === 3 ? <p>13-18 of 31 products</p> : undefined}
+        {activePage === 4 ? <p>19-24 of 31 products</p> : undefined}
+        {activePage === 5 ? <p>25-30 of 31 products</p> : undefined}
+        {activePage === 6 ? <p>31 of 31 products</p> : undefined}
+      </div>
     </div>
   );
 }

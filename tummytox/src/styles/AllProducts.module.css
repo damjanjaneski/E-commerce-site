@@ -86,3 +86,9 @@
 .pages {
   background-color: white !important;
 }
+.productsShown {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 17.5px;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+}
