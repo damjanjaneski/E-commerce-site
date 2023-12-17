@@ -4,7 +4,7 @@
   flex-direction: row;
   justify-content: space-around;
   margin: 0 auto;
-  margin-top: 70px;
+  margin-top: 50px;
   padding: 25px;
   position: relative;
   flex-flow: wrap;
@@ -57,6 +57,13 @@
   cursor: pointer;
   background-color: rgb(44, 95, 189);
   border: none;
+}
+
+.title {
+  text-align: center;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  margin-top: 50px;
+  font-size: 50px;
 }
 
 .delete:hover {

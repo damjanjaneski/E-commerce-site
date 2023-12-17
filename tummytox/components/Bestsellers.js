@@ -8,6 +8,7 @@ export default function Bestsellers({
   setLikedProducts,
   cartProducts,
   setCartProducts,
+  formatNumber,
 }) {
   const [bestsellers, setBestSellers] = useState([]);
 
@@ -21,6 +22,7 @@ export default function Bestsellers({
     <>
       {bestsellers.map((product, x) => (
         <ProductCard
+          formatNumber={formatNumber}
           collection={"bestsellers"}
           trigger={trigger}
           setTrigger={setTrigger}

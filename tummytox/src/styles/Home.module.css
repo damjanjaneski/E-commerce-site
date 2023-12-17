@@ -3,6 +3,7 @@
   font-size: 75px;
   margin-top: 100px;
   font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  background-color: rgb(236, 198, 188);
 }
 
 .imgContainer {
@@ -12,6 +13,7 @@
 
 .bestsellerContainer {
   width: 100%;
+  background-color: rgb(236, 198, 188);
 }
 
 .bsContainer {
@@ -22,4 +24,5 @@
   row-gap: 65px;
   margin-top: 90px;
   margin-bottom: 90px;
+  background-color: rgb(236, 198, 188);
 }

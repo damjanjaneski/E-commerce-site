@@ -12,6 +12,7 @@ export default function Weightloss({
   setActiveCategory,
   cartProducts,
   setCartProducts,
+  formatNumber,
 }) {
   const router = useRouter();
   const [weightLoss, setWeightLoss] = useState([]);
@@ -29,38 +30,42 @@ export default function Weightloss({
   const userType = JSON.parse(localStorage.getItem("userType"));
 
   return (
-    <Grid container>
-      <div className={styles.container}>
-        {userType === "admin" ? (
-          <button
-            onClick={() => {
-              router.push("/admin/add-new");
-            }}
-            className={styles.addNew}
-          >
-            Add new
-          </button>
-        ) : (
-          ""
-        )}
-        {weightLoss.map((item, x) => (
-          <Grid key={x} item sm={6} md={3} lg={3}>
-            <div className={styles.card}>
-              <ProductCard
-                collection={"weightLoss"}
-                trigger={trigger}
-                setTrigger={setTrigger}
-                cartProducts={cartProducts}
-                setCartProducts={setCartProducts}
-                setLikedProducts={setLikedProducts}
-                likedProducts={likedProducts}
-                key={x}
-                product={item}
-              />
-            </div>
-          </Grid>
-        ))}
-      </div>
-    </Grid>
+    <>
+      <h1 className={styles.title}>Weight Loss</h1>
+      <Grid container>
+        <div className={styles.container}>
+          {userType === "admin" ? (
+            <button
+              onClick={() => {
+                router.push("/admin/add-new");
+              }}
+              className={styles.addNew}
+            >
+              Add new
+            </button>
+          ) : (
+            ""
+          )}
+          {weightLoss.map((item, x) => (
+            <Grid key={x} item sm={6} md={3} lg={3}>
+              <div className={styles.card}>
+                <ProductCard
+                  formatNumber={formatNumber}
+                  collection={"weightLoss"}
+                  trigger={trigger}
+                  setTrigger={setTrigger}
+                  cartProducts={cartProducts}
+                  setCartProducts={setCartProducts}
+                  setLikedProducts={setLikedProducts}
+                  likedProducts={likedProducts}
+                  key={x}
+                  product={item}
+                />
+              </div>
+            </Grid>
+          ))}
+        </div>
+      </Grid>
+    </>
   );
 }

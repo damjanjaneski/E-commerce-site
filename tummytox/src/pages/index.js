@@ -16,6 +16,7 @@ export default function Home({
   cartProducts,
   setCartProducts,
   loggedIn,
+  formatNumber,
 }) {
   setActiveCategory("");
 
@@ -34,6 +35,7 @@ export default function Home({
       <h1 className={styles.title}>Check out our bestsellers for this year!</h1>
       <div className={styles.bsContainer}>
         <Bestsellers
+          formatNumber={formatNumber}
           trigger={trigger}
           setTrigger={setTrigger}
           className={styles.gridItem}

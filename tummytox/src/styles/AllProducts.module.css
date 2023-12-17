@@ -8,6 +8,14 @@
   padding: 25px;
   position: relative;
   flex-flow: wrap;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+}
+
+.title {
+  text-align: center;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  margin-top: 50px;
+  font-size: 50px;
 }
 
 .addNew {
@@ -26,12 +34,6 @@
   background-color: rgb(20, 45, 92);
 }
 
-.title {
-  text-align: center;
-  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
-  margin-top: 50px;
-  font-size: 50px;
-}
 .card {
   position: relative;
   z-index: 0;
@@ -79,4 +81,8 @@
     0px 0px 15px rgb(212, 148, 9);
   scale: 1.05;
   transition: 0.25s;
+}
+
+.pages {
+  background-color: white !important;
 }

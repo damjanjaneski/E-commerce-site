@@ -16,6 +16,7 @@ export default function ProductCard({
   setLikedProducts,
   cartProducts,
   setCartProducts,
+  formatNumber,
 }) {
   const [modal, setModal] = useState("none");
   const [userMessage, setUserMessage] = useState("none");
@@ -181,6 +182,8 @@ export default function ProductCard({
           maxWidth: "100%",
           boxShadow: "lg",
           border: "2px solid white",
+          marginBottom: "55px",
+          fontFamily: "neueHass, Arial, Helvetica, Verdana, serif",
         }}
       >
         <CardOverflow>
@@ -204,10 +207,12 @@ export default function ProductCard({
             level="title-lg"
             sx={{ mt: 1, fontWeight: "xl", background: "white" }}
             endDecorator={
-              <p className={styles.oldPrice}>{product.price}.00 Mkd</p>
+              <p className={styles.oldPrice}>
+                {formatNumber(product.price)}.00 MKD
+              </p>
             }
           >
-            {product.actionPrice}.00 Mkd
+            {formatNumber(product.actionPrice)}.00 MKD
           </Typography>
         </CardContent>
         {userId ? (
