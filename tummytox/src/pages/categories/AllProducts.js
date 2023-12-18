@@ -17,6 +17,10 @@ export default function AllProducts({
 }) {
   const [allProducts, setAllProducts] = useState([]);
   const [activePage, setActivePage] = useState(1);
+  const [sortAndFilter, setSortAndFilter] = useState({
+    sortBy: "Not sorted",
+    filter: "No filter",
+  });
 
   setActiveCategory("All Products");
 
@@ -26,25 +30,103 @@ export default function AllProducts({
       .then((data) => setAllProducts(data));
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const page = JSON.parse(localStorage.getItem("activePage") || 1);
+      setActivePage(page);
+    }
+  }, []);
+
   const onPageChange = (num) => {
     setActivePage(num);
+    localStorage.setItem("activePage", JSON.stringify(num));
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  let newArray = [
-    allProducts.slice(0, 6),
-    allProducts.slice(6, 12),
-    allProducts.slice(12, 18),
-    allProducts.slice(18, 24),
-    allProducts.slice(24, 30),
-    allProducts.slice(30, allProducts.length),
-  ];
+  let sortedAllProducts;
 
-  console.log(newArray);
-  console.log(allProducts.length);
+  if (sortAndFilter.sortBy === "Not sorted") {
+    sortedAllProducts = allProducts;
+  } else if (sortAndFilter.sortBy === "lowest") {
+    sortedAllProducts = allProducts.slice().sort((a, b) => {
+      const priceA = a.actionPrice;
+      const priceB = b.actionPrice;
+
+      return priceA - priceB;
+    });
+  } else if (sortAndFilter.sortBy === "highest") {
+    sortedAllProducts = allProducts.slice().sort((a, b) => {
+      const priceA = a.actionPrice;
+      const priceB = b.actionPrice;
+
+      return priceB - priceA;
+    });
+  } else if (sortAndFilter.sortBy === "A-Z") {
+    sortedAllProducts = allProducts.slice().sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+
+      return nameA.localeCompare(nameB);
+    });
+  } else if (sortAndFilter.sortBy === "Z-A") {
+    sortedAllProducts = allProducts.slice().sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+
+      return nameB.localeCompare(nameA);
+    });
+  }
+
+  console.log(sortedAllProducts);
+
+  let newArray = [];
+
+  for (let i = 0; i < sortedAllProducts.length; i += 6) {
+    let subArr = sortedAllProducts.slice(i, i + 6);
+
+    newArray.push(subArr);
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSortAndFilter({ ...sortAndFilter, [name]: value });
+  };
+
+  console.log(sortAndFilter.sortBy);
 
   return (
     <div style={{ textAlign: "center" }}>
+      <div className={styles.filterWraper}>
+        <div className={styles.filter}>
+          <label>Sort by:</label>
+          <select
+            name="sortBy"
+            value={sortAndFilter.sortBy}
+            onChange={handleChange}
+          >
+            <option value="Not sorted">Not sorted</option>
+            <option value="lowest">Price - lowest first</option>
+            <option value="highest">Price - highest first</option>
+            <option value="A-Z">Product name (A-Z)</option>
+            <option value="Z-A">Product name (Z-A)</option>
+          </select>
+        </div>
+        <div className={styles.filter}>
+          <label>Filter:</label>
+          <select
+            name="filter"
+            value={sortAndFilter.filter}
+            onChange={handleChange}
+          >
+            <option value="No filter">No filter</option>
+            <option value={1}>0 - 300.00 MKD</option>
+            <option value={2}>300.00 - 600.00 MKD</option>
+            <option value={3}>600.00 - 900.00 MKD</option>
+            <option value={4}>900.00 - 1200.00 MKD</option>
+            <option value={5}>Above 1.200.00 MKD</option>
+          </select>
+        </div>
+      </div>
       <h1 className={styles.title}>All Products</h1>
       <Grid container>
         <div className={styles.container}>
@@ -60,20 +142,22 @@ export default function AllProducts({
           ) : (
             ""
           )}
-          {newArray[activePage - 1].map((product, x) => (
-            <ProductCard
-              formatNumber={formatNumber}
-              collection={product.category}
-              trigger={trigger}
-              setTrigger={setTrigger}
-              cartProducts={cartProducts}
-              setCartProducts={setCartProducts}
-              setLikedProducts={setLikedProducts}
-              likedProducts={likedProducts}
-              key={x}
-              product={product}
-            />
-          ))}
+          {sortedAllProducts.length !== 0
+            ? newArray[activePage - 1].map((product, x) => (
+                <ProductCard
+                  formatNumber={formatNumber}
+                  collection={product.category}
+                  trigger={trigger}
+                  setTrigger={setTrigger}
+                  cartProducts={cartProducts}
+                  setCartProducts={setCartProducts}
+                  setLikedProducts={setLikedProducts}
+                  likedProducts={likedProducts}
+                  key={x}
+                  product={product}
+                />
+              ))
+            : undefined}
         </div>
       </Grid>
       <Pagination activePage={activePage} onPageChange={onPageChange} />
