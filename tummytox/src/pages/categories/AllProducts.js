@@ -43,33 +43,33 @@ export default function AllProducts({
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  let sortedAllProducts;
+  let sorted;
 
   if (sortAndFilter.sortBy === "Not sorted") {
-    sortedAllProducts = allProducts;
+    sorted = allProducts;
   } else if (sortAndFilter.sortBy === "lowest") {
-    sortedAllProducts = allProducts.slice().sort((a, b) => {
+    sorted = allProducts.slice().sort((a, b) => {
       const priceA = a.actionPrice;
       const priceB = b.actionPrice;
 
       return priceA - priceB;
     });
   } else if (sortAndFilter.sortBy === "highest") {
-    sortedAllProducts = allProducts.slice().sort((a, b) => {
+    sorted = allProducts.slice().sort((a, b) => {
       const priceA = a.actionPrice;
       const priceB = b.actionPrice;
 
       return priceB - priceA;
     });
   } else if (sortAndFilter.sortBy === "A-Z") {
-    sortedAllProducts = allProducts.slice().sort((a, b) => {
+    sorted = allProducts.slice().sort((a, b) => {
       const nameA = a.name.toLowerCase();
       const nameB = b.name.toLowerCase();
 
       return nameA.localeCompare(nameB);
     });
   } else if (sortAndFilter.sortBy === "Z-A") {
-    sortedAllProducts = allProducts.slice().sort((a, b) => {
+    sorted = allProducts.slice().sort((a, b) => {
       const nameA = a.name.toLowerCase();
       const nameB = b.name.toLowerCase();
 
@@ -77,12 +77,30 @@ export default function AllProducts({
     });
   }
 
-  console.log(sortedAllProducts);
+  let filtered;
+
+  if (sortAndFilter.filter === "1") {
+    filtered = sorted.filter((product) => product.actionPrice <= 300);
+  } else if (sortAndFilter.filter === "2") {
+    filtered = sorted.filter((product) => {
+      product.actionPrice > 300 && product.actionPrice <= 600;
+    });
+  } else if (sortAndFilter.filter === "3") {
+    filtered = sorted.filter(
+      (product) => product.actionPrice > 600 && product.actionPrice <= 900
+    );
+  } else if (sortAndFilter.filter === "4") {
+    filtered = sorted.filter(
+      (product) => product.actionPrice > 900 && product.actionPrice <= 1200
+    );
+  } else if (sortAndFilter.filter === "5") {
+    filtered = sorted.filter((product) => product.actionPrice > 1200);
+  } else filtered = sorted;
 
   let newArray = [];
 
-  for (let i = 0; i < sortedAllProducts.length; i += 6) {
-    let subArr = sortedAllProducts.slice(i, i + 6);
+  for (let i = 0; i < filtered.length; i += 6) {
+    let subArr = filtered.slice(i, i + 6);
 
     newArray.push(subArr);
   }
@@ -91,8 +109,6 @@ export default function AllProducts({
     const { name, value } = e.target;
     setSortAndFilter({ ...sortAndFilter, [name]: value });
   };
-
-  console.log(sortAndFilter.sortBy);
 
   return (
     <div style={{ textAlign: "center" }}>
@@ -120,9 +136,9 @@ export default function AllProducts({
           >
             <option value="No filter">No filter</option>
             <option value={1}>0 - 300.00 MKD</option>
-            <option value={2}>300.00 - 600.00 MKD</option>
-            <option value={3}>600.00 - 900.00 MKD</option>
-            <option value={4}>900.00 - 1200.00 MKD</option>
+            <option value={2}>301.00 - 600.00 MKD</option>
+            <option value={3}>601.00 - 900.00 MKD</option>
+            <option value={4}>901.00 - 1200.00 MKD</option>
             <option value={5}>Above 1.200.00 MKD</option>
           </select>
         </div>
@@ -142,7 +158,7 @@ export default function AllProducts({
           ) : (
             ""
           )}
-          {sortedAllProducts.length !== 0
+          {sorted.length !== 0
             ? newArray[activePage - 1].map((product, x) => (
                 <ProductCard
                   formatNumber={formatNumber}
@@ -160,7 +176,11 @@ export default function AllProducts({
             : undefined}
         </div>
       </Grid>
-      <Pagination activePage={activePage} onPageChange={onPageChange} />
+      <Pagination
+        pages={Math.ceil(newArray.length)}
+        activePage={activePage}
+        onPageChange={onPageChange}
+      />
       <div className={styles.productsShown}>
         {activePage === 1 ? <p>1-6 of 31 products</p> : undefined}
         {activePage === 2 ? <p>7-12 of 31 products</p> : undefined}
