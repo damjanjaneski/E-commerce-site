@@ -3,9 +3,8 @@ import styles from "./styles/Pagination.module.css";
 export default function Pagination({ pages, activePage, onPageChange }) {
   const length = pages;
   const numOfPages = Array.from({ length }, (_, index) => index + 1);
-
-  console.log(numOfPages);
-
+  console.log(typeof length);
+  console.log(typeof activePage);
   return (
     <div className={styles.container}>
       <svg
@@ -23,14 +22,13 @@ export default function Pagination({ pages, activePage, onPageChange }) {
       >
         <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
       </svg>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div>
           {numOfPages.map((page, x) => {
             return (
               <button
-                style={{ marginRight: "25px" }}
                 className={activePage === x + 1 ? styles.activePage : ""}
-                onClick={() => onPageChange(1)}
+                onClick={() => onPageChange(x + 1)}
               >
                 {x + 1}
               </button>
@@ -40,7 +38,7 @@ export default function Pagination({ pages, activePage, onPageChange }) {
       </div>
       <svg
         onClick={
-          activePage !== 6
+          activePage !== length
             ? () => {
                 onPageChange(activePage + 1);
               }

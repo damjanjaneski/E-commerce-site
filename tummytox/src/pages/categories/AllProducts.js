@@ -82,9 +82,9 @@ export default function AllProducts({
   if (sortAndFilter.filter === "1") {
     filtered = sorted.filter((product) => product.actionPrice <= 300);
   } else if (sortAndFilter.filter === "2") {
-    filtered = sorted.filter((product) => {
-      product.actionPrice > 300 && product.actionPrice <= 600;
-    });
+    filtered = sorted.filter(
+      (product) => product.actionPrice > 300 && product.actionPrice <= 600
+    );
   } else if (sortAndFilter.filter === "3") {
     filtered = sorted.filter(
       (product) => product.actionPrice > 600 && product.actionPrice <= 900
@@ -108,7 +108,11 @@ export default function AllProducts({
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSortAndFilter({ ...sortAndFilter, [name]: value });
+    setActivePage(1);
+    localStorage.setItem("activePage", JSON.stringify(1));
   };
+
+  const productsListed = newArray.flatMap((x) => x).length;
 
   return (
     <div style={{ textAlign: "center" }}>
@@ -182,12 +186,60 @@ export default function AllProducts({
         onPageChange={onPageChange}
       />
       <div className={styles.productsShown}>
-        {activePage === 1 ? <p>1-6 of 31 products</p> : undefined}
-        {activePage === 2 ? <p>7-12 of 31 products</p> : undefined}
-        {activePage === 3 ? <p>13-18 of 31 products</p> : undefined}
-        {activePage === 4 ? <p>19-24 of 31 products</p> : undefined}
-        {activePage === 5 ? <p>25-30 of 31 products</p> : undefined}
-        {activePage === 6 ? <p>31 of 31 products</p> : undefined}
+        {activePage === 1 ? (
+          productsListed > 6 ? (
+            <p>1-6 of {productsListed}</p>
+          ) : (
+            <p>
+              1-{productsListed} of {productsListed}
+            </p>
+          )
+        ) : undefined}
+        {activePage === 2 ? (
+          productsListed > 12 ? (
+            <p>7-12 of {productsListed}</p>
+          ) : (
+            <p>
+              7-{productsListed} of {productsListed}
+            </p>
+          )
+        ) : undefined}
+        {activePage === 3 ? (
+          productsListed > 18 ? (
+            <p>13-18 of {productsListed}</p>
+          ) : (
+            <p>
+              12-{productsListed} of {productsListed}
+            </p>
+          )
+        ) : undefined}
+        {activePage === 4 ? (
+          productsListed > 24 ? (
+            <p>19-24 of {productsListed}</p>
+          ) : (
+            <p>
+              18-{productsListed} of {productsListed}
+            </p>
+          )
+        ) : undefined}
+        {activePage === 5 ? (
+          productsListed > 30 ? (
+            <p>25-30 of {productsListed}</p>
+          ) : (
+            <p>
+              25-{productsListed} of {productsListed}
+            </p>
+          )
+        ) : undefined}
+        {activePage === 6 ? (
+          productsListed > 36 ? (
+            <p>31-36 of {productsListed}</p>
+          ) : (
+            <p>
+              31-{productsListed} of {productsListed}
+            </p>
+          )
+        ) : undefined}
       </div>
     </div>
   );
