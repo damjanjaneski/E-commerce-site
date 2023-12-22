@@ -3,8 +3,7 @@ import styles from "./styles/Pagination.module.css";
 export default function Pagination({ pages, activePage, onPageChange }) {
   const length = pages;
   const numOfPages = Array.from({ length }, (_, index) => index + 1);
-  console.log(typeof length);
-  console.log(typeof activePage);
+
   return (
     <div className={styles.container}>
       <svg

@@ -126,7 +126,7 @@
   background-color: inherit;
   display: flex;
   justify-content: space-between;
-  width: 95px;
+  width: 120px;
 }
 
 .likeAndBuy svg:hover {
@@ -134,4 +134,53 @@
   fill: black;
   transition: 0.2s;
   fill: rgb(44, 95, 189);
+}
+
+.searchDiv {
+  height: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  background-color: blanchedalmond;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchDiv input {
+  height: 40px;
+  width: 550px;
+  outline: none;
+  border: 1px solid #333;
+  border-radius: 15px;
+  padding-left: 15px;
+  font-size: 17.5px;
+  padding-left: 50px;
+  background-color: blanchedalmond;
+  color: #333;
+}
+
+.searchBar svg {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  left: 5%;
+  fill: #333;
+  background-color: blanchedalmond;
+}
+
+.searchBar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  background-color: blanchedalmond;
+}
+
+.close {
+  width: 20px;
+  height: 20px;
+  background-color: inherit;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
 }

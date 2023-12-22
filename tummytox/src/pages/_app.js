@@ -11,6 +11,7 @@ export default function App({ Component, pageProps }) {
   const [activeCategory, setActiveCategory] = useState("");
   const [trigger, setTrigger] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [onOff, setOnOff] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -40,6 +41,8 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Navbar
+        onOff={onOff}
+        setOnOff={setOnOff}
         setCartProducts={setCartProducts}
         setLikedProducts={setLikedProducts}
         activeCategory={activeCategory}
