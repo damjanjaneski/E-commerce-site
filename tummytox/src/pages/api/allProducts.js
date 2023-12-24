@@ -15,7 +15,7 @@ export default async (req, res) => {
   ).then((res) => res.json());
 
   const healthAndDetox = await fetch(
-    "http://localhost:3000/api/productsList?collection=healthAndDetox"
+    "http://localhost:3000/api/productsList?collection=healthanddetox"
   ).then((res) => res.json());
 
   const weightloss = await fetch(

@@ -1,6 +1,7 @@
 import styles from "../../styles/contact-us.module.css";
 
-export default function ContactUs() {
+export default function ContactUs({ setActiveCategory }) {
+  setActiveCategory("");
   return (
     <div className={styles.wraper}>
       <h1 style={{ color: "#333" }}>CONTACT US</h1>

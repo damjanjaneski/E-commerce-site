@@ -10,13 +10,25 @@ export default function App({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [activeCategory, setActiveCategory] = useState("");
   const [trigger, setTrigger] = useState(false);
+  const [userType, setUserType] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
-  const [onOff, setOnOff] = useState(false);
+  const [onOff, setOnOff] = useState({
+    search: false,
+    dropDown: false,
+    result: [],
+  });
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const liked = JSON.parse(localStorage.getItem("likedProducts"));
       setLikedProducts(liked || []);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const user = JSON.parse(localStorage.getItem("userType"));
+      setUserType(user || "");
     }
   }, []);
 
@@ -46,10 +58,14 @@ export default function App({ Component, pageProps }) {
         setCartProducts={setCartProducts}
         setLikedProducts={setLikedProducts}
         activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
         setLoggedIn={setLoggedIn}
         loggedIn={loggedIn}
+        setUserType={setUserType}
       />
       <Component
+        userType={userType}
+        setUserType={setUserType}
         totalAmount={totalAmount}
         setTotalAmount={setTotalAmount}
         formatNumber={formatNumber}

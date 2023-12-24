@@ -24,7 +24,7 @@ export default function EditCard({ product }) {
       fetch(
         `http://localhost:3000/api/edit-api?id=${
           product._id
-        }&collection=${product.category.toLowerCase()}`,
+        }&collection=${product.category.replace(/\s+/g, "").toLowerCase()}`,
         {
           method: "PUT",
           body: JSON.stringify(edited),
@@ -37,11 +37,9 @@ export default function EditCard({ product }) {
         .catch((e) => console.log(e));
     }
 
-    router.push(
-      product.category.toLowerCase() === "bestsellers"
-        ? "/"
-        : `/categories/${product.category.toLowerCase()}`
-    );
+    product.category === "Bestsellers"
+      ? router.push("/")
+      : router.push(`/categories/${product.category.replace(/\s+/g, "")}`);
   };
 
   return (
@@ -97,17 +95,12 @@ export default function EditCard({ product }) {
 }
 
 export async function getStaticPaths() {
-  const productsAcc = await fetch(`http://localhost:3000/api/acc-api`)
+  const products = await fetch(`http://localhost:3000/api/allProducts`)
     .then((res) => res.json())
     .then((res) => res)
     .catch((err) => console.log(err));
 
-  const productsBS = await fetch(`http://localhost:3000/api/bestsellers`)
-    .then((res) => res.json())
-    .then((res) => res)
-    .catch((err) => console.log(err));
-
-  const paths = [...productsAcc, ...productsBS].map((product) => {
+  const paths = [...products].map((product) => {
     return {
       params: {
         id: product._id,

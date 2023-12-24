@@ -6,6 +6,8 @@ export default function Login({
   setLoggedIn,
   setLikedProducts,
   setCartProducts,
+  setUserType,
+  setActiveCategory,
 }) {
   const router = useRouter();
 
@@ -15,6 +17,8 @@ export default function Login({
     password: false,
     message: false,
   });
+
+  setActiveCategory("");
 
   const handleChange = function (e) {
     const { name, value } = e.target;
@@ -54,6 +58,7 @@ export default function Login({
             setErrors({ username: false, password: false, message: false });
             setLoggedIn(loggedIn._id);
             setLikedProducts(loggedIn.wishlist.map((item) => item._id));
+            setUserType(loggedIn.type);
             setCartProducts(loggedIn.cart.map((item) => item._id));
             localStorage.setItem(
               "likedProducts",

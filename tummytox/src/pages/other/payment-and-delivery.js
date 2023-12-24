@@ -1,6 +1,7 @@
 import styles from "../../styles/payment-and-delivery.module.css";
 
-export default function DeliveryAndShipping() {
+export default function DeliveryAndShipping({ setActiveCategory }) {
+  setActiveCategory("");
   return (
     <div className={styles.wraper}>
       <h1 style={{ fontWeight: "300", color: "#333" }}>PAYMENT AND DELIVERY</h1>

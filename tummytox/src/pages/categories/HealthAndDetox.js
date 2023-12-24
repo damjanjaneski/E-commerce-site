@@ -20,7 +20,7 @@ export default function HealthAndDetox({
   const [healthDetox, setHealthDetox] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/productsList?collection=healthAndDetox")
+    fetch("http://localhost:3000/api/productsList?collection=healthanddetox")
       .then((res) => res.json())
       .then((data) => {
         setHealthDetox(data);

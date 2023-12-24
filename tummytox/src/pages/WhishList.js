@@ -8,8 +8,11 @@ export default function WhishList({
   loggedIn,
   trigger,
   setTrigger,
+  setActiveCategory,
 }) {
   const [wishlistProducts, setWishlistProducts] = useState([]);
+
+  setActiveCategory("");
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/wishlist-api?userId=${loggedIn}`)

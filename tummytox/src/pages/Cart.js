@@ -12,10 +12,13 @@ export default function Cart({
   formatNumber,
   totalAmount,
   setTotalAmount,
+  setActiveCategory,
 }) {
   const [cProducts, setCProducts] = useState([]);
 
   const router = useRouter("/CheckOut");
+
+  setActiveCategory("");
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/cart-api?userId=${loggedIn}`)

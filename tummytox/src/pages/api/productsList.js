@@ -12,7 +12,6 @@ export default async function handler(req, res) {
   const db = client.db("tummytox");
   const collection = req.query.collection;
 
-  // db.collection("healthAndDetox").insertMany(healthDetoxProducts);
   const products = await db.collection(collection).find({}).toArray();
 
   return res.status(200).json(products);

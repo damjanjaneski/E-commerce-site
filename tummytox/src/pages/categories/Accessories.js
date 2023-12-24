@@ -13,6 +13,7 @@ export default function Accessories({
   cartProducts,
   setCartProducts,
   formatNumber,
+  userType,
 }) {
   const router = useRouter();
   const [accessories, setAccessories] = useState([]);
@@ -26,8 +27,6 @@ export default function Accessories({
         setAccessories(data);
       });
   }, [likedProducts]);
-
-  const userType = JSON.parse(localStorage.getItem("userType"));
 
   return (
     <>

@@ -12,8 +12,8 @@ export default async (req, res) => {
         $set: {
           name: req.body.name,
           category: req.body.category,
-          price: req.body.price,
-          actionPrice: req.body.actionPrice,
+          price: Number(req.body.price),
+          actionPrice: Number(req.body.actionPrice),
           description: req.body.description,
           img: req.body.img,
         },

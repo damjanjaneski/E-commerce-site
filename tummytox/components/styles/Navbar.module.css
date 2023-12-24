@@ -184,3 +184,40 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.dropDown {
+  position: absolute;
+  width: 30%;
+  height: 102px;
+  background-color: white;
+  border: 0.5px solid #333;
+  color: #333;
+  display: flex;
+
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+}
+
+.dropDown h2 {
+  font-size: 20px;
+}
+
+.dropDown img {
+  margin-right: 30px;
+}
+
+.dropDown:hover {
+  background-color: darkblue;
+  cursor: pointer;
+}
+
+.nameCategory {
+  background-color: inherit !important;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.nameCategory h2,
+.nameCategory h4 {
+  background-color: inherit !important;
+  margin-bottom: 10px;
+}
