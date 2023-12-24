@@ -13,6 +13,7 @@ export default function HealthAndDetox({
   cartProducts,
   setCartProducts,
   formatNumber,
+  userType,
 }) {
   setActiveCategory("HealthAndDetox");
 
@@ -26,8 +27,6 @@ export default function HealthAndDetox({
         setHealthDetox(data);
       });
   }, [trigger]);
-
-  const userType = JSON.parse(localStorage.getItem("userType"));
 
   return (
     <>

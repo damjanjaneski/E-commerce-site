@@ -13,6 +13,7 @@ export default function Beauty({
   cartProducts,
   setCartProducts,
   formatNumber,
+  userType,
 }) {
   const router = useRouter();
   const [beauty, setBeauty] = useState([]);
@@ -26,8 +27,6 @@ export default function Beauty({
         setBeauty(data);
       });
   }, [trigger]);
-
-  const userType = JSON.parse(localStorage.getItem("userType"));
 
   return (
     <>

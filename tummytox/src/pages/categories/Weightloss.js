@@ -13,6 +13,7 @@ export default function Weightloss({
   cartProducts,
   setCartProducts,
   formatNumber,
+  userType,
 }) {
   const router = useRouter();
   const [weightLoss, setWeightLoss] = useState([]);
@@ -26,8 +27,6 @@ export default function Weightloss({
         setWeightLoss(data);
       });
   }, [trigger]);
-
-  const userType = JSON.parse(localStorage.getItem("userType"));
 
   return (
     <>

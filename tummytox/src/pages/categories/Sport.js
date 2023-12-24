@@ -13,6 +13,7 @@ export default function Sport({
   cartProducts,
   setCartProducts,
   formatNumber,
+  userType,
 }) {
   setActiveCategory("Sport");
 
@@ -26,8 +27,6 @@ export default function Sport({
         setSport(data);
       });
   }, [trigger]);
-
-  const userType = JSON.parse(localStorage.getItem("userType"));
 
   return (
     <>

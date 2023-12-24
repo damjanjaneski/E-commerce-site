@@ -1,9 +1,6 @@
 import clientPromise from "../../../lib/mongodb";
 
 export default async (req, res) => {
-  const client = await clientPromise;
-  const db = client.db("tummytox");
-
   let allProducts = [];
 
   const bestsellers = await fetch("http://localhost:3000/api/bestsellers").then(
