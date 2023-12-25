@@ -15,7 +15,7 @@
 }
 
 .container img {
-  height: 450px;
+  height: 500px;
   border: 1px solid #333;
   padding: 20px;
   background-color: white;
@@ -38,6 +38,7 @@
   margin-bottom: 20px;
   border: 1px solid #333;
   padding: 10px;
+  margin-top: 50px;
 }
 
 .container p {
@@ -47,8 +48,9 @@
 }
 
 .container ul {
-  list-style-type: none; /* Remove default marker */
-  padding-left: 20px; /* Adjust the padding to make space for the custom marker */
+  list-style-type: none;
+  padding-left: 20px;
+  border-bottom: 1px solid #333;
 }
 
 .container ul li {
@@ -66,6 +68,7 @@
   border-radius: 15px;
   cursor: pointer;
   background-color: rgb(44, 95, 189);
+  margin-bottom: 50px;
 }
 .addToCard svg {
   fill: white;

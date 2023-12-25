@@ -149,6 +149,10 @@ export default function ProductCard({
     setUserMessage("block");
   };
 
+  const goToProduct = function (id) {
+    router.push(`/products/${id}`);
+  };
+
   const userType = JSON.parse(localStorage.getItem("userType"));
   const isLiked = likedProducts.some((p) => p === product._id);
   const added = cartProducts.some((p) => p === product._id);
@@ -270,7 +274,12 @@ export default function ProductCard({
           </>
         )}
         <CardOverflow>
-          <button className={styles.addToCart}>Add to cart</button>
+          <button
+            className={styles.addToCart}
+            onClick={() => goToProduct(product._id)}
+          >
+            View details
+          </button>
         </CardOverflow>
       </Card>
       <div style={{ display: modal }} className={styles.modal}>

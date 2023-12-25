@@ -9,13 +9,16 @@ export default function Product({ product, formatNumber }) {
         </div>
         <div className={styles.text}>
           <h1>{product.name}</h1>
+          <hr />
           <div className={styles.prices}>
             <h3>{formatNumber(product.actionPrice)}.00 MKD</h3>
             <h3 style={{ textDecoration: "line-through" }}>
               {formatNumber(product.price)}.00 MKD
             </h3>
           </div>
-          <p>{product.description[0]}</p>
+          <p style={{ borderBottom: "1px solid #333", paddingBottom: "20px" }}>
+            {product.description[0]}
+          </p>
           <ul>
             {product.description[1].map((li, x) => {
               return (
