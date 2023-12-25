@@ -1,0 +1,75 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+}
+
+.wraper {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container img {
+  height: 450px;
+  border: 1px solid #333;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.container h1 {
+  font-size: 55px;
+  margin-bottom: 20px;
+}
+
+.text {
+  max-width: 55%;
+}
+
+.prices {
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+.container p {
+  font-size: 22.5px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.container ul {
+  list-style-type: none; /* Remove default marker */
+  padding-left: 20px; /* Adjust the padding to make space for the custom marker */
+}
+
+.container ul li {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.addToCard {
+  width: 200px;
+  height: 50px;
+  margin-top: 50px;
+  font-size: 20px;
+  outline: none;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: rgb(44, 95, 189);
+}
+.addToCard svg {
+  fill: white;
+  font-size: 20px;
+  margin-left: 10px;
+  background-color: inherit;
+}
