@@ -17,6 +17,7 @@
   border-radius: 20px;
   background-color: inherit;
   padding: 10px;
+  cursor: pointer;
 }
 
 .changeQty {
@@ -48,6 +49,7 @@
   font-family: "neueHass", Arial, Helvetica, Verdana, serif;
   margin-top: 20px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .changeQty button {

@@ -9,6 +9,8 @@ export default function WhishList({
   trigger,
   setTrigger,
   setActiveCategory,
+  cartProducts,
+  setCartProducts,
 }) {
   const [wishlistProducts, setWishlistProducts] = useState([]);
 
@@ -30,6 +32,8 @@ export default function WhishList({
         {wishlistProducts.length !== 0 ? (
           wishlistProducts.map((product, x) => (
             <LikedProduct
+              setCartProducts={setCartProducts}
+              cartProducts={cartProducts}
               setTrigger={setTrigger}
               trigger={trigger}
               loggedIn={loggedIn}

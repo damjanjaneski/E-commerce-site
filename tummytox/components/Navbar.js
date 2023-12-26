@@ -19,11 +19,6 @@ export default function Navbar({
   const [searched, setSearched] = useState("");
   const [allProducts, setAllProducts] = useState([]);
 
-  useEffect(() => {
-    // Code that depends on the updated activeCategory state
-    console.log("Updated activeCategory:", activeCategory);
-  }, [activeCategory]);
-
   const logOut = function () {
     setLoggedIn(false);
     localStorage.setItem("loggedIn", JSON.stringify(false));
