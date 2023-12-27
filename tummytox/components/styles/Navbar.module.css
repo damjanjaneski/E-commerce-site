@@ -129,7 +129,7 @@
   width: 120px;
 }
 
-.likeAndBuy svg:hover {
+.subDiv svg:hover {
   scale: 1.2;
   fill: black;
   transition: 0.2s;

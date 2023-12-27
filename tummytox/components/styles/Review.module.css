@@ -6,12 +6,15 @@
 
 .review {
   width: 50%;
+  max-width: 520px;
   text-align: left;
   border: 1px solid blanchedalmond;
   padding: 40px 50px;
   border-radius: 25px;
   font-family: "neueHass", Arial, Helvetica, Verdana, serif;
   margin-right: 120px;
+  height: 460px;
+  word-wrap: break-word;
 }
 
 .customer {

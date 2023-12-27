@@ -18,23 +18,18 @@ export default function ReviewsSection({ allReviews, setAllReviews, trigger }) {
   };
 
   const next = function () {
-    if (slideIndex !== (allReviews.length - 2) * 2) {
+    if (slideIndex !== allReviews.length - 3) {
       setSlideIndex((slideIndex) => slideIndex + 1);
     }
   };
 
+  const shownReviews = allReviews.slice(slideIndex, slideIndex + 3);
+
   return (
-    <div id="scrollDiv" className={styles.container}>
+    <div className={styles.container}>
       <h1>Comments And Reviews</h1>
-      <div
-        className={styles.wraper}
-        style={{
-          width: `${allReviews.length * 620}px`,
-          marginRight: `${-2570 + slideIndex * 605}px`,
-          transition: "0.3s",
-        }}
-      >
-        {allReviews.map((review, x) => (
+      <div className={styles.wraper}>
+        {shownReviews.map((review, x) => (
           <Review
             key={x}
             name={review.name}

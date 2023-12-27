@@ -33,6 +33,7 @@ export default function WriteReview({
       )
         .then(() => {
           setAllReviews([...allReviews, review]);
+          setReview({ product: "", text: "", rating: "1" });
         })
         .then(() => setTrigger((trigger) => !trigger));
     }
@@ -58,7 +59,7 @@ export default function WriteReview({
             onChange={handleChange}
             value={review.text}
             name="text"
-            maxLength={400}
+            maxLength={340}
             cols={55}
             rows={4}
             placeholder="Type in your review..."

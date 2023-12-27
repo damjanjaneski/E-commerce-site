@@ -1,5 +1,4 @@
 import styles from "./styles/Review.module.css";
-import { useEffect } from "react";
 
 export default function Review({ name, imgSrc, product, rating, text }) {
   let color;
