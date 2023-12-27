@@ -283,18 +283,23 @@ export default function ProductCard({
         </CardOverflow>
       </Card>
       <div style={{ display: modal }} className={styles.modal}>
-        <h2>
-          Are you sure you want to delete the product with name:
-          {product.name}
-        </h2>
-        <button
-          onClick={() => {
-            deleteCard(product._id);
-          }}
-        >
-          YES
-        </button>
-        <button onClick={reject}>no</button>
+        <div className={styles.window}>
+          <h2>
+            Are you sure you want to delete the product with name:{" "}
+            {product.name}?
+          </h2>
+          <button
+            style={{ background: "darkgreen" }}
+            onClick={() => {
+              deleteCard(product._id);
+            }}
+          >
+            Yes
+          </button>
+          <button style={{ background: "darkred" }} onClick={reject}>
+            No
+          </button>
+        </div>
       </div>
     </div>
   );
