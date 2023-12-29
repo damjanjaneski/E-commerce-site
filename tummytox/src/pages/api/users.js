@@ -13,6 +13,7 @@ export default async (req, res) => {
           $pull: { wishlist: { _id: req.query.id } },
         }
       );
+      res.status(200);
     } else if (req.query.request === "post") {
       console.log(req.query.request, req.query.target, req.query.userId);
       db.collection("users").updateOne(
@@ -38,4 +39,6 @@ export default async (req, res) => {
     const users = await db.collection("users").find({}).toArray();
     return res.json(users);
   }
+
+  res.end();
 };

@@ -1,11 +1,7 @@
 import styles from "../styles/CheckOut.module.css";
 import { useState, useEffect } from "react";
 
-export default function CheckOut({
-  totalAmount,
-  formatNumber,
-  setTotalAmount,
-}) {
+export default function CheckOut({ formatNumber, setTotalAmount, lastPrice }) {
   const [paymentInfo, setPaymentInfo] = useState({
     firstName: "",
     lastName: "",
@@ -301,7 +297,7 @@ export default function CheckOut({
           </div>
           <div className={styles.total}>
             <p>Total Bill:</p>
-            <p>MKD {formatNumber(totalAmount)}.00</p>
+            <p>MKD {formatNumber(lastPrice)}.00</p>
           </div>
           <button onClick={placeOrder}>Place Order</button>
         </div>

@@ -22,15 +22,18 @@ export default function LikedProduct({
       {
         method: "PUT",
       }
-    );
+    ).then(() => {
+      const updatedLikedProducts = JSON.parse(
+        localStorage.getItem("likedProducts")
+      ).filter((product) => product !== id);
 
-    const updatedLikedProducts = JSON.parse(
-      localStorage.getItem("likedProducts")
-    ).filter((product) => product !== id);
-
-    localStorage.setItem("likedProducts", JSON.stringify(updatedLikedProducts));
-    setLikedProducts(updatedLikedProducts);
-    setTrigger((trigger) => !trigger);
+      localStorage.setItem(
+        "likedProducts",
+        JSON.stringify(updatedLikedProducts)
+      );
+      setLikedProducts(updatedLikedProducts);
+      setTrigger((trigger) => !trigger);
+    });
   };
 
   const goTo = function (id) {

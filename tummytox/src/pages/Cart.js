@@ -13,6 +13,7 @@ export default function Cart({
   totalAmount,
   setTotalAmount,
   setActiveCategory,
+  setLastPrice,
 }) {
   const [cProducts, setCProducts] = useState([]);
 
@@ -26,9 +27,9 @@ export default function Cart({
       .then((data) => {
         setCProducts(data);
         setCartProducts(data.map((item) => item._id));
-        // if (totalAmount === 0) {
-        setTotalAmount(calculateInitialPrice(data));
-        // }
+        if (totalAmount === 0) {
+          setTotalAmount(calculateInitialPrice(data));
+        }
       });
   }, [trigger, loggedIn]);
 
@@ -44,6 +45,8 @@ export default function Cart({
   };
 
   const checkOut = function () {
+    setLastPrice(totalAmount);
+    setTotalAmount(0);
     router.push("/CheckOut");
   };
 

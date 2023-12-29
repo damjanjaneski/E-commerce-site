@@ -12,6 +12,7 @@ export default function App({ Component, pageProps }) {
   const [trigger, setTrigger] = useState(false);
   const [userType, setUserType] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
+  const [lastPrice, setLastPrice] = useState(0);
   const [onOff, setOnOff] = useState({
     search: false,
     dropDown: false,
@@ -64,6 +65,8 @@ export default function App({ Component, pageProps }) {
         setUserType={setUserType}
       />
       <Component
+        lastPrice={lastPrice}
+        setLastPrice={setLastPrice}
         userType={userType}
         setUserType={setUserType}
         totalAmount={totalAmount}
