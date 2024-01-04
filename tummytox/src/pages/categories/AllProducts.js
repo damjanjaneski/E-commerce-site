@@ -12,7 +12,6 @@ export default function AllProducts({
   likedProducts,
   setLikedProducts,
   setActiveCategory,
-  userType,
   formatNumber,
 }) {
   const [allProducts, setAllProducts] = useState([]);
@@ -150,18 +149,6 @@ export default function AllProducts({
       <h1 className={styles.title}>All Products</h1>
       <Grid container>
         <div className={styles.container}>
-          {userType === "admin" ? (
-            <button
-              onClick={() => {
-                router.push("/admin/add-new");
-              }}
-              className={styles.addNew}
-            >
-              Add new
-            </button>
-          ) : (
-            ""
-          )}
           {sorted.length !== 0
             ? newArray[activePage - 1].map((product, x) => (
                 <ProductCard

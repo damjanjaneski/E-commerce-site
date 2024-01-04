@@ -20,7 +20,9 @@ export default function AddNew() {
     setProduct({ ...product, [name]: value });
   };
 
-  const addNew = function () {
+  const addNew = function (category) {
+    const route = category.toLowerCase().replaceAll(" ", "");
+    console.log(route);
     if (
       product.name === "" ||
       product.category === "" ||
@@ -35,7 +37,7 @@ export default function AddNew() {
         method: "POST",
         body: JSON.stringify({
           name: product.name,
-          category: product.category,
+          category: category,
           price: product.price,
           actionPrice: product.actionPrice,
           description: product.description,
@@ -45,8 +47,10 @@ export default function AddNew() {
           "Content-Type": "application/json",
         },
       })
-        .then((r) => {
-          router.push("/categories/Accessories");
+        .then(() => {
+          router.push(
+            `/categories/${route[0].toUpperCase() + route.substring(1)}`
+          );
         })
         .catch((e) => console.log(e));
     }
@@ -104,7 +108,7 @@ export default function AddNew() {
         placeholder="Img URL"
       />
       {error ? <p className={styles.warning}>All FIELDS ARE REQUIRED!</p> : ""}
-      <button onClick={addNew} className={styles.btn}>
+      <button onClick={() => addNew(product.category)} className={styles.btn}>
         Add product
       </button>
     </div>

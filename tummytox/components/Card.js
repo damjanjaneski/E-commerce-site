@@ -40,9 +40,11 @@ export default function ProductCard({
 
   useEffect(() => {}, [modal]);
 
-  const deleteCard = function (id) {
-    fetch(
-      `http://localhost:3000/api/delete-api?collection=${product.category.toLowerCase()}&request=delete`,
+  const deleteCard = async function (id) {
+    await fetch(
+      `http://localhost:3000/api/delete-api?collection=${product.category
+        .toLowerCase()
+        .replaceAll(" ", "")}&request=delete`,
       {
         method: "DELETE",
         body: JSON.stringify({
@@ -52,10 +54,9 @@ export default function ProductCard({
           "Content-Type": "application/json",
         },
       }
-    );
+    ).then(() => setTrigger(!trigger));
 
     setModal("none");
-    setTrigger(!trigger);
   };
 
   const editCard = function (id) {

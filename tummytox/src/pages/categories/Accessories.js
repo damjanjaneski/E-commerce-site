@@ -26,7 +26,7 @@ export default function Accessories({
       .then((data) => {
         setAccessories(data);
       });
-  }, [likedProducts]);
+  }, [trigger]);
 
   return (
     <>
