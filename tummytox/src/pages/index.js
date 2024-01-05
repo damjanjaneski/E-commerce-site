@@ -17,7 +17,6 @@ export default function Home({
   setCartProducts,
   loggedIn,
   formatNumber,
-  addToWishList,
 }) {
   setActiveCategory("");
 

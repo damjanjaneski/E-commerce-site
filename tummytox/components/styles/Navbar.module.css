@@ -221,3 +221,36 @@
   background-color: inherit !important;
   margin-bottom: 10px;
 }
+
+@media only screen and (max-width: 760px) {
+  .directions {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .directions div {
+    border-right: none;
+  }
+
+  .nav img {
+    width: 200px;
+  }
+
+  .subDiv svg {
+    font-size: 20px;
+  }
+  .nav span {
+    font-size: 15px;
+  }
+  .btn span:hover {
+    font-size: 15px;
+  }
+
+  .fbInsta {
+    top: 0px;
+    right: 20px;
+    height: 30px;
+    overflow: hidden;
+  }
+}

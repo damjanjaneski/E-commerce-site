@@ -111,12 +111,11 @@ export default function Navbar({
         </div>
       </div>
       <div className={navbarStyle.nav}>
-        <div className={navbarStyle.subDiv}>
+        <div style={{ width: "200px" }} className={navbarStyle.subDiv}>
           <Link
             href="/"
             style={{
               backgroundColor: "inherit",
-              paddingRight: "150px",
             }}
           >
             <svg
