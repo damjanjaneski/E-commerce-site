@@ -44,3 +44,27 @@
   margin-top: 10px;
   fill: rgb(243, 237, 226);
 }
+
+.rights {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 760px) {
+  .footerItem h2 {
+    font-size: 23px;
+    padding-left: 7.5px;
+  }
+  .footerItem p {
+    font-size: 20px;
+  }
+  .footerItem h3 {
+    font-size: 17.5px;
+  }
+  .footerItem svg {
+    font-size: 25px;
+  }
+  .rights {
+    font-size: 13.5px;
+  }
+}

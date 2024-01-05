@@ -49,7 +49,7 @@ export default function Footer() {
           </svg>
         </div>
       </div>
-      <p style={{ marginTop: "20px" }}>Copyright © 2023 All Rights Reserved</p>
+      <p className={styles.rights}>Copyright © 2023 All Rights Reserved</p>
     </div>
   );
 }

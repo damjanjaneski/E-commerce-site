@@ -23,7 +23,7 @@ export default function Review({ name, imgSrc, product, rating, text }) {
       </div>
       <div className={styles.product}>
         <h4>{product}</h4>
-        <div className={styles.rating}>
+        <div style={{ width: "80%", marginBottom: "20px" }}>
           <svg
             className={styles.one}
             style={{ fill: color[0] }}

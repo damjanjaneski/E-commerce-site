@@ -47,7 +47,7 @@ export default function Home({
       </div>
       <div className={styles.imgContainer}></div>
 
-      <img src="/images/3in1.jpg" />
+      <img width={"100%"} src="/images/3in1.jpg" />
       <ReviewsSection
         allReviews={allReviews}
         setAllReviews={setAllReviews}

@@ -27,7 +27,7 @@ export default function ReviewsSection({ allReviews, setAllReviews, trigger }) {
 
   return (
     <div className={styles.container}>
-      <h1>Comments And Reviews</h1>
+      <h3>Comments And Reviews</h3>
       <div className={styles.wraper}>
         {shownReviews.map((review, x) => (
           <Review

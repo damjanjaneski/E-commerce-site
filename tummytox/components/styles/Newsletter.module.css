@@ -91,3 +91,21 @@
   color: rgb(0, 180, 0);
   font-weight: 700;
 }
+
+@media only screen and (max-width: 760px) {
+  .newsletter {
+    height: 550px;
+    align-items: space-around;
+  }
+  .newsletter h1 {
+    font-size: 45px;
+  }
+  .subscribtion {
+    flex-direction: column;
+    width: 250px;
+  }
+
+  .newsletter button {
+    font-size: 15px;
+  }
+}
