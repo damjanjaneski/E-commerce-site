@@ -46,22 +46,20 @@ export default function Sport({
             ""
           )}
           {sport.map((item, x) => (
-            <Grid key={x} item sm={6} md={3} lg={3}>
-              <div className={styles.card}>
-                <ProductCard
-                  formatNumber={formatNumber}
-                  collection={"sport"}
-                  trigger={trigger}
-                  setTrigger={setTrigger}
-                  cartProducts={cartProducts}
-                  setCartProducts={setCartProducts}
-                  setLikedProducts={setLikedProducts}
-                  likedProducts={likedProducts}
-                  key={x}
-                  product={item}
-                />
-              </div>
-            </Grid>
+            <div className={styles.card}>
+              <ProductCard
+                formatNumber={formatNumber}
+                collection={"sport"}
+                trigger={trigger}
+                setTrigger={setTrigger}
+                cartProducts={cartProducts}
+                setCartProducts={setCartProducts}
+                setLikedProducts={setLikedProducts}
+                likedProducts={likedProducts}
+                key={x}
+                product={item}
+              />
+            </div>
           ))}
         </div>
       </Grid>

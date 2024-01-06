@@ -8,6 +8,7 @@
   padding: 25px;
   position: relative;
   flex-flow: wrap;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
 }
 
 .addNew {
@@ -80,4 +81,19 @@
     0px 0px 15px rgb(212, 148, 9);
   scale: 1.05;
   transition: 0.25s;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+@media only screen and (max-width: 760px) {
+  .container {
+    margin-left: 75px;
+  }
+  .addNew {
+    margin-right: 75px;
+  }
 }

@@ -7,6 +7,7 @@
   margin-top: 50px;
   padding: 25px;
   position: relative;
+  flex-flow: wrap;
 }
 
 .addNew {
@@ -79,4 +80,13 @@
     0px 0px 15px rgb(212, 148, 9);
   scale: 1.05;
   transition: 0.25s;
+}
+
+@media only screen and (max-width: 760px) {
+  .container {
+    margin-left: 75px;
+  }
+  .addNew {
+    margin-right: 55px;
+  }
 }

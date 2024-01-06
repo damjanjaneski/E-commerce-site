@@ -80,3 +80,12 @@
   scale: 1.05;
   transition: 0.25s;
 }
+
+@media only screen and (max-width: 760px) {
+  .container {
+    margin-left: 75px;
+  }
+  .addNew {
+    margin-right: 55px;
+  }
+}

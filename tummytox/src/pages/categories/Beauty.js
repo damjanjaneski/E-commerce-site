@@ -1,4 +1,4 @@
-import styles from "../../styles/Accessories.module.css";
+import styles from "../../styles/Beauty.module.css";
 import ProductCard from "../../../components/Card";
 import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
@@ -46,22 +46,19 @@ export default function Beauty({
             ""
           )}
           {beauty.map((item, x) => (
-            <Grid key={x} item sm={6} md={3} lg={3}>
-              <div className={styles.card}>
-                <ProductCard
-                  formatNumber={formatNumber}
-                  collection={"beauty"}
-                  trigger={trigger}
-                  setTrigger={setTrigger}
-                  cartProducts={cartProducts}
-                  setCartProducts={setCartProducts}
-                  setLikedProducts={setLikedProducts}
-                  likedProducts={likedProducts}
-                  key={x}
-                  product={item}
-                />
-              </div>
-            </Grid>
+            <div className={styles.card}>
+              <ProductCard
+                formatNumber={formatNumber}
+                trigger={trigger}
+                setTrigger={setTrigger}
+                cartProducts={cartProducts}
+                setCartProducts={setCartProducts}
+                setLikedProducts={setLikedProducts}
+                likedProducts={likedProducts}
+                key={x}
+                product={item}
+              />
+            </div>
           ))}
         </div>
       </Grid>

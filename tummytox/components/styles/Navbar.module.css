@@ -253,4 +253,8 @@
     height: 30px;
     overflow: hidden;
   }
+  .likeAndBuy {
+    width: 100px;
+    margin-right: 10px;
+  }
 }
