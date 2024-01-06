@@ -41,10 +41,11 @@
   width: 100%;
   display: flex;
   overflow: hidden;
+  position: relative;
 }
 
 @media only screen and (max-width: 760px) {
   .buttons {
-    top: 52.5%;
+    top: 40%;
   }
 }

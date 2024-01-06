@@ -23,11 +23,11 @@ export default function Slider() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.buttons}>
-        <button onClick={clickPrev}>{"<"}</button>
-        <button onClick={clickNext}>{">"}</button>
-      </div>
       <div className={styles.wraper}>
+        <div className={styles.buttons}>
+          <button onClick={clickPrev}>{"<"}</button>
+          <button onClick={clickNext}>{">"}</button>
+        </div>
         {index === 1 ? (
           <img className={styles.img} src="/images/img-2.png" />
         ) : (
