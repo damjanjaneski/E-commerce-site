@@ -1,0 +1,88 @@
+.title {
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  margin-top: 60px;
+  margin-left: 60px;
+  margin-bottom: 60px;
+  font-size: 40px;
+}
+
+.subTitle {
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  font-size: 65px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.imgDesc {
+  display: flex;
+  margin-top: 100px;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 100px 0px 100px;
+  margin-bottom: 150px;
+}
+
+.imgDesc img {
+  margin-left: -100px;
+  z-index: 0;
+}
+
+.imgTwo {
+  margin-left: 0px !important;
+  z-index: 0;
+}
+
+.imgDesc p {
+  background-color: white;
+  color: #333;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  padding: 50px 50px;
+}
+
+.imgDesc div {
+  background-color: white;
+  color: #333;
+  width: 60%;
+  padding: 55px 55px;
+  z-index: 1;
+  border-radius: 20px;
+}
+
+.imgDesc li {
+  background-color: white;
+  font-size: 20px;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  padding-bottom: 10px;
+}
+
+.regular {
+  font-size: 25px;
+  color: #333;
+  background-color: inherit;
+  margin-bottom: 20px;
+  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  margin-bottom: 20px;
+}
+
+.imgDescTwo {
+  display: flex;
+  margin-top: 100px;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 150px;
+  padding-right: 100px;
+}
+
+.imgDescTwo img {
+  z-index: 0;
+  margin-right: -100px;
+  margin-left: 100px;
+}
+.imgDescTwo div {
+  background-color: white;
+  z-index: 1;
+  width: 60%;
+  padding: 55px 55px;
+  margin-right: 100px;
+  border-radius: 20px;
+}
