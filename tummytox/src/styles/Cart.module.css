@@ -51,3 +51,22 @@
 
   width: 100px;
 }
+
+@media only screen and (max-width: 760px) {
+  .empty {
+    font-size: 25px;
+    text-align: center;
+  }
+  .title {
+    font-size: 45px;
+  }
+
+  .payAmount {
+    margin-left: 0px;
+    padding: 5px 15px;
+  }
+
+  .amountWraper button {
+    margin-right: 15px;
+  }
+}

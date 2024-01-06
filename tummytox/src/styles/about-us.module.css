@@ -36,7 +36,6 @@
   background-color: white;
   color: #333;
   font-family: "neueHass", Arial, Helvetica, Verdana, serif;
-  padding: 50px 50px;
 }
 
 .imgDesc div {
@@ -85,4 +84,53 @@
   padding: 55px 55px;
   margin-right: 100px;
   border-radius: 20px;
+}
+
+@media only screen and (max-width: 760px) {
+  .subTitle {
+    font-size: 25px;
+    padding: 15px 20px;
+  }
+  .regular {
+    font-size: 20px;
+    padding: 10px 10px 10px 10px;
+  }
+
+  .imgDesc {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .imgDescTwo {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .imgDescTwo img {
+    width: 100%;
+    margin-right: 0px;
+  }
+  .imgDescTwo div {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-right: -100px;
+    margin-top: 20px;
+  }
+  .imgDesc img {
+    width: 100%;
+    margin-left: 0px;
+  }
+  .imgDesc div {
+    width: 100%;
+    margin-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 20px;
+  }
+
+  .title {
+    font-size: 25px;
+    padding: 15px 20px;
+    margin-left: 0px;
+  }
 }
