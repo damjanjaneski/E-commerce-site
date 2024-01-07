@@ -68,3 +68,12 @@
     font-size: 13.5px;
   }
 }
+
+@media only screen and (min-width: 761px) and (max-width: 1520px) {
+  .footerItem h2 {
+    font-size: 37.5px;
+  }
+  .footerItem p {
+    font-size: 25px;
+  }
+}

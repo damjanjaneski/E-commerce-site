@@ -34,7 +34,7 @@
 }
 
 .text {
-  font-size: 20px;
+  font-size: 17.5px;
   text-overflow: ellipsis;
 }
 
@@ -46,5 +46,14 @@
   .review {
     height: 550px;
     margin-top: 20px;
+  }
+}
+
+@media only screen and (min-width: 761px) and (max-width: 1520px) {
+  .review {
+    max-width: 90%;
+    width: 80%;
+    margin-top: 20px;
+    height: 350px;
   }
 }

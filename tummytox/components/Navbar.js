@@ -136,7 +136,7 @@ export default function Navbar({
         {loggedIn ? (
           <div className={navbarStyle.subDiv}>
             <div className={navbarStyle.likeAndBuy}>
-              <div>
+              <div id={navbarStyle.size}>
                 <svg
                   onClick={searchBarOn}
                   xmlns="http://www.w3.org/2000/svg"

@@ -14,6 +14,7 @@
 .nav img {
   margin-top: 7px;
   border: none;
+  margin-left: 7.5%;
 }
 
 .nav span {
@@ -24,10 +25,11 @@
 
 .subDiv {
   display: flex;
-  justify-content: space-around;
+  justify-content: right;
   width: 300px;
   background-color: inherit;
   align-items: center;
+  margin-right: 15px;
 }
 
 .link {
@@ -43,6 +45,7 @@
 
 .btn span {
   font-size: 20px;
+  white-space: nowrap;
 }
 
 .btn span:hover {
@@ -75,6 +78,12 @@
   display: flex;
   justify-content: center;
   outline: none;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+.directions a {
+  width: 17.5%;
+  text-align: center;
 }
 
 .directions div {
@@ -82,12 +91,14 @@
   color: gray;
   font-size: 25px;
   border: none;
-  padding-right: 50px;
-  padding-left: 50px;
+  padding-right: 25px;
+  padding-left: 25px;
   height: 40px;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-right: 1px solid rgb(44, 95, 189);
+  width: 100%;
 }
 
 .directions div:hover {
@@ -120,13 +131,14 @@
   background-color: inherit;
   cursor: pointer;
   fill: white;
+  margin-right: 15px;
 }
 
 .likeAndBuy {
   background-color: inherit;
   display: flex;
   justify-content: space-between;
-  width: 120px;
+  width: 200px;
 }
 
 .subDiv svg:hover {
@@ -236,16 +248,21 @@
     flex-direction: column;
     align-items: center;
   }
+  .directions a {
+    width: 120%;
+  }
   .directions div {
     border-right: none;
   }
 
   .nav img {
     width: 200px;
+    margin-left: 0%;
   }
 
-  .subDiv svg {
+  .subDiv div svg {
     font-size: 20px;
+    width: 19px;
   }
   .nav span {
     font-size: 15px;
@@ -270,6 +287,7 @@
   .subDiv {
     width: 150px;
     justify-content: right;
+    margin-right: -15px;
   }
 
   .likeAndBuy {
@@ -277,5 +295,53 @@
   }
   .likeAndBuy button {
     margin-top: 5px;
+  }
+}
+
+@media only screen and (min-width: 761px) and (max-width: 1105px) {
+  .directions a div {
+    font-size: 22px;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+  }
+  .directions a {
+    width: 17.5%;
+    background-color: white;
+  }
+  .directions {
+    height: 60px;
+  }
+
+  .nav img {
+    width: 400px;
+  }
+  .likeAndBuy {
+    flex-direction: column;
+  }
+
+  .subDiv {
+    margin-right: 0px;
+  }
+}
+
+@media only screen and (min-width: 1105px) and (max-width: 1520px) {
+  .directions a div {
+    white-space: nowrap;
+    font-size: 22px;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+  }
+  .directions a {
+    width: 17.5%;
   }
 }
