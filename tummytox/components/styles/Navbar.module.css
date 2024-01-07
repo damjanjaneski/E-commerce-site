@@ -136,6 +136,13 @@
   fill: rgb(44, 95, 189);
 }
 
+.likeAndBuy div {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: inherit;
+}
+
 .searchDiv {
   height: 50px;
   text-align: center;
@@ -256,5 +263,19 @@
   .likeAndBuy {
     width: 100px;
     margin-right: 10px;
+  }
+  #logInRegister {
+    width: 150px;
+  }
+  .subDiv {
+    width: 150px;
+    justify-content: right;
+  }
+
+  .likeAndBuy {
+    flex-direction: column;
+  }
+  .likeAndBuy button {
+    margin-top: 5px;
   }
 }

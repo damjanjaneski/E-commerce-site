@@ -96,7 +96,7 @@
 
 .filterWraper {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 7.5px;
   font-size: 25px;
   border-bottom: 1px solid #333;
@@ -106,11 +106,9 @@
 
 .filter {
   color: #333;
-  margin-right: 75px;
-  margin-left: 50px;
   width: 15%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
@@ -121,6 +119,29 @@
   outline: none;
   border: none;
   cursor: pointer;
-  margin-top: 3.5px;
   font-style: italic;
+  width: 120px;
+  margin-top: 4px;
+}
+
+@media only screen and (max-width: 760px) {
+  .filter label,
+  .sortBy label,
+  .sortBy select,
+  .filter select {
+    font-size: 17.5px;
+  }
+
+  .filter select {
+    font-size: 17.5px;
+    margin-top: 0px;
+  }
+
+  .filter {
+    width: 25%;
+  }
+
+  .filterWraper {
+    width: 100%;
+  }
 }

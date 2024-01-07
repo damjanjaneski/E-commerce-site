@@ -117,7 +117,8 @@ export default function AllProducts({
     <div style={{ textAlign: "center" }}>
       <div className={styles.filterWraper}>
         <div className={styles.filter}>
-          <label>Sort by:</label>
+          <label style={{ whiteSpace: "nowrap" }}>Sort by:</label>
+
           <select
             name="sortBy"
             value={sortAndFilter.sortBy}
