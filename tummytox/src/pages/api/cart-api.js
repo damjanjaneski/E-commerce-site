@@ -9,7 +9,5 @@ export default async (req, res) => {
     .collection("users")
     .findOne({ _id: ObjectId(req.query.userId) });
 
-  console.log("a");
-
   return res.json(user.cart);
 };

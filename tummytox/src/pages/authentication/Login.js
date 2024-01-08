@@ -60,14 +60,6 @@ export default function Login({
             setLikedProducts(loggedIn.wishlist.map((item) => item._id));
             setUserType(loggedIn.type);
             setCartProducts(loggedIn.cart.map((item) => item._id));
-            localStorage.setItem(
-              "likedProducts",
-              JSON.stringify(loggedIn.wishlist.map((item) => item._id))
-            );
-            localStorage.setItem(
-              "cartProducts",
-              JSON.stringify(loggedIn.cart.map((item) => item._id))
-            );
             localStorage.setItem("loggedIn", JSON.stringify(loggedIn._id));
             localStorage.setItem("userType", JSON.stringify(loggedIn.type));
             router.push("/");

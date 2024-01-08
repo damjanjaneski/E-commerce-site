@@ -302,7 +302,9 @@ export default function CheckOut({ formatNumber, setTotalAmount, lastPrice }) {
           <button onClick={placeOrder}>Place Order</button>
         </div>
       </div>
-      <div style={{ textAlign: "center", marginBottom: "75px" }}>
+      <div
+        style={{ textAlign: "center", marginTop: "75px", marginBottom: "25px" }}
+      >
         {errors.fields ? (
           <p className={styles.error}>All fields are required!</p>
         ) : (

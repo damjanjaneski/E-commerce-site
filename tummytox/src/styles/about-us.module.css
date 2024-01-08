@@ -86,7 +86,7 @@
   border-radius: 20px;
 }
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1676px) {
   .subTitle {
     font-size: 25px;
     padding: 15px 20px;

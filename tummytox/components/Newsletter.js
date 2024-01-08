@@ -62,6 +62,7 @@ export default function Newsletter() {
           type="text"
         />
         <input
+          style={{ marginBottom: "5px" }}
           onChange={formFilling}
           placeholder="E-MAIL"
           name="email"

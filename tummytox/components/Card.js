@@ -22,14 +22,6 @@ export default function ProductCard({
   const [userMessage, setUserMessage] = useState("none");
   const router = useRouter();
 
-  useEffect(() => {
-    localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
-  }, [likedProducts]);
-
-  useEffect(() => {
-    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
-  }, [cartProducts]);
-
   const showModal = function () {
     setModal("block");
   };

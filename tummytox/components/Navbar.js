@@ -26,8 +26,6 @@ export default function Navbar({
     localStorage.setItem("userType", JSON.stringify(""));
     setLikedProducts([]);
     setCartProducts([]);
-    localStorage.setItem("likedProducts", JSON.stringify([]));
-    localStorage.setItem("cartProducts", JSON.stringify([]));
     router.push("/authentication/Login");
   };
 

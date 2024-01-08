@@ -20,11 +20,16 @@ export default function App({ Component, pageProps }) {
   });
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const liked = JSON.parse(localStorage.getItem("likedProducts"));
-      setLikedProducts(liked || []);
+    if (loggedIn !== "") {
+      fetch("/api/users")
+        .then((res) => res.json())
+        .then((data) => {
+          const user = data.filter((item) => item._id === loggedIn);
+          setLikedProducts(user.wishlist || []);
+          setCartProducts(user.cart || []);
+        });
     }
-  }, []);
+  }, [loggedIn]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -37,13 +42,6 @@ export default function App({ Component, pageProps }) {
     if (typeof window !== "undefined") {
       const value = JSON.parse(localStorage.getItem("loggedIn"));
       setLoggedIn(value || false);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const cart = JSON.parse(localStorage.getItem("cartProducts")) || [];
-      setCartProducts(cart);
     }
   }, []);
 
