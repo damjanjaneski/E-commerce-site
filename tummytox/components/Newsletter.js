@@ -39,6 +39,7 @@ export default function Newsletter() {
         },
       })
         .then((r) => {
+          setSubscriber({ name: "", email: "" });
           setSuccessful(true);
           console.log(r);
         })

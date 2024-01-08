@@ -36,11 +36,11 @@
 }
 
 .wraper {
-  width: 75%;
+  width: 85%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 235px;
+
   margin-top: 25px;
 }
 
@@ -67,6 +67,7 @@
 .reviewDiv {
   display: flex;
   align-items: center;
+  padding-right: 100px;
 }
 
 .reviewDiv input {
@@ -156,7 +157,7 @@
   }
 }
 
-@media only screen and (min-width: 761px) and (max-width: 1520px) {
+@media only screen and (min-width: 761px) and (max-width: 1526px) {
   .container {
     padding-left: 20%;
     padding-right: 20%;
