@@ -76,7 +76,8 @@ export default function Navbar({
     });
   }
 
-  const handleBlur = function () {
+  const viewProduct = function (id) {
+    router.push(`/products/${id}`);
     setSearched("");
   };
 
@@ -136,7 +137,7 @@ export default function Navbar({
         {loggedIn ? (
           <div className={navbarStyle.subDiv}>
             <div className={navbarStyle.likeAndBuy}>
-              <div id={navbarStyle.size}>
+              <div>
                 <svg
                   onClick={searchBarOn}
                   xmlns="http://www.w3.org/2000/svg"
@@ -200,7 +201,6 @@ export default function Navbar({
               type="text"
               value={searched}
               onChange={handleSearch}
-              onBlur={handleBlur}
             />
           </div>
           <svg
@@ -218,6 +218,7 @@ export default function Navbar({
             ? results.map((product, x) => {
                 return x < 5 ? (
                   <div
+                    onClick={() => viewProduct(product._id)}
                     className={styles.dropDown}
                     style={{ marginTop: `${-50 + (x + 1) * 202}px` }}
                   >
@@ -229,8 +230,10 @@ export default function Navbar({
                     />
 
                     <div className={styles.nameCategory}>
-                      <h4>{product.category}</h4>
-                      <h2>{product.name}</h2>
+                      <p>{product.category}</p>
+                      <p>
+                        <b style={{ background: "inherit" }}>{product.name}</b>
+                      </p>
                     </div>
                   </div>
                 ) : undefined;

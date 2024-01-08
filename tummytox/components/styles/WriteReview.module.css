@@ -111,6 +111,8 @@
     height: 430px;
     justify-content: center;
     align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
   }
   .wraper {
     width: 100%;
@@ -133,6 +135,24 @@
 
   .container input {
     height: 40px;
+  }
+  .product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+  }
+  .product input {
+    width: 60%;
+  }
+  .reviewDiv {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .reviewDiv textarea {
+    width: 60%;
   }
 }
 

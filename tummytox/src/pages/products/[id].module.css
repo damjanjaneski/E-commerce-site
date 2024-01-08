@@ -98,6 +98,10 @@
   .container img {
     height: 300px;
   }
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
   .wraper {
     flex-direction: column;
@@ -107,9 +111,11 @@
   }
 
   .text {
+    max-width: 75%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 14px;
   }
 
   .prices {
@@ -118,5 +124,36 @@
   }
   .text h1 {
     text-align: center;
+    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+  }
+
+  .text p {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 761px) and (max-width: 1520px) {
+  .wraper {
+    flex-direction: column;
+    width: 95%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .text h1 {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 1521px) and (max-width: 1720px) {
+  .wraper {
+    width: 90%;
   }
 }
