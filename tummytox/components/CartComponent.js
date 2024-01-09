@@ -1,5 +1,5 @@
 import styles from "./styles/CartComponent.module.css";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function CartComponent({
@@ -9,6 +9,8 @@ export default function CartComponent({
   setTrigger,
   updateTotalAmount,
   formatNumber,
+  cartProducts,
+  setTotalAmount,
 }) {
   const [qty, setQty] = useState(1);
   const router = useRouter();
@@ -35,12 +37,8 @@ export default function CartComponent({
         }),
       }
     );
-
-    const updatedCartProducts = JSON.parse(
-      localStorage.getItem("cartProducts")
-    ).filter((p) => p !== id);
-    localStorage.setItem("cartProducts", JSON.stringify(updatedCartProducts));
-    setCartProducts(updatedCartProducts);
+    setCartProducts(cartProducts.filter((p) => p !== id));
+    setTotalAmount((x) => x - qty * item.actionPrice);
     setTrigger((trigger) => !trigger);
   };
 

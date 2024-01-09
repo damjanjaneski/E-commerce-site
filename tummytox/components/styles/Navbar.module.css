@@ -228,8 +228,9 @@
 }
 
 .dropDown:hover {
-  background-color: darkblue;
+  background-color: rgb(44, 95, 189);
   cursor: pointer;
+  color: white;
 }
 
 .nameCategory {

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 export default function LikedProduct({
   setLikedProducts,
+  likedProducts,
   item,
   loggedIn,
   setTrigger,
@@ -12,10 +13,6 @@ export default function LikedProduct({
 }) {
   const router = useRouter();
 
-  useEffect(() => {
-    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
-  }, [cartProducts]);
-
   const removeFromWishlist = function (id) {
     fetch(
       `http://localhost:3000/api/users?userId=${loggedIn}&id=${id}&request=delete&target=wishlist`,
@@ -23,15 +20,7 @@ export default function LikedProduct({
         method: "PUT",
       }
     ).then(() => {
-      const updatedLikedProducts = JSON.parse(
-        localStorage.getItem("likedProducts")
-      ).filter((product) => product !== id);
-
-      localStorage.setItem(
-        "likedProducts",
-        JSON.stringify(updatedLikedProducts)
-      );
-      setLikedProducts(updatedLikedProducts);
+      setLikedProducts(likedProducts.filter((product) => product !== id));
       setTrigger((trigger) => !trigger);
     });
   };

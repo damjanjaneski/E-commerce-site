@@ -1,7 +1,7 @@
 import styles from "../styles/Cart.module.css";
 import CartComponent from "../../components/CartComponent";
-import { useState, useEffect, useMemo } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Cart({
   cartProducts,
@@ -17,7 +17,21 @@ export default function Cart({
 }) {
   const [cProducts, setCProducts] = useState([]);
 
-  const router = useRouter("/CheckOut");
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      if (url !== "/Cart") {
+        setTotalAmount(0);
+      }
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router]);
 
   setActiveCategory("");
 
@@ -58,6 +72,7 @@ export default function Cart({
           cProducts.map((product, x) => {
             return (
               <CartComponent
+                setTotalAmount={setTotalAmount}
                 formatNumber={formatNumber}
                 updateTotalAmount={updateTotalAmount}
                 setTrigger={setTrigger}
