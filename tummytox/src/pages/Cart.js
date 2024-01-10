@@ -26,13 +26,12 @@ export default function Cart({
       }
     };
 
-    router.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on("beforeHistoryChange", handleRouteChange);
 
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off("beforeHistoryChange", handleRouteChange);
     };
-  }, [router]);
-
+  }, []);
   setActiveCategory("");
 
   useEffect(() => {
