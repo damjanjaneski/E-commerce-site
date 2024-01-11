@@ -33,7 +33,6 @@ export default function Cart({
     };
   }, []);
   setActiveCategory("");
-
   useEffect(() => {
     fetch(`http://localhost:3000/api/cart-api?userId=${loggedIn}`)
       .then((res) => res.json())

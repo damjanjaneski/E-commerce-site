@@ -15,7 +15,6 @@ export default async (req, res) => {
       );
       res.status(200);
     } else if (req.query.request === "post") {
-      console.log(req.query.request, req.query.target, req.query.userId);
       db.collection("users").updateOne(
         { _id: BSON.ObjectId(req.query.userId) },
         { $addToSet: { wishlist: req.body } }
@@ -35,6 +34,11 @@ export default async (req, res) => {
         { $addToSet: { cart: req.body } }
       );
     }
+  } else if (req.query.target === "emptyCart") {
+    db.collection("users").updateOne(
+      { _id: BSON.ObjectId(req.query.userId) },
+      { $set: { cart: [] } }
+    );
   } else {
     const users = await db.collection("users").find({}).toArray();
     return res.json(users);

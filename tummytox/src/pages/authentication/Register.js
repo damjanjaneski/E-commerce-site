@@ -7,6 +7,7 @@ export default function Register() {
   const [user, setUser] = useState({
     username: "",
     email: "",
+    fullName: "",
     password: "",
     repeatPassword: "",
   });
@@ -22,10 +23,10 @@ export default function Register() {
   const validateFields = () => {
     const newErrors = {};
     if (
-      user.username === "" ||
-      user.email === "" ||
-      user.password === "" ||
-      user.repeatPassword === ""
+      user.username.replaceAll(" ", "").length < 4 ||
+      user.fullName.replaceAll(" ", "").length < 5 ||
+      user.password.length < 3 ||
+      user.repeatPassword.length < 3
     ) {
       newErrors.fields = true;
     }
@@ -48,6 +49,7 @@ export default function Register() {
         body: JSON.stringify({
           username: user.username,
           email: user.email,
+          fullName: user.fullName,
           password: user.password,
           type: "user",
         }),
@@ -78,6 +80,15 @@ export default function Register() {
         onChange={handleChange}
         placeholder="E-mail"
       />
+
+      <input
+        className={styles.input}
+        value={user.fullName}
+        name="fullName"
+        onChange={handleChange}
+        placeholder="Full Name"
+      />
+
       <input
         className={styles.input}
         value={user.password}
@@ -96,7 +107,11 @@ export default function Register() {
       />
 
       {error.fields ? (
-        <p className={styles.warning}>ALL FIELDS ARE REQUIRED</p>
+        <p style={{ textAlign: "center" }} className={styles.warning}>
+          Username must have at least 4 characters <br />
+          Full Name must contain both first and last name <br /> Password must
+          have at least 4 characters!
+        </p>
       ) : (
         ""
       )}

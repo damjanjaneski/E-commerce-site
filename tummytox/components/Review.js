@@ -17,6 +17,7 @@ export default function Review({ name, imgSrc, product, rating, text }) {
 
   return (
     <div className={styles.review}>
+      <button className={styles.delete}>X</button>
       <div className={styles.customer}>
         <img className={styles.img} src={imgSrc} />
         <h2>{name}</h2>

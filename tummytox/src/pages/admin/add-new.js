@@ -22,7 +22,7 @@ export default function AddNew() {
 
   const addNew = function (category) {
     const route = category.toLowerCase().replaceAll(" ", "");
-    console.log(route);
+
     if (
       product.name === "" ||
       product.category === "" ||
@@ -37,7 +37,7 @@ export default function AddNew() {
         method: "POST",
         body: JSON.stringify({
           name: product.name,
-          category: category,
+          category: route[0].toUpperCase() + route.substring(1),
           price: product.price,
           actionPrice: product.actionPrice,
           description: product.description,

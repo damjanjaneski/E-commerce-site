@@ -1,7 +1,12 @@
 import styles from "../styles/CheckOut.module.css";
 import { useState, useEffect } from "react";
 
-export default function CheckOut({ formatNumber, setTotalAmount, lastPrice }) {
+export default function CheckOut({
+  formatNumber,
+  setTotalAmount,
+  lastPrice,
+  loggedIn,
+}) {
   const [paymentInfo, setPaymentInfo] = useState({
     firstName: "",
     lastName: "",
@@ -50,9 +55,17 @@ export default function CheckOut({ formatNumber, setTotalAmount, lastPrice }) {
 
   const validateFields = function () {
     const newErrors = {};
-    const values = Object.values(paymentInfo).map((value) => Boolean(value));
+    const valuesForAllMethods = [
+      paymentInfo.firstName,
+      paymentInfo.lastName,
+      paymentInfo.number,
+      paymentInfo.fullName,
+      paymentInfo.address,
+      paymentInfo.city,
+      paymentInfo.postalCode,
+    ].map((value) => Boolean(value));
 
-    if (values.includes(false)) {
+    if (valuesForAllMethods.includes(false)) {
       newErrors.fields = true;
     }
     if (!/\S+@\S+\.\S+/.test(paymentInfo.email)) {
@@ -96,8 +109,19 @@ export default function CheckOut({ formatNumber, setTotalAmount, lastPrice }) {
         expYear: "",
         ccv: "",
       });
+
       setSuccessful(true);
       setTotalAmount(0);
+
+      fetch(
+        `http://localhost:3000/api/users?target=emptyCart&request=delete&userId=${loggedIn}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
     }
   };
 
@@ -302,9 +326,7 @@ export default function CheckOut({ formatNumber, setTotalAmount, lastPrice }) {
           <button onClick={placeOrder}>Place Order</button>
         </div>
       </div>
-      <div
-        style={{ textAlign: "center", marginTop: "75px", marginBottom: "25px" }}
-      >
+      <div style={{ textAlign: "center", marginBottom: "25px" }}>
         {errors.fields ? (
           <p className={styles.error}>All fields are required!</p>
         ) : (

@@ -4,12 +4,12 @@ export default async (req, res) => {
   const client = await clientPromise;
   const db = client.db("tummytox");
 
-  if (req.body.category === "accessories") {
+  if (req.body.category.toLowerCase() === "accessories") {
     db.collection("accessories")
       .insertOne(req.body)
       .then((response) => res.status(200).json(response))
       .catch((error) => res.status(500).json(error));
-  } else if (req.body.category === "sport") {
+  } else if (req.body.category.toLowerCase() === "sport") {
     db.collection("sport")
       .insertOne(req.body)
       .then((response) => res.status(200).json(response))

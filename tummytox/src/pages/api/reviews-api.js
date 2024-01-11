@@ -19,7 +19,8 @@ export default async (req, res) => {
       rating: req.query.rating,
       img: "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
     });
+    res.status(200).end();
+  } else {
+    return res.json(reviews);
   }
-
-  return res.json(reviews);
 };

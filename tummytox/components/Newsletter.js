@@ -14,7 +14,10 @@ export default function Newsletter() {
   const validate = function () {
     const fieldsErrors = {};
 
-    if (subscriber.name === "" || subscriber.name.length < 4) {
+    if (
+      subscriber.name.replaceAll(" ", "") === "" ||
+      subscriber.name.replaceAll(" ", "").length < 4
+    ) {
       fieldsErrors.name = true;
     }
 

@@ -17,6 +17,7 @@ export default function Home({
   setCartProducts,
   loggedIn,
   formatNumber,
+  userType,
 }) {
   setActiveCategory("");
 
@@ -53,7 +54,7 @@ export default function Home({
         setAllReviews={setAllReviews}
         trigger={trigger}
       />
-      {loggedIn ? (
+      {loggedIn && userType === "user" ? (
         <WriteReview
           loggedIn={loggedIn}
           allReviews={allReviews}
