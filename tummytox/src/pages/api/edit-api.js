@@ -21,6 +21,4 @@ export default async (req, res) => {
     )
     .then((res) => res.status(200).json("successfuly edited"))
     .catch((err) => res.status(500).json(err));
-
-  console.log(req.body);
 };
