@@ -20,6 +20,11 @@ export default async (req, res) => {
       img: "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
     });
     res.status(200).end();
+  } else if (req.query.reviewId) {
+    db.collection("reviews").deleteOne({
+      _id: BSON.ObjectId(req.query.reviewId),
+    });
+    res.status(200).end();
   } else {
     return res.json(reviews);
   }

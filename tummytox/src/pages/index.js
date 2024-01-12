@@ -53,6 +53,8 @@ export default function Home({
         allReviews={allReviews}
         setAllReviews={setAllReviews}
         trigger={trigger}
+        userType={userType}
+        setTrigger={setTrigger}
       />
       {loggedIn && userType === "user" ? (
         <WriteReview

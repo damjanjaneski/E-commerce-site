@@ -36,6 +36,7 @@ export default function WriteReview({
           setReview({ product: "", text: "", rating: "1" });
         })
         .then(() => setTrigger((trigger) => !trigger));
+      setError(false);
     }
   };
 

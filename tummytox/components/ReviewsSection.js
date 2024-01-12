@@ -2,7 +2,13 @@ import Review from "./Review";
 import styles from "./styles/ReviewsSection.module.css";
 import { useState, useEffect } from "react";
 
-export default function ReviewsSection({ allReviews, setAllReviews, trigger }) {
+export default function ReviewsSection({
+  allReviews,
+  setAllReviews,
+  trigger,
+  userType,
+  setTrigger,
+}) {
   const [slideIndex, setSlideIndex] = useState(0);
 
   useEffect(() => {
@@ -31,12 +37,11 @@ export default function ReviewsSection({ allReviews, setAllReviews, trigger }) {
       <div className={styles.wraper}>
         {shownReviews.map((review, x) => (
           <Review
+            setSlideIndex={setSlideIndex}
             key={x}
-            name={review.name}
-            imgSrc={review.img}
-            product={review.product}
-            rating={review.rating}
-            text={review.text}
+            review={review}
+            userType={userType}
+            setTrigger={setTrigger}
           />
         ))}
       </div>
