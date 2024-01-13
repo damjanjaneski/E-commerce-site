@@ -34,7 +34,7 @@ export default function Cart({
   }, []);
   setActiveCategory("");
   useEffect(() => {
-    fetch(`http://localhost:3000/api/cart-api?userId=${loggedIn}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/cart-api?userId=${loggedIn}`)
       .then((res) => res.json())
       .then((data) => {
         setCProducts(data);

@@ -1,11 +1,4 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import clientPromise from "../../../lib/mongodb";
-// import { accProducts } from "../../../public/data/accessories";
-// import { beautyProducts } from "../../../public/data/beauty";
-// import { weightLossProducts } from "../../../public/data/weightloss";
-// import { sportProducts } from "../../../public/data/sport";
-// import { healthDetoxProducts } from "../../../public/data/healthAndDetox";
 
 export default async function handler(req, res) {
   const client = await clientPromise;

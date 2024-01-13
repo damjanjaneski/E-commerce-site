@@ -33,7 +33,7 @@ export default function AddNew() {
     ) {
       setError(true);
     } else {
-      fetch("http://localhost:3000/api/add-new-api", {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/add-new-api`, {
         method: "POST",
         body: JSON.stringify({
           name: product.name,

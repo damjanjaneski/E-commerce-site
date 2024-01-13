@@ -34,7 +34,7 @@ export default function ProductCard({
 
   const deleteCard = async function (id) {
     await fetch(
-      `http://localhost:3000/api/delete-api?collection=${product.category
+      `${process.env.NEXT_PUBLIC_API_URL}/api/delete-api?collection=${product.category
         .toLowerCase()
         .replaceAll(" ", "")}&request=delete`,
       {
@@ -68,14 +68,14 @@ export default function ProductCard({
 
     if (isLiked) {
       fetch(
-        `http://localhost:3000/api/users?userId=${userId}&id=${id}&request=delete&target=wishlist`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users?userId=${userId}&id=${id}&request=delete&target=wishlist`,
         {
           method: "PUT",
         }
       );
     } else {
       fetch(
-        `http://localhost:3000/api/users?userId=${userId}&request=post&target=wishlist`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users?userId=${userId}&request=post&target=wishlist`,
         {
           method: "PUT",
           body: JSON.stringify({
@@ -108,7 +108,7 @@ export default function ProductCard({
 
     if (added) {
       fetch(
-        `http://localhost:3000/api/users?userId=${userId}&request=delete&target=cart`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users?userId=${userId}&request=delete&target=cart`,
         {
           method: "PUT",
           body: JSON.stringify({
@@ -118,7 +118,7 @@ export default function ProductCard({
       );
     } else {
       fetch(
-        `http://localhost:3000/api/users?userId=${userId}&request=post&target=cart`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users?userId=${userId}&request=post&target=cart`,
         {
           method: "PUT",
           body: JSON.stringify({

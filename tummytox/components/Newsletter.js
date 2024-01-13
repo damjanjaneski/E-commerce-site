@@ -31,7 +31,7 @@ export default function Newsletter() {
 
   const subscribe = function () {
     if (validate()) {
-      fetch("http://localhost:3000/api/subscribe-api", {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/subscribe-api`, {
         method: "POST",
         body: JSON.stringify({
           name: subscriber.name,

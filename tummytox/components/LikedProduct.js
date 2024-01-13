@@ -15,7 +15,7 @@ export default function LikedProduct({
 
   const removeFromWishlist = function (id) {
     fetch(
-      `http://localhost:3000/api/users?userId=${loggedIn}&id=${id}&request=delete&target=wishlist`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/users?userId=${loggedIn}&id=${id}&request=delete&target=wishlist`,
       {
         method: "PUT",
       }
@@ -34,7 +34,7 @@ export default function LikedProduct({
   const addToCart = function (id) {
     setCartProducts([...cartProducts, id]);
     fetch(
-      `http://localhost:3000/api/users?userId=${loggedIn}&request=post&target=cart`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/users?userId=${loggedIn}&request=post&target=cart`,
       {
         method: "PUT",
         body: JSON.stringify({

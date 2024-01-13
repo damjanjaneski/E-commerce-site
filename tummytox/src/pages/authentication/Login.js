@@ -42,7 +42,7 @@ export default function Login({
 
   const login = function () {
     if (validate()) {
-      fetch("http://localhost:3000/api/users")
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`)
         .then((res) => res.json())
         .then((data) => {
           const loggedIn = data.find(

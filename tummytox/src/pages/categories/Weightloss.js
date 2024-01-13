@@ -21,7 +21,9 @@ export default function Weightloss({
   setActiveCategory("Weightloss");
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/productsList?collection=weightloss")
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=weightloss`
+    )
       .then((res) => res.json())
       .then((data) => {
         setWeightLoss(data);

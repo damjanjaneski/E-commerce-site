@@ -21,7 +21,9 @@ export default function HealthAndDetox({
   const [healthDetox, setHealthDetox] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/productsList?collection=healthanddetox")
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=healthanddetox`
+    )
       .then((res) => res.json())
       .then((data) => {
         setHealthDetox(data);

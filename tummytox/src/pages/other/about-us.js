@@ -1,4 +1,3 @@
-import { width } from "@mui/system";
 import styles from "../../styles/about-us.module.css";
 
 export default function AboutUs({ setActiveCategory }) {

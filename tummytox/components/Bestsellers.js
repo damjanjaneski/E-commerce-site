@@ -13,7 +13,7 @@ export default function Bestsellers({
   const [bestsellers, setBestSellers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/bestsellers")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/bestsellers`)
       .then((res) => res.json())
       .then((data) => setBestSellers(data));
   }, [trigger]);

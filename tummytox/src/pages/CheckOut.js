@@ -114,7 +114,7 @@ export default function CheckOut({
       setTotalAmount(0);
 
       fetch(
-        `http://localhost:3000/api/users?target=emptyCart&request=delete&userId=${loggedIn}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users?target=emptyCart&request=delete&userId=${loggedIn}`,
         {
           method: "DELETE",
           headers: {

@@ -22,7 +22,7 @@ export default function EditCard({ product }) {
       edited.img !== ""
     ) {
       fetch(
-        `http://localhost:3000/api/edit-api?id=${
+        `${process.env.NEXT_PUBLIC_API_URL}/api/edit-api?id=${
           product._id
         }&collection=${product.category.replace(/\s+/g, "").toLowerCase()}`,
         {

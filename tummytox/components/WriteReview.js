@@ -26,7 +26,7 @@ export default function WriteReview({
   const share = function () {
     if (validate()) {
       fetch(
-        `http://localhost:3000/api/reviews-api?product=${review.product}&text=${review.text}&rating=${review.rating}&userId=${loggedIn}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/reviews-api?product=${review.product}&text=${review.text}&rating=${review.rating}&userId=${loggedIn}`,
         {
           method: "POST",
         }

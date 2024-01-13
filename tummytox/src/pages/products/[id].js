@@ -192,7 +192,9 @@ export default function Product({
 }
 
 export async function getStaticPaths() {
-  const products = await fetch(`http://localhost:3000/api/allProducts`)
+  const products = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/allProducts`
+  )
     .then((res) => res.json())
     .then((res) => res)
     .catch((err) => console.log(err));

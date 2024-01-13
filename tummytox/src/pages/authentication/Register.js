@@ -44,7 +44,7 @@ export default function Register() {
 
   const register = () => {
     if (validateFields() && user.password === user.repeatPassword) {
-      fetch("http://localhost:3000/api/register-api", {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/register-api`, {
         method: "POST",
         body: JSON.stringify({
           username: user.username,

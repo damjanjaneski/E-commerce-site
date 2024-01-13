@@ -21,7 +21,7 @@ export default function Beauty({
   setActiveCategory("Beauty");
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/productsList?collection=beauty")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=beauty`)
       .then((res) => res.json())
       .then((data) => {
         setBeauty(data);

@@ -21,7 +21,7 @@ export default function Accessories({
   setActiveCategory("Accessories");
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/productsList?collection=accessories")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=accessories`)
       .then((res) => res.json())
       .then((data) => {
         setAccessories(data);

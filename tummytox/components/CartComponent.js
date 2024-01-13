@@ -29,7 +29,7 @@ export default function CartComponent({
 
   const remove = function (id) {
     fetch(
-      `http://localhost:3000/api/users?userId=${loggedIn}&target=cart&request=delete`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/users?userId=${loggedIn}&target=cart&request=delete`,
       {
         method: "DELETE",
         body: JSON.stringify({

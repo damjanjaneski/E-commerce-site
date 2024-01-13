@@ -17,7 +17,9 @@ export default function WhishList({
   setActiveCategory("");
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/wishlist-api?userId=${loggedIn}`)
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/wishlist-api?userId=${loggedIn}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setWishlistProducts(data);

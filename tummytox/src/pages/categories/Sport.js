@@ -21,7 +21,9 @@ export default function Sport({
   const [sport, setSport] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/productsList?collection=sport")
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=sport`
+    )
       .then((res) => res.json())
       .then((data) => {
         setSport(data);

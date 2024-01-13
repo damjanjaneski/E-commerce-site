@@ -36,7 +36,7 @@ export default function Navbar({
   ];
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/allProducts")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/allProducts`)
       .then((res) => res.json())
       .then((data) => setAllProducts(data));
   }, []);

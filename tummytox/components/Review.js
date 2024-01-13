@@ -24,7 +24,7 @@ export default function Review({
   }
 
   const deleteReview = function (id) {
-    fetch(`http://localhost:3000/api/reviews-api?reviewId=${id}`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reviews-api?reviewId=${id}`, {
       method: "DELETE",
     }).then(() => {
       setTrigger((trigger) => !trigger);

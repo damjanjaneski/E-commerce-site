@@ -12,7 +12,7 @@ export default function ReviewsSection({
   const [slideIndex, setSlideIndex] = useState(0);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/reviews-api`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reviews-api`)
       .then((res) => res.json())
       .then((data) => setAllReviews(data));
   }, [trigger]);
