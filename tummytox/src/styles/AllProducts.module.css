@@ -40,20 +40,6 @@
   z-index: 0;
 }
 
-/* .delete {
-    position: absolute;
-    top: 5px;
-    right: 57.5px;
-    overflow: visible;
-    z-index: 1;
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: rgb(139, 16, 16);
-    border: none;
-  } */
-
 .edit {
   position: absolute;
   top: 5px;

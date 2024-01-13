@@ -21,6 +21,8 @@
   cursor: pointer;
   border-radius: 15px;
   font-size: 17px;
+  left: center;
+  margin-right: 50px;
 }
 
 .addNew:hover {
@@ -38,20 +40,6 @@
   margin-top: 50px;
   font-size: 50px;
 }
-
-/* .delete {
-    position: absolute;
-    top: 5px;
-    right: 57.5px;
-    overflow: visible;
-    z-index: 1;
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: rgb(139, 16, 16);
-    border: none;
-  } */
 
 .edit {
   position: absolute;
