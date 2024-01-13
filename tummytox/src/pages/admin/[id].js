@@ -118,7 +118,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const product = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}0/api/product?id=${params.id}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/product?id=${params.id}`
   )
     .then((res) => res.json())
     .catch((err) => console.log(err));
