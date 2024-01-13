@@ -95,7 +95,9 @@ export default function EditCard({ product }) {
 }
 
 export async function getStaticPaths() {
-  const products = await fetch(`http://localhost:3000/api/allProducts`)
+  const products = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/allProducts`
+  )
     .then((res) => res.json())
     .then((res) => res)
     .catch((err) => console.log(err));
@@ -116,7 +118,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const product = await fetch(
-    `http://localhost:3000/api/product?id=${params.id}`
+    `${process.env.NEXT_PUBLIC_API_URL}0/api/product?id=${params.id}`
   )
     .then((res) => res.json())
     .catch((err) => console.log(err));

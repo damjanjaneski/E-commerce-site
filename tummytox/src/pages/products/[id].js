@@ -1,5 +1,4 @@
 import styles from "./[id].module.css";
-import { useState, useEffect } from "react";
 
 export default function Product({
   product,
@@ -19,7 +18,7 @@ export default function Product({
   const addToWishlist = function (id) {
     setLikedProducts([...likedProducts, id]);
     fetch(
-      `http://localhost:3000/api/users?userId=${loggedIn}&request=post&target=wishlist`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/users?userId=${loggedIn}&request=post&target=wishlist`,
       {
         method: "PUT",
         body: JSON.stringify({
@@ -40,7 +39,7 @@ export default function Product({
   const removeFromWishlist = function (id) {
     setLikedProducts(likedProducts.filter((id) => id !== product._id));
     fetch(
-      `http://localhost:3000/api/users?userId=${loggedIn}&id=${id}&request=delete&target=wishlist`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/users?userId=${loggedIn}&id=${id}&request=delete&target=wishlist`,
       {
         method: "PUT",
       }
@@ -49,7 +48,7 @@ export default function Product({
   const addToCart = function (id) {
     setCartProducts([...cartProducts, id]);
     fetch(
-      `http://localhost:3000/api/users?userId=${loggedIn}&request=post&target=cart`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/users?userId=${loggedIn}&request=post&target=cart`,
       {
         method: "PUT",
         body: JSON.stringify({
@@ -70,7 +69,7 @@ export default function Product({
   const removeFromCart = function (id) {
     setCartProducts(cartProducts.filter((id) => id !== product._id));
     fetch(
-      `http://localhost:3000/api/users?userId=${loggedIn}&id=${id}&request=delete&target=cart`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/users?userId=${loggedIn}&id=${id}&request=delete&target=cart`,
       {
         method: "PUT",
         body: JSON.stringify({
@@ -215,7 +214,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const product = await fetch(
-    `http://localhost:3000/api/product?id=${params.id}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/product?id=${params.id}`
   )
     .then((res) => res.json())
     .catch((err) => console.log(err));
