@@ -61,6 +61,8 @@ export default function App({ Component, pageProps }) {
         setLoggedIn={setLoggedIn}
         loggedIn={loggedIn}
         setUserType={setUserType}
+        likedProducts={likedProducts}
+        cartProducts={cartProducts}
       />
       <Component
         lastPrice={lastPrice}

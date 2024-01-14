@@ -143,7 +143,7 @@
 }
 
 .subDiv svg:hover {
-  scale: 1.2;
+  scale: 1.25;
   fill: black;
   transition: 0.2s;
   fill: rgb(44, 95, 189);
@@ -154,6 +154,22 @@
   display: flex;
   justify-content: space-around;
   background-color: inherit;
+}
+
+.counter {
+  width: 20px !important;
+  top: -10px;
+  right: 5px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: rgb(44, 95, 189) !important;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 15px;
+  z-index: 1;
 }
 
 .searchDiv {
