@@ -34,7 +34,9 @@ export default function ProductCard({
 
   const deleteCard = async function (id) {
     await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/delete-api?collection=${product.category
+      `${
+        process.env.NEXT_PUBLIC_API_URL
+      }/api/delete-api?collection=${product.category
         .toLowerCase()
         .replaceAll(" ", "")}&request=delete`,
       {
@@ -204,9 +206,9 @@ export default function ProductCard({
             level="title-lg"
             sx={{ mt: 1, fontWeight: "xl", background: "white" }}
             endDecorator={
-              <p className={styles.oldPrice}>
+              <span className={styles.oldPrice}>
                 {formatNumber(product.price)}.00 MKD
-              </p>
+              </span>
             }
           >
             {formatNumber(product.actionPrice)}.00 MKD

@@ -5,7 +5,7 @@ import Bestsellers from "../../components/Bestsellers";
 import Adventages from "../../components/Adventages";
 import ReviewsSection from "../../components/ReviewsSection";
 import WriteReview from "../../components/WriteReview";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home({
   trigger,
@@ -19,7 +19,9 @@ export default function Home({
   formatNumber,
   userType,
 }) {
-  setActiveCategory("");
+  useEffect(() => {
+    setActiveCategory("");
+  }, []);
 
   const [allReviews, setAllReviews] = useState([]);
 

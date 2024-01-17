@@ -15,12 +15,11 @@ export default function Sport({
   formatNumber,
   userType,
 }) {
-  setActiveCategory("Sport");
-
   const router = useRouter();
   const [sport, setSport] = useState([]);
 
   useEffect(() => {
+    setActiveCategory("Sport");
     fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=sport`
     )
@@ -48,7 +47,7 @@ export default function Sport({
             ""
           )}
           {sport.map((item, x) => (
-            <div className={styles.card}>
+            <div className={styles.card} key={x}>
               <ProductCard
                 formatNumber={formatNumber}
                 collection={"sport"}
@@ -58,7 +57,6 @@ export default function Sport({
                 setCartProducts={setCartProducts}
                 setLikedProducts={setLikedProducts}
                 likedProducts={likedProducts}
-                key={x}
                 product={item}
               />
             </div>

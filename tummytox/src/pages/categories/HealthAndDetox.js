@@ -15,12 +15,11 @@ export default function HealthAndDetox({
   formatNumber,
   userType,
 }) {
-  setActiveCategory("HealthAndDetox");
-
   const router = useRouter();
   const [healthDetox, setHealthDetox] = useState([]);
 
   useEffect(() => {
+    setActiveCategory("HealthAndDetox");
     fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=healthanddetox`
     )
@@ -48,7 +47,7 @@ export default function HealthAndDetox({
             ""
           )}
           {healthDetox.map((item, x) => (
-            <div className={styles.card}>
+            <div className={styles.card} key={x}>
               <ProductCard
                 formatNumber={formatNumber}
                 trigger={trigger}
@@ -57,7 +56,6 @@ export default function HealthAndDetox({
                 setCartProducts={setCartProducts}
                 setLikedProducts={setLikedProducts}
                 likedProducts={likedProducts}
-                key={x}
                 product={item}
               />
             </div>

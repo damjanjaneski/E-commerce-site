@@ -26,6 +26,7 @@ export default function Pagination({ pages, activePage, onPageChange }) {
           {numOfPages.map((page, x) => {
             return (
               <button
+                key={x}
                 className={activePage === x + 1 ? styles.activePage : ""}
                 onClick={() => onPageChange(x + 1)}
               >

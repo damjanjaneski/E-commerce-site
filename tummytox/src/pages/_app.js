@@ -24,9 +24,9 @@ export default function App({ Component, pageProps }) {
       fetch("/api/users")
         .then((res) => res.json())
         .then((data) => {
-          const user = data.filter((item) => item._id === loggedIn);
-          setLikedProducts(user.wishlist || []);
-          setCartProducts(user.cart || []);
+          const user = data.find((item) => item._id === loggedIn);
+          setLikedProducts(user?.wishlist || []);
+          setCartProducts(user?.cart || []);
         });
     }
   }, [loggedIn]);

@@ -18,10 +18,11 @@ export default function Accessories({
   const router = useRouter();
   const [accessories, setAccessories] = useState([]);
 
-  setActiveCategory("Accessories");
-
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=accessories`)
+    setActiveCategory("Accessories");
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=accessories`
+    )
       .then((res) => res.json())
       .then((data) => {
         setAccessories(data);

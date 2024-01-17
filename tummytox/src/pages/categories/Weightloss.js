@@ -18,9 +18,8 @@ export default function Weightloss({
   const router = useRouter();
   const [weightLoss, setWeightLoss] = useState([]);
 
-  setActiveCategory("Weightloss");
-
   useEffect(() => {
+    setActiveCategory("Weightloss");
     fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=weightloss`
     )
@@ -48,7 +47,7 @@ export default function Weightloss({
             ""
           )}
           {weightLoss.map((item, x) => (
-            <div className={styles.card}>
+            <div className={styles.card} key={x}>
               <ProductCard
                 formatNumber={formatNumber}
                 collection={"weightLoss"}
@@ -58,7 +57,6 @@ export default function Weightloss({
                 setCartProducts={setCartProducts}
                 setLikedProducts={setLikedProducts}
                 likedProducts={likedProducts}
-                key={x}
                 product={item}
               />
             </div>

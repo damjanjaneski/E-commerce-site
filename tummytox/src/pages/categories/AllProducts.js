@@ -21,9 +21,8 @@ export default function AllProducts({
     filter: "No filter",
   });
 
-  setActiveCategory("All Products");
-
   useEffect(() => {
+    setActiveCategory("All Products");
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/allProducts`)
       .then((res) => res.json())
       .then((data) => setAllProducts(data));

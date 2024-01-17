@@ -18,10 +18,11 @@ export default function Beauty({
   const router = useRouter();
   const [beauty, setBeauty] = useState([]);
 
-  setActiveCategory("Beauty");
-
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=beauty`)
+    setActiveCategory("Beauty");
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=beauty`
+    )
       .then((res) => res.json())
       .then((data) => {
         setBeauty(data);
@@ -46,7 +47,7 @@ export default function Beauty({
             ""
           )}
           {beauty.map((item, x) => (
-            <div className={styles.card}>
+            <div className={styles.card} key={x}>
               <ProductCard
                 formatNumber={formatNumber}
                 trigger={trigger}
@@ -55,7 +56,6 @@ export default function Beauty({
                 setCartProducts={setCartProducts}
                 setLikedProducts={setLikedProducts}
                 likedProducts={likedProducts}
-                key={x}
                 product={item}
               />
             </div>
