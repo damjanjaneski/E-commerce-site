@@ -264,7 +264,7 @@ export default function Navbar({
             All Products
           </div>
         </Link>
-        <Link href="/categories/Healthanddetox">
+        <Link href="/categories/HealthAndDetox">
           <div
             className={activeCategory === "HealthAndDetox" ? styles.active : ""}
           >
