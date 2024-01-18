@@ -1,5 +1,3 @@
-import clientPromise from "../../../lib/mongodb";
-
 export default async (req, res) => {
   let allProducts = [];
 
@@ -36,5 +34,5 @@ export default async (req, res) => {
     ...beauty
   );
 
-  return res.json(allProducts);
+  return allProducts;
 };
