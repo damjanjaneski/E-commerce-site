@@ -6,5 +6,6 @@ export default async function CartProducts(req, res) {
 
   const products = await db.collection("cartProducts").find({}).toArray();
 
+  res.setHeader("Access-Control-Allow-Origin", "*");
   return res.status(200).json(products);
 }
