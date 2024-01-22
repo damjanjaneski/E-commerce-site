@@ -9,5 +9,6 @@ export default async (req, res) => {
     .collection("users")
     .findOne({ _id: BSON.ObjectId(req.query.userId) });
 
+  res.setHeader("Access-Control-Allow-Origin", "*");
   return res.json(user.wishlist);
 };

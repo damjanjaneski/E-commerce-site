@@ -43,6 +43,6 @@ export default async (req, res) => {
     const users = await db.collection("users").find({}).toArray();
     return res.json(users);
   }
-
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.end();
 };

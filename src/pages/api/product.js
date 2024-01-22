@@ -38,5 +38,6 @@ export default async (req, res) => {
       .collection("bestsellers")
       .findOne({ _id: BSON.ObjectId(req.query.id) });
   }
+  res.setHeader("Access-Control-Allow-Origin", "*");
   return res.json(product);
 };

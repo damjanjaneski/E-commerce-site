@@ -6,7 +6,7 @@ export default async (req, res) => {
   const db = client.db("tummytox");
 
   const reviews = await db.collection("reviews").find({}).toArray();
-
+  res.setHeader("Access-Control-Allow-Origin", "*");
   if (req.query.product) {
     const user = await db
       .collection("users")
@@ -24,6 +24,7 @@ export default async (req, res) => {
     db.collection("reviews").deleteOne({
       _id: BSON.ObjectId(req.query.reviewId),
     });
+
     res.status(200).end();
   } else {
     return res.json(reviews);

@@ -5,6 +5,7 @@ export default async (req, res) => {
   const client = await clientPromise;
   const db = client.db("tummytox");
 
+  res.setHeader("Access-Control-Allow-Origin", "*");
   db.collection(req.query.collection)
     .updateOne(
       { _id: BSON.ObjectId(req.query.id) },

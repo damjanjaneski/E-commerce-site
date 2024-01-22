@@ -13,6 +13,7 @@ export default async (req, res) => {
     })
     .then((response) => res.status(200).json(response))
     .catch((error) => res.status(500).json(error));
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.status(200);
   res.end();
 };
