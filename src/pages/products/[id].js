@@ -201,8 +201,6 @@ export async function getStaticPaths() {
     .then((res) => res)
     .catch((err) => console.log(err));
 
-  console.log("products: ", products);
-
   const paths = products
     .filter((product) => !!product)
     .map((product) => {
