@@ -36,40 +36,5 @@ export default async (req, res) => {
     );
 
     return res.status(200).json(allProducts);
-  } else {
-    const bestsellers = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/bestsellers`
-    ).then((res) => res);
-
-    const accessories = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=accessories`
-    ).then((res) => res);
-
-    const healthAndDetox = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=healthanddetox`
-    ).then((res) => res);
-
-    const weightloss = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=weightloss`
-    ).then((res) => res);
-
-    const sport = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=sport`
-    ).then((res) => res);
-
-    const beauty = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/productsList?collection=beauty`
-    ).then((res) => res);
-
-    allProducts.push(
-      ...bestsellers,
-      ...accessories,
-      ...healthAndDetox,
-      ...weightloss,
-      ...sport,
-      ...beauty
-    );
-
-    return res.json(allProducts);
   }
 };

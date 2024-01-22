@@ -21,9 +21,10 @@ export default function AllProducts({
   });
 
   useEffect(() => {
+    let URL = process.env.NEXT_PUBLIC_API_URL;
     setActiveCategory("All Products");
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/allProducts`)
-      .then((res) => res.json())
+    fetch(`${URL}/api/allProducts`)
+      .then((res) => (URL === "http://localhost:3000" ? res.json() : res))
       .then((data) => setAllProducts(data));
   }, []);
 
