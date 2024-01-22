@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../../../components/Card";
-import { Grid } from "@mui/material";
 import styles from "../../styles/AllProducts.module.css";
 import Pagination from "../../../components/Pagination";
 
@@ -147,26 +146,26 @@ export default function AllProducts({
         </div>
       </div>
       <h1 className={styles.title}>All Products</h1>
-      <Grid container>
-        <div className={styles.container}>
-          {sorted.length !== 0
-            ? newArray[activePage - 1].map((product, x) => (
-                <ProductCard
-                  formatNumber={formatNumber}
-                  collection={product.category}
-                  trigger={trigger}
-                  setTrigger={setTrigger}
-                  cartProducts={cartProducts}
-                  setCartProducts={setCartProducts}
-                  setLikedProducts={setLikedProducts}
-                  likedProducts={likedProducts}
-                  key={x}
-                  product={product}
-                />
-              ))
-            : undefined}
-        </div>
-      </Grid>
+
+      <div className={styles.container}>
+        {sorted.length !== 0
+          ? newArray[activePage - 1].map((product, x) => (
+              <ProductCard
+                formatNumber={formatNumber}
+                collection={product.category}
+                trigger={trigger}
+                setTrigger={setTrigger}
+                cartProducts={cartProducts}
+                setCartProducts={setCartProducts}
+                setLikedProducts={setLikedProducts}
+                likedProducts={likedProducts}
+                key={x}
+                product={product}
+              />
+            ))
+          : undefined}
+      </div>
+
       <Pagination
         pages={Math.ceil(newArray.length)}
         activePage={activePage}

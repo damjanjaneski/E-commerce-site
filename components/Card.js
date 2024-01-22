@@ -154,7 +154,14 @@ export default function ProductCard({
   const userId = JSON.parse(localStorage.getItem("loggedIn"));
 
   return (
-    <div style={{ width: " 375px", position: "relative" }}>
+    <div
+      style={{
+        width: " 375px",
+        position: "relative",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       {userType === "admin" ? (
         <button onClick={() => editCard(product._id)} className={styles.edit}>
           Edit

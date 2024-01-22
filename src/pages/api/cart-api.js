@@ -9,5 +9,5 @@ export default async (req, res) => {
     .collection("users")
     .findOne({ _id: ObjectId(req.query.userId) });
 
-  return res.json(user.cart);
+  return res.status(200).json(user.cart);
 };

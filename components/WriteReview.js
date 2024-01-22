@@ -42,7 +42,7 @@ export default function WriteReview({
 
   return (
     <div className={styles.container}>
-      <h1>Share your experience</h1>
+      <h1 style={{ textAlign: "center" }}>Share your experience</h1>
       <div className={styles.wraper}>
         <div className={styles.product}>
           <label>Product name:</label>

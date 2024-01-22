@@ -9,7 +9,6 @@
   position: relative;
   flex-flow: wrap;
   font-family: "neueHass", Arial, Helvetica, Verdana, serif;
-  padding-left: 75px;
 }
 
 .addNew {
@@ -23,7 +22,6 @@
   border-radius: 15px;
   font-size: 17px;
   left: center;
-  margin-right: 50px;
 }
 
 .title {
@@ -77,13 +75,4 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
-@media only screen and (max-width: 760px) {
-  .container {
-    margin-left: 75px;
-    padding-left: 37.5px;
-  }
-  .addNew {
-    margin-right: 75px;
-  }
 }

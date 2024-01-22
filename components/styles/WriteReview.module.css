@@ -67,7 +67,7 @@
 .reviewDiv {
   display: flex;
   align-items: center;
-  padding-right: 100px;
+  justify-content: space-between;
 }
 
 .reviewDiv input {
@@ -87,6 +87,11 @@
 .score {
   text-align: right;
 }
+.score select {
+  width: 40px;
+  height: 40px;
+  font-size: 17.5px;
+}
 
 .container button {
   width: 200px;
@@ -97,6 +102,7 @@
   border-radius: 20px;
   cursor: pointer;
   background-color: rgba(239, 166, 147, 255);
+  color: white;
 }
 
 .errorMessage {
@@ -147,6 +153,11 @@
   .product input {
     width: 60%;
   }
+
+  .product label {
+    white-space: nowrap;
+  }
+
   .reviewDiv {
     width: 100%;
     justify-content: space-between;

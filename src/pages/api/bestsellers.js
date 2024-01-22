@@ -6,5 +6,5 @@ export default async function (req, res) {
 
   const bestsellers = await db.collection("bestsellers").find({}).toArray();
 
-  res.status(200).json(bestsellers);
+  return res.status(200).json(bestsellers);
 }
