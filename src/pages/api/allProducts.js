@@ -70,6 +70,6 @@ export default async (req, res) => {
       ...beauty
     );
 
-    return allProducts;
+    return res.json(allProducts);
   }
 };
