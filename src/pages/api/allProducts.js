@@ -34,7 +34,5 @@ export default async (req, res) => {
     ...beauty
   );
 
-  if (process.env.NEXT_PUBLIC_API_URL === "http://localhost:3000") {
-    return res.status(200).json(allProducts);
-  } else return res.status(200)(allProducts);
+  return res.status(200).json(allProducts);
 };
