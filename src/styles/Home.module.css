@@ -20,8 +20,7 @@
   display: grid;
   grid-template-columns: auto auto auto;
   justify-content: center;
-  column-gap: 5%;
-  row-gap: 65px;
+  column-gap: 15%;
   margin-top: 90px;
   margin-bottom: 90px;
   background-color: rgb(236, 198, 188);

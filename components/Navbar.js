@@ -194,7 +194,7 @@ export default function Navbar({
               </span>
             </Link>
             <Link href="/authentication/Register" className={navbarStyle.link}>
-              <span>Register</span>
+              <span style={{ marginLeft: "20px" }}> Register</span>
             </Link>
           </div>
         )}

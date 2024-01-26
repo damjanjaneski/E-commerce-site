@@ -22,6 +22,7 @@
   background-color: inherit;
   font-size: 25px;
   font-weight: 700;
+  color: white;
 }
 
 .subDiv {
@@ -63,6 +64,7 @@
   display: flex;
   align-items: center;
   text-align: center;
+  color: white;
 }
 
 .slide p {
@@ -133,6 +135,10 @@
   cursor: pointer;
   fill: white;
   margin-right: 15px;
+}
+
+.subDiv span {
+  font-family: "Roboto", sans-serif;
 }
 
 .likeAndBuy {
@@ -232,7 +238,6 @@
   color: #333;
   display: flex;
   z-index: 1;
-  font-family: "neueHass", Arial, Helvetica, Verdana, serif;
 }
 
 .dropDown h2 {

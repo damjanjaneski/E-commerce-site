@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import Navbar from "../../components/Navbar";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 import Footer from "../../components/Footer";
 import Newsletter from "../../components/Newsletter";
 
@@ -51,6 +52,12 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+        />
+      </Head>
       <Navbar
         onOff={onOff}
         setOnOff={setOnOff}

@@ -2,6 +2,7 @@
   width: 100%;
   margin-right: 0px;
   padding-right: 0px;
+  border-bottom: 7.5px solid white;
 }
 
 .container img {
@@ -20,12 +21,12 @@
 }
 
 .buttons button {
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
   background-color: white;
   color: rgb(44, 95, 189);
-  font-size: 35px;
+  font-size: 25px;
   cursor: pointer;
   border: none;
 }

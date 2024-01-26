@@ -205,19 +205,27 @@ export default function ProductCard({
             {product.category}
           </Typography>
           <Link fontWeight="md" color="neutral">
-            {product.name}
+            <span style={{ background: "inherit", paddingTop: "12.5px" }}>
+              {product.name}
+            </span>
           </Link>
 
           <Typography
             level="title-lg"
-            sx={{ mt: 1, fontWeight: "xl", background: "white" }}
+            sx={{
+              mt: 1,
+              fontWeight: "xl",
+              background: "white",
+            }}
             endDecorator={
               <span className={styles.oldPrice}>
                 {formatNumber(product.price)}.00 MKD
               </span>
             }
           >
-            {formatNumber(product.actionPrice)}.00 MKD
+            <span style={{ background: "inherit", paddingTop: "7.5px" }}>
+              {formatNumber(product.actionPrice)}.00 MKD
+            </span>
           </Typography>
         </CardContent>
         {userId ? (
