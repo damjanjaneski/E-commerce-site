@@ -19,7 +19,9 @@
 .icons {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-right: 65px;
+  padding-left: 65px;
   width: 100%;
   background-color: inherit;
 }
