@@ -1,6 +1,7 @@
 import styles from "../../styles/Register.module.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import bcrypt from "bcryptjs";
 
 export default function Register() {
   const router = useRouter();
@@ -50,7 +51,7 @@ export default function Register() {
           username: user.username,
           email: user.email,
           fullName: user.fullName,
-          password: user.password,
+          password: bcrypt.hashSync(user.password, 10),
           type: "user",
         }),
 

@@ -1,6 +1,7 @@
 import styles from "../../styles/Login.module.css";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import bcrypt from "bcryptjs";
 
 export default function Login({
   setLoggedIn,
@@ -44,10 +45,19 @@ export default function Login({
     if (validate()) {
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`)
         .then((res) => res.json())
-        .then((data) => {
-          const loggedIn = data.find(
-            (u) => u.username === user.username && u.password === user.password
+        .then(async (data) => {
+          const compareArr = await Promise.all(
+            data.map(async (u) => {
+              return await bcrypt
+                .compare(user.password, u.password)
+                .then((result) => {
+                  return result && user.username === u.username;
+                });
+            })
           );
+
+          const index = compareArr.indexOf(true);
+          const loggedIn = index !== -1 ? data[index] : undefined;
 
           if (
             loggedIn === undefined &&

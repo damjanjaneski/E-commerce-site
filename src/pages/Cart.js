@@ -62,8 +62,6 @@ export default function Cart({
     router.push("/CheckOut");
   };
 
-  console.log(11);
-
   return (
     <div className={styles.mainDiv}>
       <h1 className={styles.title}>Your cart</h1>
