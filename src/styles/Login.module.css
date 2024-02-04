@@ -64,6 +64,23 @@
   margin-bottom: 30px;
 }
 
+.googleBtn {
+  width: 20%;
+  background-color: white;
+  color: #333;
+
+  border: white;
+  margin-top: 20px;
+  border-radius: 15px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.googleBtn:hover {
+  background: rgb(44, 95, 189);
+  color: white;
+}
+
 @media only screen and (max-width: 760px) {
   .form {
     width: 70%;

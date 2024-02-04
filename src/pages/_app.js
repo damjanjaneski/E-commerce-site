@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import Footer from "../../components/Footer";
 import Newsletter from "../../components/Newsletter";
+import { SessionProvider } from "next-auth/react";
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, session }) {
   const [likedProducts, setLikedProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -58,41 +59,43 @@ export default function App({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
         />
       </Head>
-      <Navbar
-        onOff={onOff}
-        setOnOff={setOnOff}
-        setCartProducts={setCartProducts}
-        setLikedProducts={setLikedProducts}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-        setLoggedIn={setLoggedIn}
-        loggedIn={loggedIn}
-        setUserType={setUserType}
-        likedProducts={likedProducts}
-        cartProducts={cartProducts}
-      />
-      <Component
-        lastPrice={lastPrice}
-        setLastPrice={setLastPrice}
-        userType={userType}
-        setUserType={setUserType}
-        totalAmount={totalAmount}
-        setTotalAmount={setTotalAmount}
-        formatNumber={formatNumber}
-        trigger={trigger}
-        setTrigger={setTrigger}
-        likedProducts={likedProducts}
-        setLikedProducts={setLikedProducts}
-        setLoggedIn={setLoggedIn}
-        loggedIn={loggedIn}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-        cartProducts={cartProducts}
-        setCartProducts={setCartProducts}
-        {...pageProps}
-      />
-      <Newsletter />
-      <Footer />
+      <SessionProvider session={session}>
+        <Navbar
+          onOff={onOff}
+          setOnOff={setOnOff}
+          setCartProducts={setCartProducts}
+          setLikedProducts={setLikedProducts}
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+          setLoggedIn={setLoggedIn}
+          loggedIn={loggedIn}
+          setUserType={setUserType}
+          likedProducts={likedProducts}
+          cartProducts={cartProducts}
+        />
+        <Component
+          {...pageProps}
+          lastPrice={lastPrice}
+          setLastPrice={setLastPrice}
+          userType={userType}
+          setUserType={setUserType}
+          totalAmount={totalAmount}
+          setTotalAmount={setTotalAmount}
+          formatNumber={formatNumber}
+          trigger={trigger}
+          setTrigger={setTrigger}
+          likedProducts={likedProducts}
+          setLikedProducts={setLikedProducts}
+          setLoggedIn={setLoggedIn}
+          loggedIn={loggedIn}
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+          cartProducts={cartProducts}
+          setCartProducts={setCartProducts}
+        />
+        <Newsletter />
+        <Footer />
+      </SessionProvider>
     </>
   );
 }

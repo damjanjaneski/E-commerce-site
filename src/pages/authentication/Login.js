@@ -1,6 +1,7 @@
 import styles from "../../styles/Login.module.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSession, signIn } from "next-auth/react";
 import bcrypt from "bcryptjs";
 
 export default function Login({
@@ -18,11 +19,13 @@ export default function Login({
     password: false,
     message: false,
   });
+  const { data: session } = useSession();
 
   setActiveCategory("");
 
   const handleChange = function (e) {
     const { name, value } = e.target;
+    console.log(user);
     setUser({ ...user, [name]: value });
   };
 
@@ -48,11 +51,12 @@ export default function Login({
         .then(async (data) => {
           const compareArr = await Promise.all(
             data.map(async (u) => {
-              return await bcrypt
-                .compare(user.password, u.password)
-                .then((result) => {
-                  return result && user.username === u.username;
-                });
+              if (user.password && u.password) {
+                const result = await bcrypt.compare(user.password, u.password);
+                return result && user.username === u.username;
+              } else {
+                return false;
+              }
             })
           );
 
@@ -76,6 +80,50 @@ export default function Login({
             console.log("SUCCESSFUL LOG IN");
           }
         });
+    }
+  };
+
+  const logInWithGoogle = async () => {
+    try {
+      await signIn("google", { callbackUrl: "/" });
+      if (session) {
+        const users = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/users`
+        ).then((res) => res.json());
+        const existingUser = users.find((u) => u.email === session.user.email);
+
+        if (!existingUser) {
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/register-api`, {
+            method: "POST",
+            body: JSON.stringify({
+              email: session.user.email,
+              name: session.user.name.split(" ")[0],
+              fullName: session.user.name,
+              type: "user",
+            }),
+
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          console.log("Successful registration!");
+        }
+        const updatedUsers = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/users`
+        ).then((res) => res.json());
+        const loggedIn = updatedUsers.find(
+          (u) => u.email === session.user.email
+        );
+        setLoggedIn(loggedIn._id);
+        setLikedProducts(loggedIn.wishlist.map((item) => item._id));
+        setUserType(loggedIn.type);
+        setCartProducts(loggedIn.cart.map((item) => item._id));
+        localStorage.setItem("loggedIn", JSON.stringify(loggedIn._id));
+        localStorage.setItem("userType", JSON.stringify(loggedIn.type));
+      }
+    } catch (error) {
+      console.error("Error signing in with Google:", error);
     }
   };
 
@@ -117,6 +165,9 @@ export default function Login({
 
       <button className={styles.btn} onClick={login}>
         Log in
+      </button>
+      <button onClick={() => logInWithGoogle()} className={styles.googleBtn}>
+        Log in with Google
       </button>
     </div>
   );
