@@ -25,7 +25,6 @@ export default function Login({
 
   const handleChange = function (e) {
     const { name, value } = e.target;
-    console.log(user);
     setUser({ ...user, [name]: value });
   };
 
