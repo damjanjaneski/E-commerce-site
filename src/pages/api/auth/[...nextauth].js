@@ -9,7 +9,7 @@ export const authOptions = {
     }),
   ],
   pages: {
-    signIn: "/",
+    signIn: process.env.NEXT_PUBLIC_API_URL,
   },
   secret: process.env.JWT_SECRET,
 };
