@@ -8,9 +8,6 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  pages: {
-    signIn: process.env.NEXT_PUBLIC_API_URL,
-  },
   secret: process.env.JWT_SECRET,
 };
 
