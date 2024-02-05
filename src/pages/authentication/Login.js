@@ -84,7 +84,9 @@ export default function Login({
 
   const logInWithGoogle = async () => {
     try {
-      await signIn("google", { callbackUrl: "/" });
+      await signIn("google", {
+        callbackUrl: `${process.env.NEXT_PUBLIC_API_URL}`,
+      });
       if (session) {
         const users = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/api/users`

@@ -96,7 +96,8 @@
     width: 30%;
     min-width: 400px;
   }
-  .btn {
+  .btn,
+  .googleBtn {
     width: 100px;
   }
 }
