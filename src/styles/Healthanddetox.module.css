@@ -9,6 +9,7 @@
   position: relative;
   flex-flow: wrap;
   font-family: "neueHass", Arial, Helvetica, Verdana, serif;
+  color: white;
 }
 
 .addNew {

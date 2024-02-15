@@ -84,7 +84,7 @@ export default function Newsletter() {
       ) : (
         ""
       )}
-      <button onClick={subscribe}>
+      <button style={{ color: "white" }} onClick={subscribe}>
         SUBSCRIBE
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import styles from "./styles/Navbar.module.css";
+import { signOut } from "next-auth/react";
 
 export default function Navbar({
   loggedIn,
@@ -29,6 +30,7 @@ export default function Navbar({
     setLikedProducts([]);
     setCartProducts([]);
     router.push("/authentication/Login");
+    signOut();
   };
 
   const paragraphs = [
