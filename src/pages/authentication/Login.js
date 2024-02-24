@@ -165,9 +165,9 @@ export default function Login({
       <button className={styles.btn} onClick={login}>
         Log in
       </button>
-      <button onClick={() => logInWithGoogle()} className={styles.googleBtn}>
+      {/* <button onClick={() => logInWithGoogle()} className={styles.googleBtn}>
         Log in with Google
-      </button>
+      </button>  functionality not completed yet*/}
     </div>
   );
 }
